@@ -10,7 +10,7 @@ Dependency-Track は、[`dt.outbound.allowed-destinations`](../configuration/pro
     * `dt.notification-publisher.email.allow-local-connections=true`
     * `dt.notification-publisher.kafka.allow-local-connections=true`
 
-    [Upgrading to v5.2.0](../../guides/upgrading/v5.2.0.md) を参照してください。
+    [v5.2.0 へのアップグレード](../../guides/upgrading/v5.2.0.md)を参照してください。
 
 ## コンソール {#console}
 

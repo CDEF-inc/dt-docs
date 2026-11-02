@@ -174,6 +174,10 @@
 | macro (CEL) | マクロ |  |
 | dependency graph | 依存関係グラフ |  |
 | transitive / direct dependency | 推移的な / 直接の依存関係 |  |
+| deprecated | 非推奨 |  |
+| basic authentication / bearer token | Basic 認証 / ベアラートークン | 「ベーシック認証」は使わない |
+| watermark (mirroring) | ウォーターマーク |  |
+| back-fill | バックフィル |  |
 | init tasks | 初期化タスク |  |
 | management server | 管理サーバー |  |
 | health probe / startup probe | ヘルスプローブ / 起動プローブ |  |
@@ -226,6 +230,8 @@
 | toggle on / off | オンにする / オフにする | |
 | Yes / No (table cells) | はい / いいえ | 「編集可能」などの列では 可 / 不可、有無を表す列では あり / なし |
 | Returns: (function reference) | 戻り値: |  |
+| Old / New, Before / After (table headers) | 変更前 / 変更後 |  |
+| Upgrading to vX.Y.Z | vX.Y.Z へのアップグレード | アップグレードガイドのタイトル |
 
 ## ドキュメントの構成
 

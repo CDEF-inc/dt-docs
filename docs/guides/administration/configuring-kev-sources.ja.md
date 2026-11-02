@@ -5,7 +5,7 @@
 
 CISA KEV、ENISA EU KEV、VulnCheck KEV は、Dependency-Track が内部データベースにミラーリングできる 3 つの KEV カタログです。有効にするデータソースを選び、フロントエンドで設定し、初回のミラーリングをトリガーすることで、次回のスケジュール実行を待たずに KEV のステータスが表示されるようになります。
 
-各データソースが提供する内容と、ミラーリングしたアサーションが脆弱性に紐付けられるしくみについては、[KEV データソースについて](../../concepts/about-kev-data-sources.md) を参照してください。
+各データソースが提供する内容と、ミラーリングしたアサーションが脆弱性に紐付けられるしくみについては、[KEV データソースについて](../../concepts/about-kev-data-sources.md)を参照してください。
 
 ## 前提条件 {#prerequisites}
 
@@ -42,7 +42,7 @@ VulnCheck KEV には API トークンが必要です。CISA KEV と ENISA EU KEV
     - `https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json`: CISA 自身の GitHub ミラー
     - `https://raw.githubusercontent.com/aboutcode-org/aboutcode-mirror-kev/main/known_exploited_vulnerabilities.json`: AboutCode がホストするコミュニティミラー
 
-CISA KEV のアサーションは、NVD の名前空間で解決された CVE ID によって脆弱性に紐付けられます。[KEV の照合のしくみ](../../concepts/about-kev-data-sources.md#how-kev-matching-works) を参照してください。
+CISA KEV のアサーションは、NVD の名前空間で解決された CVE ID によって脆弱性に紐付けられます。[KEV の照合のしくみ](../../concepts/about-kev-data-sources.md#how-kev-matching-works)を参照してください。
 
 ### ENISA EU KEV {#enisa-eu-kev}
 
@@ -79,7 +79,7 @@ CISA KEV のアサーションは、NVD の名前空間で解決された CVE ID
 
 ## KEV のステータスを確認する {#verifying-kev-status}
 
-ミラーリングが完了したら、有効にしたカタログのいずれかに含まれていることがわかっている脆弱性(たとえば Log4Shell の `CVE-2021-44228`)を、ポートフォリオの Vulnerabilities 一覧、プロジェクトの Findings ビュー、または Vulnerability Audit ビューで開きます。**KEV** 列に照準アイコンが表示されることを確認し、そのアイコンを選択してアサーションの詳細を開きます。照合はコンポーネントの識別子ではなく、脆弱性のエイリアスに基づいて行われます。[KEV の照合のしくみ](../../concepts/about-kev-data-sources.md#how-kev-matching-works) を参照してください。
+ミラーリングが完了したら、有効にしたカタログのいずれかに含まれていることがわかっている脆弱性(たとえば Log4Shell の `CVE-2021-44228`)を、ポートフォリオの Vulnerabilities 一覧、プロジェクトの Findings ビュー、または Vulnerability Audit ビューで開きます。**KEV** 列に照準アイコンが表示されることを確認し、そのアイコンを選択してアサーションの詳細を開きます。照合はコンポーネントの識別子ではなく、脆弱性のエイリアスに基づいて行われます。[KEV の照合のしくみ](../../concepts/about-kev-data-sources.md#how-kev-matching-works)を参照してください。
 
 ミラーリング後も KEV 列が空のままの場合は、API サーバーのログでミラーリングのエラーを確認してください。
 
