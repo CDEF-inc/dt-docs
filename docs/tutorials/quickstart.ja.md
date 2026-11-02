@@ -47,4 +47,4 @@ Compose ファイルをダウンロードし、スタックを起動します。
 
 - [コンポーネントポリシーを作成する](creating-a-component-policy.md): 組織の基準に違反するコンポーネントを検出します
 - [通知を設定する](setting-up-notifications.md): イベントを Slack、メール、Webhook に送信します
-- [本番環境へのデプロイ](../guides/administration/deploying-to-production.md): このクイックスタートから実際のデプロイに移行します
+- [本番環境にデプロイする](../guides/administration/deploying-to-production.md): このクイックスタートから実際のデプロイに移行します

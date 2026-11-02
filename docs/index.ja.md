@@ -88,7 +88,7 @@ Dependency-Track は、組織がソフトウェアサプライチェーンのリ
 
 ## v4 から移行する場合 {#coming-from-v4}
 
-変更点とその理由については [About changes in v5](concepts/changes-in-v5.md) を、1 回限りのデータ移行手順については [Migrating from v4 to v5](guides/administration/migrating-from-v4.md) を参照してください。
+変更点とその理由については [About changes in v5](concepts/changes-in-v5.md) を、1 回限りのデータ移行手順については [v4 から v5 に移行する](guides/administration/migrating-from-v4.md) を参照してください。
 
 ## コミュニティ {#community}
 

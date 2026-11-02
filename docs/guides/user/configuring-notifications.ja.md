@@ -94,7 +94,7 @@ minute of the hour (0-59)
 ## 関連項目 {#see-also}
 
 - [Notification groups](../../reference/notifications/groups.md)
-- [Debugging missing notifications](../administration/debugging-notifications.md)
+- [届かない通知をデバッグする](../administration/debugging-notifications.md)
 - [Notification publishers](../../reference/notifications/publishers.md)
 
 [cron]: https://en.wikipedia.org/wiki/Cron

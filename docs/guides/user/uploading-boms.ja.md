@@ -54,7 +54,7 @@ BOM をマルチパートリクエストとして `/api/v1/bom` に送信しま�
 
 スキーマ検証に失敗した BOM には `400 Bad Request` が返されます。すべてのフィールドとレスポンスについては、[REST API v1 リファレンス](../../reference/api/v1.md)の `UploadBom` 操作を参照してください。
 
-保存された API キーを使わずに認証するには、[Configuring workload identity federation](../administration/configuring-workload-identity-federation.md#exchange-the-token-in-the-workload) の説明に従ってプラットフォームのトークンをセッションと交換し、`X-Api-Key` の代わりに `Authorization: Bearer ${ACCESS_TOKEN}` を送信します。
+保存された API キーを使わずに認証するには、[ワークロード ID フェデレーションを設定する](../administration/configuring-workload-identity-federation.md#exchange-the-token-in-the-workload)の説明に従ってプラットフォームのトークンをセッションと交換し、`X-Api-Key` の代わりに `Authorization: Bearer ${ACCESS_TOKEN}` を送信します。
 
 ## 処理の完了を待つ {#wait-for-processing-to-finish}
 
