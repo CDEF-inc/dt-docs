@@ -90,6 +90,7 @@ The site is built in English (default) and Japanese with `mkdocs-static-i18n` us
 - Use the Japanese terms and notation rules in `context/vocabulary.ja.md`. Add a row there when you translate a new term.
 - Keep UI labels (bold or italic) in English as the English UI shows them. Keep code blocks, commands, and sample output unchanged.
 - Write Japanese in the polite form (です・ます). Leave out the subject instead of translating the tutorial "we".
+- `i18n/ja-sources.json` records the English page each translation is based on. `make check-ja-sources` lists Japanese pages whose English page changed since, with a `git diff` command that shows the English changes. CI reports these as warnings. After you translate a new page or update a translation, run `make update-ja-sources FILES=docs/path/page.ja.md`.
 - Vale skips `*.ja.md` files. markdownlint still applies.
 - `scripts/hooks/i18n_social_font.py` renders social cards of Japanese pages with Noto Sans JP and inserts line breaks into long Japanese titles. Check a card under `site/assets/images/social/ja/` after changing a long title.
 - Do not translate generated reference pages.
