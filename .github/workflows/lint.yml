@@ -40,6 +40,8 @@ jobs:
       run: make lint-prose
     - name: Lint YAML
       run: make lint-yaml
+    - name: Check Japanese translations
+      run: make check-ja-sources
 
   lint-gha:
     name: Lint GitHub Actions

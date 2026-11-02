@@ -110,6 +110,18 @@ generate-proto-docs:
 	  --doc_opt=/out/schema.md.tmpl,schema.md
 .PHONY: generate-proto-docs
 
+check-ja-sources:
+	@python3 scripts/check_ja_sources.py
+.PHONY: check-ja-sources
+
+diff-ja-sources:
+	@python3 scripts/check_ja_sources.py --diff $(FILES)
+.PHONY: diff-ja-sources
+
+update-ja-sources:
+	@python3 scripts/check_ja_sources.py --update $(FILES)
+.PHONY: update-ja-sources
+
 sync-ja-heading-ids: build
 	@uv run scripts/sync_ja_heading_ids.py
 .PHONY: sync-ja-heading-ids
