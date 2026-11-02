@@ -15,7 +15,7 @@
 5. *Create* をクリックします。新しいポリシーには、最初は条件がありません。
 
 !!! note
-    ポリシーを保存しても、その時点でポートフォリオの分析が再実行されるわけではありません。ロールアウトはプロジェクトの分析スケジュールに合わせて計画してください。[About component policies › Lifecycle](../../concepts/component-policies.md#lifecycle) を参照してください。
+    ポリシーを保存しても、その時点でポートフォリオの分析が再実行されるわけではありません。ロールアウトはプロジェクトの分析スケジュールに合わせて計画してください。[コンポーネントポリシーについて › ライフサイクル](../../concepts/component-policies.md#lifecycle)を参照してください。
 
 ![新しいコンポーネントポリシー](../../assets/images/guides/user/managing-component-policies/new-policy.png)
 

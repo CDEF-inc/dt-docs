@@ -145,6 +145,26 @@ plugins:
         Upgrade guides: アップグレードガイド
         Concepts: コンセプト
         Architecture: アーキテクチャ
+        About projects: プロジェクトについて
+        About tags: タグについて
+        About access control: アクセス制御について
+        About workload identity federation: ワークロード ID フェデレーションについて
+        About vulnerability data sources: 脆弱性データソースについて
+        About KEV data sources: KEV データソースについて
+        About vulnerability findings: 脆弱性の検出結果について
+        About VEX: VEX について
+        About notifications: 通知について
+        About time series metrics: 時系列メトリクスについて
+        About component policies: コンポーネントポリシーについて
+        About component integrity verification: コンポーネントの完全性検証について
+        About vulnerability policies: 脆弱性ポリシーについて
+        About changes in v5: v5 での変更点について
+        Design: 設計
+        Durable execution: 永続実行
+        Extensibility: 拡張性
+        Notifications: 通知
+        Package metadata resolution: パッケージメタデータの解決
+        Vulnerability analysis: 脆弱性分析
         Reference: リファレンス
 - glightbox
 - swagger-ui-tag:

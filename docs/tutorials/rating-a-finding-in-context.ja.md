@@ -67,7 +67,7 @@
 
 ## 2 つの VEX ドキュメントを作成する {#writing-the-two-vex-documents}
 
-各ドキュメントは脆弱性を指定し、製品全体を対象とします。そのため、`affects[].ref` には `metadata.component` の `bom-ref` を指定します。インポートで変更できる内容とできない内容については、[About VEX](../concepts/vex.md#what-an-import-changes) を参照してください。
+各ドキュメントは脆弱性を指定し、製品全体を対象とします。そのため、`affects[].ref` には `metadata.component` の `bom-ref` を指定します。インポートで変更できる内容とできない内容については、[VEX について](../concepts/vex.md#what-an-import-changes) を参照してください。
 
 ```json title="vex-checkout-api.json" linenums="1"
 {

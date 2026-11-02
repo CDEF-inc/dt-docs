@@ -2,7 +2,7 @@
 
 プロジェクトは名前とバージョンの組み合わせで識別されます。リリースの履歴を追跡するには、名前が同じでバージョン文字列が異なる兄弟プロジェクトを作成し、現在のものを最新としてマークし、最終的に古いものを廃止します。
 
-Dependency-Track がバージョン文字列を不透明な値として扱うことを含め、バージョンがモデル全体の中でどのように位置付けられるかについては、[About projects › Versions](../../concepts/projects.md#versions) を参照してください。このガイドの操作には、ポートフォリオ管理の権限が必要です。正確な権限の組み合わせについては、リファレンスの [Permissions](../../reference/permissions.md) を参照してください。
+Dependency-Track がバージョン文字列を不透明な値として扱うことを含め、バージョンがモデル全体の中でどのように位置付けられるかについては、[プロジェクトについて › バージョン](../../concepts/projects.md#versions)を参照してください。このガイドの操作には、ポートフォリオ管理の権限が必要です。正確な権限の組み合わせについては、リファレンスの [Permissions](../../reference/permissions.md) を参照してください。
 
 ## 新しいバージョンか、上書きか {#new-version-or-overwrite}
 
@@ -61,7 +61,7 @@ Dependency-Track がバージョン文字列を不透明な値として扱うこ
 
 リリースが本番環境で使われなくなったら、そのプロジェクトを非アクティブにします。そのためには、*Project Details* を開き、*General* タブで *Active* をオフにします。プロジェクトにアクティブな子がある間は、このトグルは使用できません。先に子を非アクティブにしてください。
 
-プロジェクトを非アクティブにすることの意味(表示、親子関係、保持による削除の対象)については、[About projects › Active and inactive projects](../../concepts/projects.md#active-and-inactive-projects) を参照してください。
+プロジェクトを非アクティブにすることの意味(表示、親子関係、保持による削除の対象)については、[プロジェクトについて › アクティブなプロジェクトと非アクティブなプロジェクト](../../concepts/projects.md#active-and-inactive-projects)を参照してください。
 
 ![Active トグル](../../assets/images/guides/user/managing-project-versions/active-toggle.png)
 

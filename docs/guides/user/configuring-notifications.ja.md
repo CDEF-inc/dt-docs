@@ -21,7 +21,7 @@
 
 ## トリガーを選択する {#choosing-a-trigger}
 
-リアルタイムに配信するにはトリガーを *Event*(デフォルト)に、定期的なダイジェストを配信するには *Schedule* に設定します。両者の違いについては [Triggers](../../concepts/notifications.md#triggers) を参照してください。サマリーグループ(`NEW_VULNERABILITIES_SUMMARY`、`NEW_POLICY_VIOLATIONS_SUMMARY`)にはスケジュールトリガーが必要です。各グループのトリガーは[通知グループのリファレンス](../../reference/notifications/groups.md)に記載されています。
+リアルタイムに配信するにはトリガーを *Event*(デフォルト)に、定期的なダイジェストを配信するには *Schedule* に設定します。両者の違いについては[トリガー](../../concepts/notifications.md#triggers)を参照してください。サマリーグループ(`NEW_VULNERABILITIES_SUMMARY`、`NEW_POLICY_VIOLATIONS_SUMMARY`)にはスケジュールトリガーが必要です。各グループのトリガーは[通知グループのリファレンス](../../reference/notifications/groups.md)に記載されています。
 
 定期的なダイジェストを設定するには、トリガーを *Schedule* に設定し、後述の[スケジュール設定](#scheduling)を参照してください。その他の手順(グループの選択、送信先、スコープの制限、フィルター式)は、どちらのトリガーにも共通です。
 
