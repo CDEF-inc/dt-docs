@@ -76,6 +76,19 @@ Follow the [Google developer documentation style guide](https://developers.googl
 
 Where Google style conflicts with `context/diataxis-contract.md`, Diataxis wins. Notably: Tutorials use "we" (tutor-learner partnership) and "will" to set expectations; Guides, Concepts, and Reference use "you" or no pronoun.
 
+## Translations
+
+The site is built in English (default) and Japanese with `mkdocs-static-i18n` using the suffix structure.
+
+- A Japanese page lives next to its English source with a `.ja.md` suffix, for example `docs/index.ja.md` for `docs/index.md`. Do not move or rename English pages.
+- Pages without a `.ja.md` file fall back to the English page in the Japanese build.
+- Keep `.pages` files in English. Translate section titles through `nav_translations` of the `ja` language in `mkdocs.yml`.
+- Keep the English page's front matter keys, headings structure, and link targets. Link to the English file name (`page.md`), not `page.ja.md`; the plugin resolves it to the localized page.
+- Write each Japanese paragraph and list item on a single line. A line break inside a paragraph renders as a space between Japanese characters.
+- Links that leave the docs tree (such as `../4.x/`) need one more `../` in Japanese pages, because the Japanese build lives under `ja/`.
+- Vale skips `*.ja.md` files. markdownlint still applies.
+- Do not translate generated reference pages.
+
 ## Writing conventions
 
 - Do not modify files in `existing-docs/`.

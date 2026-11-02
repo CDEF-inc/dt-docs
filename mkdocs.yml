@@ -44,7 +44,6 @@ theme:
   - content.tabs.link
   - navigation.footer
   - navigation.indexes
-  - navigation.instant
   - navigation.path
   - navigation.prune
   - navigation.sections
@@ -106,6 +105,9 @@ markdown_extensions:
 - pymdownx.tabbed:
     alternate_style: true
 
+hooks:
+- scripts/hooks/i18n_awesome_pages.py
+
 plugins:
 - search
 - social:
@@ -118,6 +120,32 @@ plugins:
       # than trying to make it fit right.
       logo: docs/assets/images/social-card-logo.svg
 - awesome-pages
+- i18n:
+    docs_structure: suffix
+    fallback_to_default: true
+    reconfigure_material: true
+    reconfigure_search: true
+    languages:
+    - locale: en
+      default: true
+      name: English
+      build: true
+      # Relative, so that links stay within the mike version directory.
+      fixed_link: ./
+    - locale: ja
+      name: 日本語
+      build: true
+      fixed_link: ja/
+      nav_translations:
+        Home: ホーム
+        Tutorials: チュートリアル
+        Guides: ガイド
+        User guides: ユーザーガイド
+        Administration guides: 管理者ガイド
+        Upgrade guides: アップグレードガイド
+        Concepts: コンセプト
+        Architecture: アーキテクチャ
+        Reference: リファレンス
 - glightbox
 - swagger-ui-tag:
     filter: true
