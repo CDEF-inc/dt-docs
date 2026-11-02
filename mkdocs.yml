@@ -107,6 +107,7 @@ markdown_extensions:
 
 hooks:
 - scripts/hooks/i18n_awesome_pages.py
+- scripts/hooks/i18n_social_font.py
 
 plugins:
 - search
