@@ -1,0 +1,4159 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dependencytrack.github.io/docs/next/guides/administration/migrating-from-v4/">
+      
+      
+        <link rel="prev" href="../upgrading-instances/">
+      
+      
+        <link rel="next" href="../running-v4-and-v5-in-parallel/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../../../ja/guides/administration/migrating-from-v4/" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Migrating from v4 to v5 - Dependency-Track</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Migrating from v4 to v5 - Dependency-Track">
+<meta property="og:image" content="https://dependencytrack.github.io/docs/next/assets/images/social/guides/administration/migrating-from-v4.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://dependencytrack.github.io/docs/next/guides/administration/migrating-from-v4/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Migrating from v4 to v5 - Dependency-Track">
+<meta property="twitter:image" content="https://dependencytrack.github.io/docs/next/assets/images/social/guides/administration/migrating-from-v4.png">
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#migrating-from-v4-to-v5" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dependency-Track" class="md-header__button md-logo" aria-label="Dependency-Track" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dependency-Track
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migrating from v4 to v5
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ja/guides/administration/migrating-from-v4/" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DependencyTrack/dependency-track" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    DependencyTrack/dependency-track
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dependency-Track" class="md-nav__button md-logo" aria-label="Dependency-Track" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Dependency-Track
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DependencyTrack/dependency-track" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    DependencyTrack/dependency-track
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../tutorials/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../user/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/uploading-boms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uploading BOMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/organizing-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organizing projects into hierarchies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-project-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing project versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-component-policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing component policies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/triaging-policy-violations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triaging policy violations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-vulnerability-policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing vulnerability policies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/exchanging-vex-documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchanging VEX documents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-private-vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing private vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/configuring-notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring notification alerts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing secrets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploying-to-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying to production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploying-to-kubernetes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying to Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring the database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-secret-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring secret management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-internal-ca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring internal CA trust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-http-proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring an HTTP proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-timezone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring the time zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-banner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring the banner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-vulnerability-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring vulnerability sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-kev-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring KEV sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../running-air-gapped/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running air-gapped
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-ldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring LDAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-oidc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring OpenID Connect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-workload-identity-federation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring workload identity federation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managing-notification-templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing notification templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging-notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging missing notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-project-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring project retention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backing-up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backing up and restoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrading-instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading running instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from v4 to v5
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from v4 to v5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-migration-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the migration works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-postgres-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Postgres tuning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the migration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-apply-the-v5-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Apply the v5 schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verify-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Verify the target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dry run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extract-transform-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Extract, transform, load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sample-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sample mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verify-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verify the result
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-drop-staging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Drop staging
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossy-and-non-obvious-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lossy and non-obvious changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lossy and non-obvious changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#username-collisions-across-user-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Username collisions across user types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-records-without-a-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User records without a username
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v5-only-permissions-granted-from-v4-counterparts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V5-only permissions granted from v4 counterparts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedup-of-teams-oidc-groups-and-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dedup of teams, OIDC groups, and tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-deduplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project deduplication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-activity-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project activity state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulnerability-epss-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vulnerability EPSS values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics retention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-rule-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notification rule configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-analyzer-and-vulnerability-source-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository, analyzer, and vulnerability-source credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypted-property-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encrypted property values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-values-of-unknown-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property values of unknown type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classifier values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purl-filtering-for-package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PURL filtering for package metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removed tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#malformed-uuids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Malformed UUIDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mssql-case-folded-uniqueness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MSSQL case-folded uniqueness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-behavior-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime behavior changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime behavior changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inactive-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inactive findings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance and observability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance and observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-completion-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase completion lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovering-from-a-failed-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovering from a failed load
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-the-migrated-data-to-its-production-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moving the migrated data to its production target
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-do-after-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to do after the migration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../running-v4-and-v5-in-parallel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running v4 and v5 in parallel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../upgrading/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Upgrade guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.2.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v5.2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.1.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v5.1.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v5.1.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.0.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v5.0.5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.0.0-rc.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v5.0.0-rc.2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.0.0-rc.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v5.0.0-rc.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.7.0-alpha.9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.7.0-alpha.8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.7.0-alpha.6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.7.0-alpha.5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.7.0-alpha.4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.7.0-alpha.3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.6.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrading to v0.6.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../concepts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../reference/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-migration-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the migration works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-postgres-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Postgres tuning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the migration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-apply-the-v5-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Apply the v5 schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verify-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Verify the target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dry run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extract-transform-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Extract, transform, load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sample-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sample mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verify-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verify the result
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-drop-staging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Drop staging
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossy-and-non-obvious-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lossy and non-obvious changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lossy and non-obvious changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#username-collisions-across-user-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Username collisions across user types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-records-without-a-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User records without a username
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v5-only-permissions-granted-from-v4-counterparts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V5-only permissions granted from v4 counterparts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedup-of-teams-oidc-groups-and-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dedup of teams, OIDC groups, and tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-deduplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project deduplication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-activity-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project activity state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulnerability-epss-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vulnerability EPSS values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics retention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-rule-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notification rule configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-analyzer-and-vulnerability-source-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository, analyzer, and vulnerability-source credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypted-property-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encrypted property values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-values-of-unknown-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property values of unknown type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classifier values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purl-filtering-for-package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PURL filtering for package metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removed tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#malformed-uuids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Malformed UUIDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mssql-case-folded-uniqueness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MSSQL case-folded uniqueness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-behavior-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime behavior changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime behavior changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inactive-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inactive findings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance and observability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance and observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-completion-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase completion lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovering-from-a-failed-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovering from a failed load
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-the-migrated-data-to-its-production-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moving the migrated data to its production target
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-do-after-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to do after the migration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Guides
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Administration guides
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="migrating-from-v4-to-v5">Migrating from v4 to v5<a class="headerlink" href="#migrating-from-v4-to-v5" title="Permanent link">¶</a></h1>
+<p>This guide walks you through moving production data from Dependency-Track v4 (Postgres or Microsoft SQL Server)
+into a new Dependency-Track v5 instance (Postgres only).</p>
+<p>The migration is a one-shot, offline operation performed by the <code>v4-migrator</code> command-line tool.
+The tool extracts rows from your v4 database, transforms them inside the Postgres cluster backing the v5 deployment,
+and loads them into the v5 schema.
+v4 must be offline for the duration. The tool does not write to the v4 source.</p>
+<p>If you only need to step a v5 deployment between v5 releases, this guide is not for you.
+See the <a href="../../upgrading/">per-release upgrade pages</a> instead.</p>
+<p>To try v5 against your real workload before committing to the migration, see
+<a href="../running-v4-and-v5-in-parallel/">Running v4 and v5 in parallel</a>.</p>
+<p>To walk this migration end to end against a sandbox v5 stack before the production cutover, see
+<a href="../../../tutorials/rehearsing-the-v4-migration/">Rehearsing the v4 to v5 migration</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Configuration property and environment variable names changed in v5</p>
+<p>v5 renames many configuration properties and their environment variables, and no
+longer accepts the v4 names. The migrator moves your data, not your deployment
+configuration, so you must rebuild the v5 API server's configuration with the new
+names. See the <a href="../../../reference/configuration/properties/">configuration reference</a>
+for the current property and environment variable names.</p>
+</div>
+<p>If you are running Dependency-Track in a Kubernetes environment, please see the <code>UPGRADING.md</code> guide within the <a href="https://github.com/DependencyTrack/helm-charts/blob/main/charts/dependency-track/UPGRADING.md">Helm chart</a>.</p>
+<h2 id="how-the-migration-works">How the migration works<a class="headerlink" href="#how-the-migration-works" title="Permanent link">¶</a></h2>
+<p>The <code>v4-migrator</code> command-line tool runs three offline phases (<strong>extract</strong>, <strong>transform</strong>, <strong>load</strong>)
+against the v5 deployment's Postgres target. Rows from the v4 source land first in a dedicated
+<strong>staging schema</strong> (<code>dt_v4_migration</code>) inside the v5 cluster, where the migrator
+reshapes them into v5 form. Only the load phase writes to the final v5 schema.
+The v5 apiserver stays offline until load and verify finish, after which you drop the
+staging schema and bring the apiserver up.</p>
+<pre class="mermaid"><code>flowchart LR
+    V4[(v4 database&lt;br/&gt;Postgres or MSSQL)]
+    subgraph V5[Postgres cluster&lt;br/&gt;backing v5]
+        STG[[staging schema&lt;br/&gt;dt_v4_migration]]
+        FIN[(v5 schema)]
+    end
+    APP[v5 apiserver]
+    V4 -- "1. extract" --&gt; STG
+    STG -- "2. transform" --&gt; STG
+    STG -- "3. load" --&gt; FIN
+    FIN -. "4. start after verify" .-&gt; APP</code></pre>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">¶</a></h2>
+<p>Make sure the following holds:</p>
+<ul>
+<li><strong>Source version.</strong> The v4 instance must be on <strong>4.14.2 or later</strong>.
+  The migrator assumes the schema and data shape of that release.
+  Lower versions are not supported and may fail or silently produce broken output.
+  Upgrade v4 to at least 4.14.2 before running the migrator.</li>
+<li><strong>Source.</strong> Your v4 database runs on Postgres (any version supported by v4) or Microsoft SQL Server 2016 or later.
+  H2 is not supported. Stop the v4 API server before you start.
+  The tool does not write to the source, but concurrent v4 writers produce inconsistent extracts.</li>
+<li><strong>Target.</strong> A Postgres 14+ cluster, dedicated to the v5 instance, ready to receive data.
+  The migrator's <code>bootstrap</code> step applies the v5 database schema for you.
+  See <a href="../configuring-database/">Configuring the database</a> for guidance on
+  provisioning the target cluster.
+  Don't boot the v5 apiserver against the target before running the migrator,
+  or its seeding task populates tables the migrator needs to fill from v4.
+  The migrator refuses to run against any schema version other than the one it ships against,
+  or if the target already holds user data.</li>
+<li><strong>Database user.</strong> Use the same database user for the migrator that the v5 apiserver
+  uses afterwards, <em>or</em> grant the apiserver's user ownership of every object the
+  migrator creates. The apiserver applies follow-up schema migrations on each release
+  and needs DDL privileges on the v5 schema and its tables.
+  A mismatch here surfaces as failed startup migrations after a later v5 upgrade,
+  not at migration time.</li>
+<li><strong>Disk.</strong> The target cluster needs free disk for roughly two times the final dataset size.
+  Staging tables hold a source-typed copy of every migrated row alongside the final v5 rows
+  until you drop the staging schema.</li>
+<li><strong>Extensions.</strong> The target must support installing <code>pg_trgm</code>.
+  The v5 schema bootstrap installs the extension. The migrator's preflight verifies it.</li>
+<li><strong>JDBC reachability.</strong> The host running the migrator can open JDBC connections
+  to both the v4 source and the v5 target.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The v4 database must run offline during the migration.
+Do not point the migrator at a live v4 instance.
+The tool trusts the offline contract. It does not take write locks on the source.</p>
+</div>
+<h2 id="recommended-postgres-tuning">Recommended Postgres tuning<a class="headerlink" href="#recommended-postgres-tuning" title="Permanent link">¶</a></h2>
+<p>Apply these for the duration of the migration. The migrator does not set them.
+Configure them on the target before running, and revert afterward if you like.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recommendation</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_wal_size</code></td>
+<td>8 GB or higher</td>
+<td>The load phase logs every write to the WAL. Default sizes checkpoint frequently.</td>
+</tr>
+<tr>
+<td><code>max_locks_per_transaction</code></td>
+<td>256</td>
+<td>Metrics partition operations can otherwise exhaust the default 64.</td>
+</tr>
+<tr>
+<td><code>maintenance_work_mem</code></td>
+<td>1 GB or higher</td>
+<td>Speeds index updates during load.</td>
+</tr>
+<tr>
+<td><code>checkpoint_timeout</code></td>
+<td>30 minutes</td>
+<td>Absorbs load WAL bursts without thrashing.</td>
+</tr>
+<tr>
+<td><code>checkpoint_completion_target</code></td>
+<td>0.9</td>
+<td>Same.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The v5 apiserver's default time zone must be <code>UTC</code> for the lifetime of the
+deployment, not just the migration window.
+The <a href="https://github.com/DependencyTrack/hyades-apiserver/pkgs/container/hyades-apiserver">official Docker image</a>
+sets <code>TZ=Etc/UTC</code> already, so operators running it need to
+do nothing (and must not override <code>TZ</code>).
+For non-container deployments or custom images, set the <code>TZ</code> environment variable to
+<code>Etc/UTC</code>.</p>
+<p>The migrator pre-creates daily metrics partitions on UTC day boundaries.
+The apiserver extends those partitions using its default time zone,
+so a non-UTC apiserver computes partition bounds offset from the migrator's,
+causing <code>ATTACH PARTITION</code> to fail on overlap.</p>
+</div>
+<h2 id="run-the-migration">Run the migration<a class="headerlink" href="#run-the-migration" title="Permanent link">¶</a></h2>
+<p>The migrator ships as a container image published at <code>ghcr.io/dependencytrack/v4-migrator:&lt;version&gt;</code>.
+See <a href="../../../reference/container-images/">Container images</a> for registries and tag conventions.</p>
+<p>The examples below use the following shell alias for brevity:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span><span class="w"> </span>v4-migrator<span class="o">=</span><span class="s1">'docker run --rm -it --network=host ghcr.io/dependencytrack/v4-migrator:&lt;version&gt;'</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>--network=host</code> only works on Linux.
+On Docker Desktop for macOS and Windows, the flag is silently ignored
+and the container gets its own network namespace.
+Replace <code>localhost</code> / <code>127.0.0.1</code> in your JDBC URLs with <code>host.docker.internal</code> to reach databases on the host,
+or attach the container to a user-defined Docker network (<code>--network &lt;name&gt;</code>)
+where both source and target are reachable.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Password prompts</p>
+<p>The examples below pass <code>--source-pass</code> and <code>--target-pass</code> without an argument.
+The migrator then prompts for the password interactively, keeping the secret out of shell history and <code>ps</code> output.
+To supply a password inline, write <code>--source-pass &lt;value&gt;</code> / <code>--target-pass &lt;value&gt;</code> instead.</p>
+</div>
+<h3 id="1-apply-the-v5-schema">1. Apply the v5 schema<a class="headerlink" href="#1-apply-the-v5-schema" title="Permanent link">¶</a></h3>
+<p>Bootstrap the target database. This applies the v5 schema migrations and is safe to re-run.
+The user passed here becomes the owner of the v5 schema objects, so use the same user the
+v5 apiserver connects as (see the <strong>Database user</strong> note in the preceding section).</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>bootstrap<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-pass
+</code></pre></div>
+<p>After this, the target has the v5 schema and a seeded <code>PERMISSION</code> catalog (the well-known set of v5 permissions).
+Bootstrap writes no other rows. The migrator's later phases populate <code>LICENSE</code>, <code>TEAM</code>, <code>USER</code>, and the rest from your v4 source.</p>
+<h3 id="2-verify-the-target">2. Verify the target<a class="headerlink" href="#2-verify-the-target" title="Permanent link">¶</a></h3>
+<p>Run preflight to catch problems before you commit time to extraction:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>verify<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-pass
+</code></pre></div>
+<p><code>verify</code> reads but never writes. On a freshly bootstrapped target with no staging present, expect:</p>
+<ul>
+<li>Flyway head <code>202605111028</code> reported <code>OK</code>.</li>
+<li>All row count columns <strong>except for the v5 <code>PERMISSION</code> table</strong> zero.</li>
+<li>No probe entries.</li>
+<li>The terminator line <code>== verify complete ==</code>.</li>
+</ul>
+<p>At this stage the migration has not moved any data, so <code>verify</code> shows the seeded baseline with nothing to flag.</p>
+<h3 id="3-dry-run">3. Dry run<a class="headerlink" href="#3-dry-run" title="Permanent link">¶</a></h3>
+<p>Before the real run, confirm what happens:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span>--target-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--source-url<span class="w"> </span><span class="s1">'jdbc:postgresql://v4-host:5432/dtrack'</span><span class="w"> </span>--source-user<span class="w"> </span>dtrack<span class="w"> </span>--source-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--metrics-retention-days<span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dry-run
+</code></pre></div>
+<p><code>--dry-run</code> runs preflight and prints the plan. It writes nothing to either database.</p>
+<h3 id="4-extract-transform-load">4. Extract, transform, load<a class="headerlink" href="#4-extract-transform-load" title="Permanent link">¶</a></h3>
+<p>Run all three phases in one go:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span>--target-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--source-url<span class="w"> </span><span class="s1">'jdbc:postgresql://v4-host:5432/dtrack'</span><span class="w"> </span>--source-user<span class="w"> </span>dtrack<span class="w"> </span>--source-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--metrics-retention-days<span class="w"> </span><span class="m">90</span>
+</code></pre></div>
+<p>You must pass <code>--metrics-retention-days</code> to <code>run</code> and <code>extract</code>.
+v4 has no retention concept, and v5 introduces one, see <a href="../../../concepts/time-series-metrics/">About time series metrics</a>.
+The migrator forces you to choose explicitly rather than silently dropping or carrying over metrics rows.
+Use <code>0</code> to drop all v4 metrics, a positive integer to keep the last <code>N</code> days,
+or a large number to migrate everything.
+The migrator pre-creates one daily partition per retained day, so large values noticeably extend the load phase.</p>
+<p>Or run the phases individually if you want to inspect staging between steps:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>extract<span class="w">   </span>--target-url<span class="w"> </span>...<span class="w"> </span>--source-url<span class="w"> </span>...<span class="w"> </span>--metrics-retention-days<span class="w"> </span><span class="m">90</span>
+v4-migrator<span class="w"> </span>transform<span class="w"> </span>--target-url<span class="w"> </span>...
+v4-migrator<span class="w"> </span>load<span class="w">      </span>--target-url<span class="w"> </span>...
+</code></pre></div>
+<p>For a Microsoft SQL Server source, swap the source URL:</p>
+<div class="highlight"><pre><span></span><code>--source-url<span class="w"> </span><span class="s1">'jdbc:sqlserver://v4-host:1433;databaseName=dtrack'</span>
+</code></pre></div>
+<p>Append the same connection parameters (TLS, authentication, etc.) you use for the v4 deployment.</p>
+<p>The migrator auto-detects the source flavor from the JDBC URL.</p>
+<h3 id="5-sample-mode">5. Sample mode<a class="headerlink" href="#5-sample-mode" title="Permanent link">¶</a></h3>
+<p>To test the pipeline against your data before committing to a full run, sample a small number of rows per table:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>run<span class="w"> </span>...<span class="w"> </span>--sample<span class="w"> </span><span class="m">100</span>
+</code></pre></div>
+<p><code>--sample</code> caps the extract per table.
+The downstream phases run against the sampled data and produce a valid (but partial) v5 dataset.</p>
+<p>Before the full run, reset the target the same way you would after a failed load:
+drop and re-create the v5 schema (or the entire target database), re-run <code>v4-migrator bootstrap</code>,
+and drop the staging schema with <code>v4-migrator cleanup</code>.
+See <a href="#recovering-from-a-failed-load">Recovering from a failed load</a> for the reasoning.
+Don't <code>TRUNCATE</code> v5 tables manually.</p>
+<h3 id="6-verify-the-result">6. Verify the result<a class="headerlink" href="#6-verify-the-result" title="Permanent link">¶</a></h3>
+<p>After load, run <code>verify</code> again.
+It now reports source / staging / v5 row counts per table and surfaces every probe (malformed UUIDs, etc.):</p>
+<div class="highlight"><pre><span></span><code>[Schema]
+  OK    Flyway head = 202605111028
+
+[Row counts]
+  Table                       Source      Staging           v5    Note
+  LICENSE                       5234         5234         5234
+  TEAM                            47           42           42    expected: dedup by NAME (-5)
+  COMPONENT                  4823714      4823711      4823711    see [Probes] (-3)
+  PROJECTS_TAGS                12480        12462        12462    reduction (-18), see migration guide
+  ...
+
+[Probes]
+  COMPONENT                3 malformed UUID(s) dropped
+
+[Constraints]
+  18 CHECK constraint(s) hold across 6 loaded table(s)
+
+== verify complete ==
+</code></pre></div>
+<p>The <code>Note</code> column annotates tables whose row count drops from source to v5.
+Row counts often decrease during migration because of deduplication, filtering, and retention.
+The migrator makes these reductions intentionally. The <code>Note</code> (and the <code>[Probes]</code> section) tells you which
+reason applies, so you can confirm what accounts for each drop rather than leaving it unexplained.
+Each note is one of three states:</p>
+<ul>
+<li><code>expected: &lt;reason&gt; (-N)</code>. A known, intentional reduction. The reason maps to a transform in the
+  <a href="#lossy-and-non-obvious-changes">Lossy and non-obvious changes</a> section.</li>
+<li><code>see [Probes] (-N)</code>. The <code>[Probes]</code> section itemizes the drop (invalid UUIDs, skipped users, case collisions).</li>
+<li><code>reduction (-N), see migration guide</code>. An intentional reduction without a dedicated note.
+  Consult the <a href="#lossy-and-non-obvious-changes">Lossy and non-obvious changes</a> section to understand it.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Permission join tables are not a data-loss signal</p>
+<p><code>TEAMS_PERMISSIONS</code> and <code>USERS_PERMISSIONS</code> both lose and gain rows as part of the v4-to-v5 permission remap
+(see <a href="#v5-only-permissions-granted-from-v4-equivalents">v5-only permissions granted from v4 equivalents</a>),
+so their row-count delta carries no meaning. Disregard any <code>Note</code> on these two tables.</p>
+</div>
+<p>The final <code>== verify complete ==</code> line marks a clean exit. Its absence means <code>verify</code> stopped before finishing.</p>
+<h3 id="7-drop-staging">7. Drop staging<a class="headerlink" href="#7-drop-staging" title="Permanent link">¶</a></h3>
+<p>Once satisfied with the result, drop the staging schema:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>cleanup<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+</code></pre></div>
+<p>Or pass <code>--drop-staging</code> to the <code>load</code> invocation up front to drop on success:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>load<span class="w"> </span>...<span class="w"> </span>--drop-staging
+</code></pre></div>
+<h2 id="lossy-and-non-obvious-changes">Lossy and non-obvious changes<a class="headerlink" href="#lossy-and-non-obvious-changes" title="Permanent link">¶</a></h2>
+<p>These transformations apply automatically. None are configurable except metrics retention.</p>
+<h3 id="username-collisions-across-user-types">Username collisions across user types<a class="headerlink" href="#username-collisions-across-user-types" title="Permanent link">¶</a></h3>
+<p>v4 stored managed, <abbr title="Lightweight Directory Access Protocol">LDAP</abbr>, and <abbr title="OpenID Connect">OIDC</abbr> users in three separate tables. v5 stores them in one.
+If the same username exists across types, the migrator inserts the managed user first,
+then suffixes the <abbr title="Lightweight Directory Access Protocol">LDAP</abbr> and <abbr title="OpenID Connect">OIDC</abbr> variants:</p>
+<ul>
+<li><code>alice</code> (managed) → <code>alice</code></li>
+<li><code>alice</code> (<abbr title="Lightweight Directory Access Protocol">LDAP</abbr>) → <code>alice-CONFLICT-LDAP</code></li>
+<li><code>alice</code> (<abbr title="OpenID Connect">OIDC</abbr>) → <code>alice-CONFLICT-OIDC</code></li>
+</ul>
+<p>The suffixed account no longer matches its external identity.
+After the migration, list every user whose name ends in <code>-CONFLICT-LDAP</code> or <code>-CONFLICT-OIDC</code>.
+For each one, decide whether the account is a genuine duplicate of the managed user without the suffix (delete it),
+or a legitimate external identity that needs the original username back
+(delete or rename the managed user without the suffix, then rename the suffixed account to match its external identity).</p>
+<h3 id="user-records-without-a-username">User records without a username<a class="headerlink" href="#user-records-without-a-username" title="Permanent link">¶</a></h3>
+<p>v4 allowed managed and <abbr title="Lightweight Directory Access Protocol">LDAP</abbr> user rows with <code>USERNAME IS NULL</code>. v5 requires a non-null username.
+The migrator silently skips these rows.
+They were unusable in v4 (no login surface), so dropping them is safe.</p>
+<h3 id="v5-only-permissions-granted-from-v4-counterparts">V5-only permissions granted from v4 counterparts<a class="headerlink" href="#v5-only-permissions-granted-from-v4-counterparts" title="Permanent link">¶</a></h3>
+<p>v5 splits two abilities that v4 carried implicitly into dedicated permissions.
+For each one, the migrator grants the new v5 permission to every v4 user and team that held the
+v4-era counterpart, so that pre-migration authorizations continue to work as before.
+If you want the v5 split semantics instead, revoke the new permission from the affected principals
+after the migration.</p>
+<ul>
+<li><strong><code>PORTFOLIO_ACCESS_CONTROL_BYPASS</code>.</strong> v4's <code>ACCESS_MANAGEMENT</code> permission implicitly granted the
+  ability to bypass portfolio access control. The migrator grants <code>PORTFOLIO_ACCESS_CONTROL_BYPASS</code>
+  to every v4 user and team that holds <code>ACCESS_MANAGEMENT</code>.</li>
+<li><strong><code>SECRET_MANAGEMENT</code>.</strong> v4 had no dedicated secret-management permission. Repository basic-auth
+  passwords and analyzer / vulnerability-source API credentials were configurable by anyone with
+  <code>SYSTEM_CONFIGURATION</code>. v5 manages these through a dedicated secret manager gated by
+  <code>SECRET_MANAGEMENT</code>. The migrator grants <code>SECRET_MANAGEMENT</code> to every v4 user and team that holds
+  <code>SYSTEM_CONFIGURATION</code>.</li>
+</ul>
+<p>v4 permission names that v5 has retired (for example <code>VIEW_BADGES</code>) drop out during migration.
+Any user or team assignment referencing one of those names is silently removed.</p>
+<h3 id="dedup-of-teams-oidc-groups-and-tags">Dedup of teams, <abbr title="OpenID Connect">OIDC</abbr> groups, and tags<a class="headerlink" href="#dedup-of-teams-oidc-groups-and-tags" title="Permanent link">¶</a></h3>
+<p>v4 did not enforce uniqueness on <code>TEAM.NAME</code>, <code>OIDCGROUP.NAME</code>, or <code>TAG.NAME</code>. v5 does.
+The migrator collapses duplicates to the row with the smallest <code>ID</code>,
+rewrites references in every join table to the canonical ID, and drops the non-canonical rows.</p>
+<h3 id="project-deduplication">Project deduplication<a class="headerlink" href="#project-deduplication" title="Permanent link">¶</a></h3>
+<p>v5 enforces uniqueness on <code>(NAME, VERSION)</code> per project (with a separate partial index for the version-NULL case).
+The migrator collapses duplicates by keeping the newest by <code>LAST_BOM_IMPORTED</code>. Older duplicates drop out.</p>
+<h3 id="project-activity-state">Project activity state<a class="headerlink" href="#project-activity-state" title="Permanent link">¶</a></h3>
+<p>v4 carried an <code>ACTIVE</code> true/false flag. v5 carries <code>INACTIVE_SINCE</code> (an optional timestamp).
+v4 active projects become <code>INACTIVE_SINCE = NULL</code>.
+v4 inactive projects become <code>INACTIVE_SINCE = '1970-01-01 00:00:00+00'</code> (Unix epoch) as a sentinel meaning
+<em>"migrated from v4 as inactive, exact deactivation time unknown."</em></p>
+<h3 id="vulnerability-epss-values">Vulnerability <abbr title="Exploit Prediction Scoring System">EPSS</abbr> values<a class="headerlink" href="#vulnerability-epss-values" title="Permanent link">¶</a></h3>
+<p>v4 stored <abbr title="Exploit Prediction Scoring System">EPSS</abbr> score and percentile directly on each vulnerability row.
+v5 stores <abbr title="Exploit Prediction Scoring System">EPSS</abbr> in a dedicated table populated from the upstream feed.
+The migrator does not copy v4 <abbr title="Exploit Prediction Scoring System">EPSS</abbr> values. v5 re-populates them at runtime within minutes of first launch.</p>
+<h3 id="metrics-retention">Metrics retention<a class="headerlink" href="#metrics-retention" title="Permanent link">¶</a></h3>
+<p>v5 keeps daily metrics within a retention window.
+v4 had no matching setting, so the migrator requires the <code>--metrics-retention-days</code> flag on <code>extract</code> and <code>run</code>.
+Rows in <code>DEPENDENCYMETRICS</code> and <code>PROJECTMETRICS</code> older than the cutoff drop out.
+Portfolio metrics are not migrated. v5 derives them as a materialized view computed on demand.</p>
+<h3 id="notification-rule-configuration">Notification rule configuration<a class="headerlink" href="#notification-rule-configuration" title="Permanent link">¶</a></h3>
+<p>v5 changes the on-wire format of <code>NOTIFICATIONRULE.PUBLISHER_CONFIG</code> from free-form text to JSON.
+The migrator rebuilds the configuration for each rule from the v4 <code>destination</code> (and, for Jira, <code>jiraTicketType</code>)
+and sets <code>ENABLED = FALSE</code> on every migrated rule.
+Any other publisher-specific fields encoded in the v4 text payload drop out.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Every migrated notification rule lands turned off in v5.
+Review and re-enable each rule after verifying its configuration.</p>
+</div>
+<h3 id="repository-analyzer-and-vulnerability-source-credentials">Repository, analyzer, and vulnerability-source credentials<a class="headerlink" href="#repository-analyzer-and-vulnerability-source-credentials" title="Permanent link">¶</a></h3>
+<p>v4 stored repository basic-auth passwords on <code>REPOSITORY.PASSWORD</code>,
+and analyzer (OSS Index, Snyk, Trivy, VulnDB) and vulnerability-source (<abbr title="National Vulnerability Database">NVD</abbr>, GitHub Advisories, <abbr title="Open Source Vulnerabilities">OSV</abbr>) API credentials
+as encrypted property values.
+v5 manages every one of these through a centralized <a href="../../user/managing-secrets/">secret manager</a> that the migrator does not populate.</p>
+<p>The migrator nulls every <code>REPOSITORY.PASSWORD</code> and turns off the affected repositories.
+It drops analyzer and vulnerability-source credentials as part of the encrypted-property handling described below.</p>
+<p>After the migration, open the <strong>Repositories</strong>, <strong>Analyzers</strong>, and <strong>Vulnerability Sources</strong> pages in the v5 administrator panel
+and re-enter each credential through the secret manager.
+Turn the affected repositories back on.
+See <a href="../configuring-vulnerability-sources/">Configuring vulnerability sources</a> for the full procedure to re-enable each mirror.
+See <a href="../configuring-secret-management/">Configuring secret management</a> if you have not yet set the secret-encryption key for the v5 deployment.</p>
+<h3 id="encrypted-property-values">Encrypted property values<a class="headerlink" href="#encrypted-property-values" title="Permanent link">¶</a></h3>
+<p>v5 removes the <code>ENCRYPTEDSTRING</code> property type.
+The migrator nulls every encrypted property value and rewrites the type to <code>STRING</code>.
+For credentials stored this way (primarily analyzer and vulnerability-source API keys),
+see the preceding section for the recovery procedure.</p>
+<h3 id="property-values-of-unknown-type">Property values of unknown type<a class="headerlink" href="#property-values-of-unknown-type" title="Permanent link">¶</a></h3>
+<p>v5 restricts property types to a fixed set: <code>BOOLEAN</code>, <code>INTEGER</code>, <code>NUMBER</code>, <code>STRING</code>, <code>TIMESTAMP</code>, <code>URL</code>, <code>UUID</code>.
+The migrator drops any v4 property whose type falls outside this set
+(other than <code>ENCRYPTEDSTRING</code>, handled in the preceding section).</p>
+<h3 id="classifier-values">Classifier values<a class="headerlink" href="#classifier-values" title="Permanent link">¶</a></h3>
+<p>v5 removes the <code>NONE</code> classifier for projects and components. The migrator rewrites every <code>NONE</code> to <code>NULL</code>.
+Any other v4 classifier value not in the v5 set is also coerced to <code>NULL</code> (the column permits <code>NULL</code>).</p>
+<h3 id="purl-filtering-for-package-metadata"><abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr> filtering for package metadata<a class="headerlink" href="#purl-filtering-for-package-metadata" title="Permanent link">¶</a></h3>
+<p>v4 indexed repository metadata by name and namespace.
+v5 indexes it by package URL (<abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr>) and enforces a CHECK constraint that forbids <code>@</code>, <code>?</code>, <code>&amp;</code>, and <code>#</code> in PURLs.
+The migrator skips repository metadata rows whose derived <abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr> contains any of those characters.
+v5 repopulates package metadata from the same upstream sources at runtime.</p>
+<h3 id="removed-tables">Removed tables<a class="headerlink" href="#removed-tables" title="Permanent link">¶</a></h3>
+<p>The following v4 tables have no v5 counterpart and do not migrate:</p>
+<ul>
+<li><code>EVENTSERVICELOG</code>, <code>INSTALLEDUPGRADES</code>, <code>SCHEMAVERSION</code>.
+  The v5 schema-migration and durable-execution bookkeeping take over.</li>
+<li><code>COMPONENTANALYSISCACHE</code>. Runtime cache. v5 repopulates as needed.</li>
+</ul>
+<h3 id="malformed-uuids">Malformed UUIDs<a class="headerlink" href="#malformed-uuids" title="Permanent link">¶</a></h3>
+<p>v5 stores UUIDs as native <code>uuid</code> instead of <code>varchar(36)</code>.
+The migrator validates UUIDs against the canonical format.
+The migrator drops any row with a malformed UUID and records it in the <code>probe_invalid_uuids</code> table
+inside the staging schema.
+<code>verify</code> reports the count per source table.
+The staging probe persists until you drop the staging schema, so you can audit affected rows.</p>
+<h3 id="mssql-case-folded-uniqueness">MSSQL case-folded uniqueness<a class="headerlink" href="#mssql-case-folded-uniqueness" title="Permanent link">¶</a></h3>
+<p>Microsoft SQL Server's default collation (<code>SQL_Latin1_General_CP1_CI_AS</code>) treats <code>Alice</code> and <code>alice</code> as the same value.
+Postgres treats them as distinct. The migrator preserves both rows in v5.
+Where v5 enforces uniqueness on a case-folded v4 column (for example, two <code>TEAM.NAME</code> values differing only in case),
+the rows survive as two distinct entries.
+Inspect your data before the run if this is a concern.</p>
+<h2 id="runtime-behavior-changes">Runtime behavior changes<a class="headerlink" href="#runtime-behavior-changes" title="Permanent link">¶</a></h2>
+<p>The preceding section covers transformations the migrator applies to your data.
+This section covers differences in how v5 <em>runs</em> against migrated data.
+None of these are configurable. Expect them after switching to v5, and correlate observed effects (metric drops, missing findings) back to the entries below.</p>
+<h3 id="inactive-findings">Inactive findings<a class="headerlink" href="#inactive-findings" title="Permanent link">¶</a></h3>
+<p>v4 only <em>added</em> findings. A finding persisted on a component even after every analyzer stopped reporting it.
+v5 deactivates such findings automatically, and the default views exclude inactive findings.</p>
+<p>Expect a one-time drop in active-finding counts, and a corresponding step-down in time-series metrics, shortly after the first v5 analysis cycle.
+v5 retains the historical rows in an inactive state instead of deleting them, but they no longer count toward active totals.</p>
+<h2 id="performance-and-observability">Performance and observability<a class="headerlink" href="#performance-and-observability" title="Permanent link">¶</a></h2>
+<p>Throughput depends on your hardware, the source flavor, and the dataset size.
+Expect roughly 50 MB/s for the Postgres-to-Postgres extract (binary <code>COPY</code>)
+and roughly 20 MB/s for the Microsoft SQL Server source (JDBC batched insert).</p>
+<p>For visibility during long runs, the migrator emits per-table progress lines like:</p>
+<div class="highlight"><pre><span></span><code>INFO  Extracting LICENSE
+INFO    -&gt; 5234 rows in 142 ms
+INFO  Transforming LICENSE
+INFO    -&gt; 5231 rows in 38 ms
+INFO  Loading LICENSE into v5
+INFO    -&gt; LICENSE: 5231 rows in 27 ms (193740 rows/s)
+</code></pre></div>
+<p>The load phase additionally emits a heartbeat every 5 seconds while a single table is still running,
+so large tables stay visible:</p>
+<div class="highlight"><pre><span></span><code>INFO  Loading COMPONENT into v5
+INFO    .. COMPONENT: still loading after 25s (expected 4823714 rows)
+INFO    .. COMPONENT: still loading after 30s (expected 4823714 rows)
+INFO    -&gt; COMPONENT: 4823714 rows in 32104 ms (150253 rows/s)
+</code></pre></div>
+<p>The expected count is an upper bound. The final count can be lower because of deduplication and dropped rows.</p>
+<p>A 100 GB v4 dataset should complete in a few hours on a workstation-class disk, less on dedicated server hardware.</p>
+<h3 id="phase-completion-lines">Phase completion lines<a class="headerlink" href="#phase-completion-lines" title="Permanent link">¶</a></h3>
+<p>Each phase prints an explicit completion line on success, after its per-table lines:</p>
+<div class="highlight"><pre><span></span><code>INFO  Extract phase completed: 64 table(s), 5821044 row(s) in 184302 ms
+INFO  Transform phase completed: 64 table(s), 5820102 row(s) in 96118 ms
+INFO  Load phase completed: 64 table(s), 5820097 row(s) in 211740 ms
+</code></pre></div>
+<p>The <code>run</code> command, which chains extract, transform, and load, prints one final line:</p>
+<div class="highlight"><pre><span></span><code>INFO  Migration completed: extract + transform + load finished. Run 'verify' to review row counts and probes.
+</code></pre></div>
+<p>A completed phase prints its completion line. For <code>run</code>, the <code>Migration completed</code> line confirms success.
+<strong>Absence of that line after the per-table output means the phase did not finish.</strong> Check the exit code and the preceding log lines.</p>
+<p>After the last table loads, the migrator emits progress lines while it finalizes:</p>
+<div class="highlight"><pre><span></span><code>INFO  Finalizing load: re-enabling triggers and resetting identity sequences
+INFO  Analyzing 64 loaded table(s)
+INFO  Refreshing PORTFOLIOMETRICS_GLOBAL materialized view
+INFO  Applying v5.7.0 cleanup deletes
+</code></pre></div>
+<p>The <code>Load phase completed</code> line follows once finalization finishes.</p>
+<h2 id="resumability">Resumability<a class="headerlink" href="#resumability" title="Permanent link">¶</a></h2>
+<p>Each phase persists per-table state in the <code>migration_state</code> table inside the staging schema.</p>
+<p><code>extract</code> and <code>transform</code> are safely re-runnable.
+Restarting <code>extract</code> truncates and re-extracts incomplete tables.
+Restarting <code>transform</code> drops and rebuilds every <code>tgt_*</code> table (transforms are idempotent).</p>
+<p><code>load</code> is not automatically resumable.
+Each invocation re-runs every <code>INSERT INTO ... SELECT</code> from scratch.
+Once v5 holds any rows, a follow-up <code>load</code> call fails on constraint violations and leaves the target in an inconsistent state.
+See <strong>Recovering from a failed load</strong> below.</p>
+<p>If you need to abandon a run before <code>load</code> starts, drop the staging schema (<code>v4-migrator cleanup</code>) and start fresh,
+or leave it in place and resume from <code>extract</code> or <code>transform</code> later.</p>
+<h2 id="recovering-from-a-failed-load">Recovering from a failed load<a class="headerlink" href="#recovering-from-a-failed-load" title="Permanent link">¶</a></h2>
+<p>A <code>load</code> invocation that fails partway through leaves rows in v5 from every table that completed before the failure.
+The migrator does not roll those back, and a straight <code>load</code> retry fails.
+Pick one of the following.</p>
+<p><strong>Start over.</strong> Recommended when the failure cause is unclear or when you want a fresh target:</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>cleanup<span class="w"> </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+<span class="c1"># Drop and re-create the v5 schema (or the entire target database) yourself, then:</span>
+v4-migrator<span class="w"> </span>bootstrap<span class="w"> </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+v4-migrator<span class="w"> </span>run<span class="w">       </span>--target-url<span class="w"> </span>...<span class="w"> </span>--source-url<span class="w"> </span>...<span class="w"> </span>--metrics-retention-days<span class="w"> </span>N
+</code></pre></div>
+<p><strong>Reload from existing staging.</strong> Faster when <code>extract</code> and <code>transform</code> outputs are trustworthy and only the load step failed.
+The staging schema survives across <code>bootstrap</code> runs, so:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Drop and re-create the v5 schema (or the entire target database) yourself.</span>
+v4-migrator<span class="w"> </span>bootstrap<span class="w"> </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+v4-migrator<span class="w"> </span>load<span class="w">      </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+</code></pre></div>
+<p><code>bootstrap</code> re-seeds the v5 <code>PERMISSION</code> catalog after applying the schema, so the rerun of <code>load</code> can resolve permission foreign keys without re-running <code>transform</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don't manually <code>TRUNCATE</code> individual v5 tables and re-run <code>load</code>.
+The load phase disables triggers on <code>PROJECT</code> and <code>PROJECT_ACCESS_USERS</code>,
+resets identity sequences, and pre-creates daily metrics partitions in a single sequence.
+None of that is idempotent at a per-table granularity.
+Always reset v5 fully before retrying.</p>
+</div>
+<h2 id="moving-the-migrated-data-to-its-production-target">Moving the migrated data to its production target<a class="headerlink" href="#moving-the-migrated-data-to-its-production-target" title="Permanent link">¶</a></h2>
+<p>If you ran the migration against a dedicated host,
+you can move the result with <code>pg_dump</code>/<code>pg_restore</code> after the migrator finishes:</p>
+<div class="highlight"><pre><span></span><code>pg_dump<span class="w"> </span>--format<span class="o">=</span>custom<span class="w"> </span>--no-owner<span class="w"> </span>--no-acl<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude-schema<span class="o">=</span>dt_v4_migration<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-h<span class="w"> </span>migration-host<span class="w"> </span>-U<span class="w"> </span>dtrack<span class="w"> </span>dtrack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&gt;<span class="w"> </span>v5.dump
+
+pg_restore<span class="w"> </span>--no-owner<span class="w"> </span>--no-acl<span class="w"> </span>-d<span class="w"> </span>dtrack<span class="w"> </span>-h<span class="w"> </span>prod-host<span class="w"> </span>-U<span class="w"> </span>dtrack<span class="w"> </span>&lt;<span class="w"> </span>v5.dump
+</code></pre></div>
+<p>Exclude the staging schema (<code>dt_v4_migration</code> by default) from the dump.
+The staging schema is not portable across clusters and is not needed by v5 at runtime.</p>
+<h2 id="what-to-do-after-the-migration">What to do after the migration<a class="headerlink" href="#what-to-do-after-the-migration" title="Permanent link">¶</a></h2>
+<ul>
+<li>Start the v5 API server and let it run the post-load reconciliation tasks (metrics, policy evaluation).
+  See <a href="../deploying-to-production/">Deploying to production</a> for the
+  baseline runtime posture.
+  Everything below requires the API server to be running.</li>
+<li>Re-enable every migrated notification rule after reviewing its configuration.
+  See <a href="../../user/configuring-notifications/">Configuring notification alerts</a>.</li>
+<li>Re-enter repository, analyzer, and vulnerability-source credentials through the v5 secret manager,
+  and turn the affected repositories back on.
+  See <a href="../../user/managing-secrets/">Managing secrets</a> and
+  <a href="../configuring-secret-management/">Configuring secret management</a>.
+  Managing secrets requires the new <a href="../../../reference/permissions/#secret-management"><code>SECRET_MANAGEMENT</code></a> permission
+  (granted automatically during migration to principals that held <code>SYSTEM_CONFIGURATION</code> in v4;
+  see <a href="#v5-only-permissions-granted-from-v4-counterparts">v5-only permissions granted from v4 equivalents</a>).</li>
+<li>Reconcile every user whose username got a <code>-CONFLICT-LDAP</code> or <code>-CONFLICT-OIDC</code> suffix
+  (delete genuine duplicates, rename legitimate external identities back to their original username).</li>
+<li>Wait a few hours, then verify that v5 has populated the <code>EPSS</code> table from the upstream feed.</li>
+</ul>
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../configuring-database/">Configuring the database</a>: provisioning and tuning the Postgres cluster backing v5.</li>
+<li><a href="../deploying-to-production/">Deploying to production</a>: sizing, topology, and runtime posture for v5.</li>
+<li><a href="../scaling/">Scaling</a>: tuning a v5 deployment under load.</li>
+<li><a href="../upgrading-instances/">Upgrading instances</a>: for later v5-to-v5 upgrades.</li>
+<li><a href="../../../concepts/changes-in-v5/">About changes in v5</a>: background on what changed and why.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../upgrading-instances/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Upgrading running instances">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Upgrading running instances
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../running-v4-and-v5-in-parallel/" class="md-footer__link md-footer__link--next" aria-label="Next: Running v4 and v5 in parallel">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Running v4 and v5 in parallel
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © OWASP Foundation. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://dependencytrack.org" target="_blank" rel="noopener" title="Website" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/DependencyTrack/community#community-meetings" target="_blank" rel="noopener" title="Monthly community meeting" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h32c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128c0-35.3 28.7-64 64-64h32V32c0-17.7 14.3-32 32-32M64 240v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16m128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM64 368v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://dependencytrack.org/slack" target="_blank" rel="noopener" title="dependencytrack.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DependencyTrack" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/u/dependencytrack" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/owasp-dependency-track" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://infosec.exchange/@DependencyTrack" target="_blank" rel="noopener me" title="infosec.exchange" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54-.6-4.6-.9-9.3-.9-13.9 85.6 20.9 158.7 9.1 178.7 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6V190.1c0-49.7-64-51.6-64 6.9v62.5H201V197c0-58.5-64-56.6-64-6.9v114.2H90.3c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@DependencyTrack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=4e38a992-0670-4e48-a193-edd89b6482d0" alt="" width="1" height="1" style="display:none;">
+  
+
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

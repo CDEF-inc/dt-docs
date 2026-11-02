@@ -1,0 +1,3607 @@
+<!DOCTYPE html><html lang="ja" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/durable-execution/">
+      
+      
+        <link rel="prev" href="../../deployment/">
+      
+      
+        <link rel="next" href="../extensibility/">
+      
+      
+        
+          <link rel="alternate" href="../../../../../concepts/architecture/design/durable-execution/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>永続実行 - Dependency-Track</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="永続実行 - Dependency-Track">
+<meta property="og:image" content="https://dependencytrack.github.io/docs/next/assets/images/social/ja/concepts/architecture/design/durable-execution.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/durable-execution/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="永続実行 - Dependency-Track">
+<meta property="twitter:image" content="https://dependencytrack.github.io/docs/next/assets/images/social/ja/concepts/architecture/design/durable-execution.png">
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../../../" title="Dependency-Track" class="md-header__button md-logo" aria-label="Dependency-Track" data-md-component="logo">
+      
+  <img src="../../../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dependency-Track
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              永続実行
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../../concepts/architecture/design/durable-execution/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DependencyTrack/dependency-track" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    DependencyTrack/dependency-track
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  チュートリアル
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  コンセプト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../" title="Dependency-Track" class="md-nav__button md-logo" aria-label="Dependency-Track" data-md-component="logo">
+      
+  <img src="../../../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Dependency-Track
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DependencyTrack/dependency-track" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    DependencyTrack/dependency-track
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../tutorials/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../guides/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ガイド
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コンセプト
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コンセプト
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロジェクトについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    タグについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../access-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アクセス制御について
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workload-identity-federation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ワークロード ID フェデレーションについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-vulnerability-data-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脆弱性データソースについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about-kev-data-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KEV データソースについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vulnerability-findings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脆弱性の検出結果について
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VEX について
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知について
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../time-series-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    時系列メトリクスについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../component-policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コンポーネントポリシーについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../component-integrity-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コンポーネントの完全性検証について
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vulnerability-policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脆弱性ポリシーについて
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changes-in-v5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5 での変更点について
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_16" id="__nav_4_16_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    アーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    デプロイのトポロジー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_16_3" id="__nav_4_16_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_16_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_16_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    永続実行
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    永続実行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中核となる概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="中核となる概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#durable-execution_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        永続実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフローインスタンス
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロー実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイマー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外部イベント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクキュー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクワーカー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データモデル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実行モデル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実行モデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replay-time-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リプレイ時のブロッキング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        イベントの種類
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects-and-continueasnew" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        副作用と continueAsNew
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engine-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンジンのアーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エンジンのアーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leader-election" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リーダー選出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクのスケジューリング
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タスクのスケジューリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow-task-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロータスクスケジューラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-task-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティタスクスケジューラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        キュー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクの処理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タスクの処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロータスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティタスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同時実行制御
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="同時実行制御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ローカル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        グローバル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-concurrency-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同時実行キーごと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-workflow-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフローインスタンスごと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stickiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スティッキネス
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バッファリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        履歴キャッシュ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メンテナンス
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retry-and-failure-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再試行と障害の処理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="再試行と障害の処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-retries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティの再試行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフローの障害
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancellation-suspension-and-resumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        キャンセル、一時停止、再開
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noteworthy-design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注目すべき設計上の判断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="注目すべき設計上の判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distinguishing-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特徴的な選択
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装の手法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-listennotify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LISTEN/NOTIFY を使わない理由
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参考文献">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    拡張性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vulnerability-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脆弱性分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../package-metadata-resolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    パッケージメタデータの解決
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../reference/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中核となる概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="中核となる概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#durable-execution_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        永続実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフローインスタンス
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロー実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイマー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外部イベント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクキュー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクワーカー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データモデル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実行モデル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実行モデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replay-time-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リプレイ時のブロッキング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        イベントの種類
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects-and-continueasnew" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        副作用と continueAsNew
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engine-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンジンのアーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エンジンのアーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leader-election" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リーダー選出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクのスケジューリング
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タスクのスケジューリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow-task-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロータスクスケジューラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-task-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティタスクスケジューラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        キュー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスクの処理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タスクの処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロータスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティタスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同時実行制御
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="同時実行制御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ローカル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        グローバル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-concurrency-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同時実行キーごと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-workflow-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフローインスタンスごと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stickiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スティッキネス
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バッファリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        履歴キャッシュ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メンテナンス
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retry-and-failure-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再試行と障害の処理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="再試行と障害の処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-retries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクティビティの再試行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフローの障害
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancellation-suspension-and-resumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        キャンセル、一時停止、再開
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noteworthy-design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注目すべき設計上の判断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="注目すべき設計上の判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distinguishing-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特徴的な選択
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装の手法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-listennotify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LISTEN/NOTIFY を使わない理由
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参考文献">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    コンセプト
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    アーキテクチャ
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    設計
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">永続実行<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="overview">概要<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>永続実行エンジン(コードと設定では <code>dex</code> と略します)は、長時間かかる可能性のあるプロセスを、高い信頼性とスケーラビリティで実行する組み込みのエンジンです。</p>
+<p>このエンジンは <a href="https://temporal.io/">Temporal</a> と Microsoft の <a href="https://github.com/Azure/durabletask">Durable Task Framework</a> を参考にしています。Dependency-Track の要件に合わせて専用に構築され、PostgreSQL 向けに最適化されています。</p>
+<h2 id="core-concepts">中核となる概念<a class="headerlink" href="#core-concepts" title="Permanent link">¶</a></h2>
+<h3 id="durable-execution_1">永続実行<a class="headerlink" href="#durable-execution_1" title="Permanent link">¶</a></h3>
+<p>永続実行とは、(長時間かかる可能性のある)プロセスの状態と進捗を自動的に永続化し、障害や再起動を乗り越えられるようにするプログラミングモデルです。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>このエンジンは <a href="https://temporal.io/">Temporal</a> を大いに参考にしているため、その概念と用語の大半を採用しています。ほかのエンジンでは名前が異なる概念もあります。たとえば、Durable Task では <em>workflow</em> の代わりに <em>orchestration</em> という用語を使います。</p>
+</div>
+<p><a href="https://temporal.io/">Temporal</a> と同様に、エンジンは<a href="#workflow">ワークフロー</a>の完了したステップをすべてイベントとしてデータベースに記録します。プロセスがクラッシュしたり再起動したりした場合、ワークフローはイベント履歴をリプレイすることで、中断した場所から自動的に再開します。これにより、状態管理や再試行のロジックを手作業で実装しなくても、ワークフローは障害に強くなります。</p>
+<p>永続実行では、ワークフローがいったん開始されると、一時的な障害が繰り返し発生しても完了まで実行されることが保証されます。</p>
+<h3 id="workflow">ワークフロー<a class="headerlink" href="#workflow" title="Permanent link">¶</a></h3>
+<p>ワークフローとは、実行する一連のステップを形式的に記述したものです。ワークフローは通常の Java コードとして記述しますが、履歴を確実にリプレイできるように、<em>決定的で副作用がない</em>ものでなければなりません。ワークフローの唯一の目的はオーケストレーション、つまり作業を直接行うことではなく、作業の順序を決めて調整することです。</p>
+<p>ワークフローは<a href="#activity">アクティビティ</a>の呼び出し、<a href="#timer">タイマー</a>の作成、子ワークフローの生成、<a href="#external-event">外部イベント</a>の待機を行えます。</p>
+<h3 id="workflow-instance">ワークフローインスタンス<a class="headerlink" href="#workflow-instance" title="Permanent link">¶</a></h3>
+<p>ワークフローインスタンスとは、<a href="#workflow">ワークフロー</a>を具体的にインスタンス化したものです。</p>
+<p>インスタンスは複数回実行できますが、非終了状態にある実行は、どの時点でも 1 つしか存在できません。</p>
+<p>エンジンでは、各インスタンスに<em>インスタンス ID</em> があり、クライアントはワークフローの開始時にこれを指定します。</p>
+<p>インスタンス ID の一意性制約は、非終了状態にある実行にのみ適用されます。前の実行が終了した直後に、2 つの呼び出し元が同じインスタンス ID でワークフローを同時に開始しようとすると、両方とも成功することがあります。インスタンス ID の一意性は非終了状態の実行を対象とした緩い保証であり、すべての世代にまたがるグローバルなロックではありません。</p>
+<h3 id="activity">アクティビティ<a class="headerlink" href="#activity" title="Permanent link">¶</a></h3>
+<p>アクティビティとは、非決定的な操作を形式的に記述したものです。外部システムとのやり取り、より一般的には I/O はここで行われます。</p>
+<p>アクティビティは、それを「所有する」ワークフローの実行とは非同期に実行されるため、ワークフローをブロックしません。</p>
+<p>実際には、アクティビティの呼び出しは従来のバックグラウンドジョブのように動作します。</p>
+<p>アクティビティは失敗することがあり、その場合エンジンが透過的に再試行します。再試行の動作は、呼び出しごとに再試行ポリシーでカスタマイズできます。アクティビティは<strong>少なくとも 1 回</strong>実行されます。実行中にクラッシュしたワーカーのロックは期限切れによって解放され、別のワーカーが同じタスクを取得します。アクティビティは<a href="https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning">べき等</a>でなければなりません。</p>
+<h3 id="workflow-run">ワークフロー実行<a class="headerlink" href="#workflow-run" title="Permanent link">¶</a></h3>
+<p>ワークフロー実行とは、ワークフローの 1 回の実行です。各実行は一意の識別子を持ち、完全なイベント履歴を保持します。この履歴によって、復旧のためのリプレイが可能になり、決定的な動作が保証されます。</p>
+<p>実行には次のメタデータを持たせることができます。</p>
+<ul>
+<li><strong>同時実行キー</strong>: 同じキーを持つ実行を直列化します。順序と飢餓状態のセマンティクスについては<a href="#concurrency-control">同時実行制御</a>を参照してください。</li>
+<li><strong>優先度</strong>: 実行順序に影響します。優先度の高い実行が先に実行されます。</li>
+<li><strong>ラベル</strong>: 任意のキーと値のメタデータです。</li>
+</ul>
+<p>実行は次の状態を遷移します。</p>
+<pre class="mermaid"><code>---
+title: Workflow run state machine
+---
+stateDiagram-v2
+    [*] --&gt; CREATED
+    CREATED --&gt; RUNNING
+    RUNNING --&gt; SUSPENDED
+    SUSPENDED --&gt; RUNNING
+    RUNNING --&gt; COMPLETED
+    RUNNING --&gt; FAILED
+    RUNNING --&gt; CANCELED
+    SUSPENDED --&gt; CANCELED
+    COMPLETED --&gt; [*]
+    FAILED --&gt; [*]
+    CANCELED --&gt; [*]</code></pre>
+<p><code>CREATED</code>、<code>RUNNING</code>、<code>SUSPENDED</code> は<em>非終了</em>状態です。<code>COMPLETED</code>、<code>FAILED</code>、<code>CANCELED</code> は<em>終了</em>状態で、実行がいったん終了状態になると、そこから遷移することはありません。</p>
+<h3 id="timer">タイマー<a class="headerlink" href="#timer" title="Permanent link">¶</a></h3>
+<p>タイマーは、ワークフローの実行の中で永続的な遅延を提供します。</p>
+<p>通常のスリープとは異なり、エンジンはタイマーをワークフロー実行のイベント履歴に記録するため、タイマーは決定的でリプレイしても安全です。</p>
+<h3 id="external-event">外部イベント<a class="headerlink" href="#external-event" title="Permanent link">¶</a></h3>
+<p>外部イベントとは、エンジンの外部からワークフロー実行に送られるメッセージです。</p>
+<p>外部イベントを使うと、ワークフローは一時停止して、承認の通知、Webhook のコールバック、ステータスの更新など、外部システムやユーザーからのシグナルを待機できます。各イベントは一意の識別子を持ち、任意でペイロードデータを含めることができます。</p>
+<h3 id="task">タスク<a class="headerlink" href="#task" title="Permanent link">¶</a></h3>
+<p>タスクとは、<a href="#workflow-run">ワークフロー実行</a>または<a href="#activity">アクティビティ</a>を進めるためにエンジンが生成する作業の単位です。</p>
+<p>エンジンはタスクを<a href="#task-queue">タスクキュー</a>にスケジュールし、<a href="#task-worker">タスクワーカー</a>がそこからタスクを取得します。</p>
+<h3 id="task-queue">タスクキュー<a class="headerlink" href="#task-queue" title="Permanent link">¶</a></h3>
+<p>タスクキューとは、エンジンが<a href="#task">タスク</a>を実行のためにスケジュールする、名前付きのキューです。</p>
+<p>タスクキューは作業を整理して<a href="#task-worker">ワーカー</a>に分配します。各キューには種類(<em>workflow</em> または <em>activity</em>)があり、容量と現在の深さ(保留中のタスクの数)を追跡します。ワークフローとアクティビティは、自身のタスクをどのキューに振り分けるかを指定します。</p>
+<p>キューによって関心を分離できます。異なるワーカーがそれぞれ異なる種類の作業に特化でき、ワークロード間でリソースを分離できます。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>エンジンでは、キューはスケーリングの手段にもなります。各タスクキューは物理的に別のテーブル<a href="https://www.postgresql.org/docs/current/ddl-partitioning.html#DDL-PARTITIONING-OVERVIEW">パーティション</a>に格納されます。</p>
+</div>
+<p>キューの容量は実行時に変更でき、クラスター全体に対するグローバルなスロットルとして機能します。キューを完全に<em>一時停止</em>することもできます。</p>
+<h3 id="task-worker">タスクワーカー<a class="headerlink" href="#task-worker" title="Permanent link">¶</a></h3>
+<p>タスクワーカーは、キューからタスクをポーリングして実行します。ワーカーはワークフロータスクとアクティビティタスクのどちらか一方を処理し、両方を処理することはありません。各ワーカーは<em>ちょうど 1 つ</em>のキューからポーリングします。</p>
+<h2 id="data-model">データモデル<a class="headerlink" href="#data-model" title="Permanent link">¶</a></h2>
+<p>エンジンの状態は、少数の PostgreSQL テーブルに格納されます。テーブル名にはすべて <code>dex_</code> というプレフィックスが付きます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">テーブル</th>
+<th style="text-align: left;">目的</th>
+<th style="text-align: left;">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>dex_lease</code></td>
+<td style="text-align: left;"><a href="#leader-election">リーダー選出</a>で使うリーダーシップのリースを保持します。</td>
+<td style="text-align: left;"><code>UNLOGGED</code>。設計上、一時的なデータです。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_workflow_run</code></td>
+<td style="text-align: left;">実行の状態: ステータス、同時実行キー、優先度、ラベル、スティッキネス、ライフサイクルのタイムスタンプ。</td>
+<td style="text-align: left;">実行の状態の信頼できる情報源です。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_workflow_history</code></td>
+<td style="text-align: left;">実行ごとの追記専用のイベントログ。ペイロードは Protobuf でシリアライズされた <code>WorkflowEvent</code> です。</td>
+<td style="text-align: left;">連続する UUIDv7 の挿入を分散させるため、<code>workflow_run_id</code> で 8 つのパーティションにハッシュパーティション分割されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_workflow_inbox</code></td>
+<td style="text-align: left;">実行宛ての保留中のメッセージ(外部イベント、アクティビティの完了、タイマーの発火)。</td>
+<td style="text-align: left;"><code>visible_from</code> によって配信を遅延でき、タイマーやアクティビティの再試行のスケジューリングに使われます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_workflow_task_queue</code></td>
+<td style="text-align: left;">ワークフローキューのメタデータ: 容量、ステータス(<code>ACTIVE</code> / <code>PAUSED</code>)。</td>
+<td style="text-align: left;"><a href="#workflow-task-scheduler">ワークフロータスクスケジューラー</a>が容量を強制します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_workflow_task</code></td>
+<td style="text-align: left;">実行待ちのワークフロータスク。主キーは <code>(queue_name, workflow_run_id)</code> です。</td>
+<td style="text-align: left;"><code>UNLOGGED</code>、キューごとにリストパーティション分割されます。クラッシュ後、次のスケジューラーのポーリングで再構築されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_activity_task_queue</code></td>
+<td style="text-align: left;">アクティビティキューのメタデータ: 容量、ステータス。</td>
+<td style="text-align: left;">ワークフローキューのメタデータテーブルと同じ役割です。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dex_activity_task</code></td>
+<td style="text-align: left;">実行待ちのアクティビティ呼び出し。引数、再試行ポリシー、試行回数を保持します。</td>
+<td style="text-align: left;">キューごとにリストパーティション分割されます(引数と再試行の状態は履歴から再構築できないため、ログ記録されます)。</td>
+</tr>
+</tbody>
+</table>
+<p><code>dex_workflow_task</code> の主キー <code>(queue_name, workflow_run_id)</code> によって、<strong>実行ごとにキューに入るワークフロータスクは最大 1 つ</strong>であることが保証されます。タスクがすでにキューに入っている間に届いた作業をまとめる処理は必要ありません。同時に行われた挿入は主キーで衝突します。</p>
+<p><code>dex_workflow_inbox</code> は、エンジンのメッセージルーティングの基盤です。実行がスケジューリングの対象になるのは、<code>visible_from &lt;= now()</code> を満たすインボックスの行が少なくとも 1 つある場合<strong>に限ります</strong>。アクティビティの完了、タイマーの発火、子の実行の完了、外部イベント、実行制御のシグナル(キャンセル / 一時停止 / 再開)は、すべてインボックスを経由します。</p>
+<h2 id="execution-model">実行モデル<a class="headerlink" href="#execution-model" title="Permanent link">¶</a></h2>
+<p>エンジンは、イベントソーシングによって永続性を実現します。ワークフローが実行されると、エンジンは完了したステップごとにイベントを記録します。実行が予期せず停止した場合、ワークフローは記録された履歴をリプレイして再開します。</p>
+<pre class="mermaid"><code>---
+title: Example workflow execution
+---
+sequenceDiagram
+    participant W as Workflow worker
+    participant C as Workflow code
+    participant H as Event history
+    participant A as Activity worker
+
+    W -&gt;&gt; H: Load history
+    H --&gt;&gt; W: Events
+    W -&gt;&gt; C: Execute
+    Note over C: Reconstruct state&lt;br/&gt;from history
+    C -&gt;&gt; C: activity(Foo).call()
+    Note over C: Event exists,&lt;br/&gt;return cached result
+    C -&gt;&gt; C: activity(Bar).call()
+    Note over C: No event,&lt;br/&gt;schedule activity,&lt;br/&gt;yield
+    C --&gt;&gt; W: Yielded on activity
+    W -&gt;&gt; H: Record ActivityTaskCreated event
+
+    A -&gt;&gt; A: Execute Bar activity
+    A -&gt;&gt; H: Record ActivityTaskCompleted event
+
+    W -&gt;&gt; H: Load history
+    W -&gt;&gt; C: Execute
+    Note over C: Replay Foo and Bar&lt;br/&gt;from history
+    C --&gt;&gt; W: Workflow complete
+    W -&gt;&gt; H: Record RunCompleted event</code></pre>
+<p>リプレイ中、ワークフローのコードは再実行されますが、エンジンは副作用をスキップします。代わりに、完了したステップの結果を履歴から返します。そのため、ワークフローのコードは決定的でなければなりません。同じ履歴が与えられたら、同じ判断を下す必要があります。記録された履歴と一致しないアクティビティをコードが要求した場合、エンジンは決定性エラーで実行を失敗させます。</p>
+<div class="admonition note">
+<p class="admonition-title">関連項目</p>
+<p>リプレイ中に決定的な<em>制御フロー</em>が保たれなければならない一方で、副作用そのものはべき等でありさえすればよい理由を第一原理から論じたものとして、Jack Vanlightly の <a href="https://jack-vanlightly.com/blog/2025/11/24/demystifying-determinism-in-durable-execution">Demystifying determinism in durable execution</a> を参照してください。</p>
+</div>
+<h3 id="replay-time-blocking">リプレイ時のブロッキング<a class="headerlink" href="#replay-time-blocking" title="Permanent link">¶</a></h3>
+<p>完了イベントがまだ履歴にないアクティビティ、タイマー、または子の実行の結果をワークフローのコードが待機すると、エンジンは<em>イールド</em>します。つまり、ワークフローがこのターンで生成したイベント(たとえば <code>ActivityTaskCreated</code>)を永続化し、ワークフロータスクのロックを解除して、別の作業に移ります。対応する完了メッセージが <code>dex_workflow_inbox</code> に届いた時点で、実行は再びスケジューリングの対象になります。</p>
+<p>このモデルにより、ワークフローごとにスレッドを専有することなく、高い並行性を実現できます。また、実行がマシンをまたいだり、プロセスの再起動を挟んだりして一時停止と再開を繰り返す場合でも、ワークフロー本体の制御フローを通常の同期コードのように読めるようになります。</p>
+<h3 id="event-types">イベントの種類<a class="headerlink" href="#event-types" title="Permanent link">¶</a></h3>
+<p><code>WorkflowEvent</code> のサブジェクトの一覧は次のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">カテゴリ</th>
+<th style="text-align: left;">イベント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">実行</td>
+<td style="text-align: left;"><code>RunCreated</code>、<code>RunStarted</code>、<code>RunSuspended</code>、<code>RunResumed</code>、<code>RunCanceled</code>、<code>RunCompleted</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">タスク</td>
+<td style="text-align: left;"><code>WorkflowTaskStarted</code>、<code>WorkflowTaskCompleted</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">アクティビティ</td>
+<td style="text-align: left;"><code>ActivityTaskCreated</code>、<code>ActivityTaskCompleted</code>、<code>ActivityTaskFailed</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">子の実行</td>
+<td style="text-align: left;"><code>ChildRunCreated</code>、<code>ChildRunCompleted</code>、<code>ChildRunFailed</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">タイマー</td>
+<td style="text-align: left;"><code>TimerCreated</code>、<code>TimerElapsed</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">その他</td>
+<td style="text-align: left;"><code>SideEffectExecuted</code>、<code>ExternalEventReceived</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="side-effects-and-continueasnew">副作用と <code>continueAsNew</code><a class="headerlink" href="#side-effects-and-continueasnew" title="Permanent link">¶</a></h3>
+<p>次の 2 つのプリミティブは、永続性を犠牲にすることなく、厳格な決定性の契約から制御された形で逃れる手段を提供します。</p>
+<ul>
+<li><strong>副作用。</strong> 副作用は任意のコードブロックを 1 回だけ実行し、その結果を <code>SideEffectExecuted</code> イベントとして記録して、以降のリプレイでは毎回記録された値を返します。生成された識別子やタイムスタンプなどの非決定的な値は、このしくみによってリプレイを壊さずにワークフローに取り込まれます。</li>
+<li><strong>Continue-as-new。</strong> Continue-as-new は実行のイベント履歴を切り詰め、実行の <code>continued_as_new_generation</code> カウンターをインクリメントし、同じ実行メタデータ(ワークフロー名、バージョン、キュー、同時実行キー、インスタンス ID、優先度、ラベル)と新しい引数で新たな実行を開始します。リプレイのコストは履歴の長さに比例して増えるため、定期的なスケジューラーのような長期間存続するワークフローは、continue-as-new によって履歴を一定の範囲に抑えます。</li>
+</ul>
+<h2 id="engine-architecture">エンジンのアーキテクチャ<a class="headerlink" href="#engine-architecture" title="Permanent link">¶</a></h2>
+<h3 id="overview_1">概要<a class="headerlink" href="#overview_1" title="Permanent link">¶</a></h3>
+<p>エンジンは次のコンポーネントで構成されています。</p>
+<ul>
+<li><strong>ワークフロータスクスケジューラー</strong>: 対象となるワークフロー実行からワークフロータスクを作成します(<a href="#workflow-task-scheduler">ワークフロータスクスケジューラー</a>を参照)。</li>
+<li><strong>アクティビティタスクスケジューラー</strong>: アクティビティタスクをキューに入った状態に遷移させます(<a href="#activity-task-scheduler">アクティビティタスクスケジューラー</a>を参照)。</li>
+<li><strong>ワークフロータスクワーカー</strong>: 履歴をリプレイしながらワークフローのコードを実行します(<a href="#execution-model">実行モデル</a>を参照)。</li>
+<li><strong>アクティビティタスクワーカー</strong>: アクティビティのコードを実行します。</li>
+<li><strong>メンテナンスワーカー</strong>: 古い終了済みの実行を削除して保持期間を適用します(<a href="#maintenance">メンテナンス</a>を参照)。</li>
+<li><strong>リーダー選出</strong>: クラスター内で単一インスタンスによる操作を調整します(<a href="#leader-election">リーダー選出</a>を参照)。</li>
+<li><strong>バッファー</strong>: 頻繁に発生する小さな書き込みをバッチにまとめます(<a href="#buffering">バッファリング</a>を参照)。</li>
+</ul>
+<pre class="mermaid"><code>---
+title: Component topology
+---
+flowchart TB
+    subgraph Application
+        direction LR
+        W["Workflow code"]
+        A["Activity code"]
+        EX["External caller"]
+    end
+
+    subgraph dex
+        direction TB
+        subgraph LeaderOnly["Leader only"]
+            direction LR
+            WS["Workflow task scheduler"]
+            AS["Activity task scheduler"]
+            MW["Maintenance worker"]
+        end
+
+        subgraph Workers
+            direction LR
+            WW["Workflow worker"]
+            AW["Activity worker"]
+        end
+
+        LE["Leader election"]
+        BUF["Buffers"]
+    end
+
+    DB[("Database")]
+
+    W -.- WW
+    A -.- AW
+
+    EX --&gt; BUF
+    LE &lt;--&gt; DB
+    LeaderOnly --&gt; DB
+    Workers --&gt; DB
+    Workers --&gt; BUF
+    BUF --&gt; DB</code></pre>
+<p>スケジューラーとメンテナンスワーカーはリーダーでのみ動作します。ワーカーはすべてのノードで動作し、アプリケーションが登録したワークフローとアクティビティのコードをホストします(点線)。読み取り(タスクのポーリング、履歴の読み込み、インボックスの取り出し)はデータベースに直接行われます。書き込みはバッファーを経由し、これがエンジンの<a href="#buffering">バックプレッシャー</a>の動作を生み出しています。どのプロデューサーがどのバッファーに書き込み、どのバッファーがどのテーブルに書き込むかについては、<a href="#buffering">バッファリングのセクション</a>で詳しく説明します。</p>
+<p>デフォルトでは、シンプルにするため、エンジンは Dependency-Track のメインアプリケーションと同じデータベースを使います。大規模なデプロイでは、<a href="../../../../reference/configuration/properties/#dtdex-enginedatasourcename"><code>dt.dex-engine.datasource.name</code></a> で別のデータベースインスタンスを使うように設定し、エンジンの負荷をアプリケーションから分離できます。</p>
+<h3 id="leader-election">リーダー選出<a class="headerlink" href="#leader-election" title="Permanent link">¶</a></h3>
+<p>一部の操作は、クラスター内の単一のノードで実行されます。たとえば次のものです。</p>
+<ul>
+<li>メンテナンス</li>
+<li>タスクのスケジューリング</li>
+</ul>
+<p>エンジンは Kubernetes のコントローラーを参考にした、<code>dex_lease</code> テーブルを使うシンプルなリースベースのしくみを使います。テーブルの各行は名前付きのリース 1 つ(現在は <code>leadership</code> リースのみ)を表し、現在の保持者の ID と有効期限のタイムスタンプを持ちます。</p>
+<p>クラスター内のすべてのノードは定期的に(<a href="../../../../reference/configuration/properties/#dtdex-engineleader-electionlease-check-interval-ms"><code>dt.dex-engine.leader-election.lease-check-interval-ms</code></a>)、一定期間(<a href="../../../../reference/configuration/properties/#dtdex-engineleader-electionlease-duration-ms"><code>dt.dex-engine.leader-election.lease-duration-ms</code></a>)のリーダーシップのリースの取得を試みます。次の 3 つのケースはすべて、1 つのアトミックなステートメントで処理されます。</p>
+<ul>
+<li>リースが存在しない場合、行を作成したノードがリーダーになります。</li>
+<li>このノードがすでにリースを保持している場合、ノードは有効期限を延長します(更新)。</li>
+<li>別のノードがリースを保持しているが、リースの有効期限が切れている場合、新しいノードがリースを引き継ぎます。</li>
+</ul>
+<p>それ以外のすべてのケースでは、取得の試みは何も行わず、そのノードはリーダーになりません。</p>
+<p>データベースのタイムアウトなどにより取得の試みを完了できなかったノードは、自分のリースが<em>失われた</em>とみなします。これにより<a href="https://en.wikipedia.org/wiki/Split-brain_(computing)">スプリットブレイン</a>の可能性は低くなりますが、なくなるわけではありません。グレースフルシャットダウンの際、リーダーはリースを明示的に解放するため、別のノードは有効期限を待たずに引き継げます。</p>
+<p><code>dex_lease</code> テーブルは <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED"><code>unlogged</code></a> であり、<a href="https://www.postgresql.org/docs/current/wal-intro.html">WAL</a> への書き込みを発生させません。リースは設計上一時的なものです。すべてのノードが次の試行でリースを再取得するため、データベースの再起動でリースが失われても問題ありません。</p>
+<div class="admonition warning">
+<p class="admonition-title">フェンシングトークンはありません</p>
+<p>リースはリーダーシップを付与しますが、データベースがすべての書き込みで検証するフェンシングトークンは生成しません。リースを失うほど長く停止したリーダーは、すでに処理中の作業を取り消せないため、新しいリーダーとの短い重複が発生する可能性があります。</p>
+<p>代わりに、エンジンは <code>dex_workflow_run</code> の一意な<a href="https://www.postgresql.org/docs/current/indexes-partial.html">部分インデックス</a>を事実上のフェンシング層として利用します。重複したスケジューラーが、同時実行キーを共有する 2 つの実行を同時に実行させることはありません。データベースが 2 つ目の <code>RUNNING</code> への遷移を拒否するためです。</p>
+<p>スプリットブレインの期間中に観測される症状は、競合に負けたノードでの制約違反エラー、キュー容量の一時的な超過(各リーダーがそれぞれキューの深さの独自のスナップショットを見るため)、メンテナンスのバッチでの作業の重複(べき等で無害)です。実行の正しさは保たれます。スロットリングとオブザーバビリティは結果整合性です。</p>
+</div>
+<h3 id="task-scheduling">タスクのスケジューリング<a class="headerlink" href="#task-scheduling" title="Permanent link">¶</a></h3>
+<p>エンジンには 2 つの独立したスケジューラーがあり、どちらもリーダーノードで動作します。</p>
+<h4 id="workflow-task-scheduler">ワークフロータスクスケジューラー<a class="headerlink" href="#workflow-task-scheduler" title="Permanent link">¶</a></h4>
+<p>ワークフロー実行からタスクを作成します。既知のキューごとに、次の条件を満たすワークフロー実行を選び、<code>dex_workflow_task</code> に最大 <code>capacity - depth</code> 行を挿入します。</p>
+<ul>
+<li>非終了状態(<code>CREATED</code>、<code>RUNNING</code>、<code>SUSPENDED</code>)である。</li>
+<li><code>visible_from &lt;= now()</code> を満たす行が <code>dex_workflow_inbox</code> に少なくとも 1 つある。</li>
+<li>このキューについて、<code>dex_workflow_task</code> にまだ行がない。</li>
+<li>同時実行キーによる直列化を守る。実行が <code>CREATED</code> 状態で <code>concurrency_key</code> を持つ場合、そのキーで最も優先度の高い <code>CREATED</code> の実行であり、そのキーを持つほかの実行が <code>RUNNING</code> または <code>SUSPENDED</code> ではなく、そのキーのタスクがまだキューに入っていない必要があります。</li>
+<li>キューを <code>capacity</code> を超えて埋めない。</li>
+</ul>
+<p>対象となる実行が見つからない場合、スケジューラーは指数バックオフでポーリングの間隔を空けてスリープします。ワーカーはタスクを完了するとすぐにスケジューラーを起こすため、<code>LISTEN</code>/<code>NOTIFY</code> を使わなくてもアイドル時のレイテンシーは低く保たれます。この起動はノード内に限られます。ノード B のワーカーがノード A のスケジューラーを起こすことはできません。</p>
+<h4 id="activity-task-scheduler">アクティビティタスクスケジューラー<a class="headerlink" href="#activity-task-scheduler" title="Permanent link">¶</a></h4>
+<p>アクティビティタスクを作成するのはスケジューラーではなく、ワークフローの実行です(ワークフローがアクティビティを呼び出したとき)。スケジューラーはタスクを <code>CREATED</code> から <code>QUEUED</code> ステータスに遷移させ、ワーカーから見えるようにします。</p>
+<p>この 2 段階の設計が存在するのは、アクティビティタスクが再試行の遅延に使う <code>visible_from</code> タイムスタンプを持つためです。<code>visible_from</code> が未来の時刻になっている <code>CREATED</code> ステータスのタスクは、まだ実行の対象になりません。スケジューラーは <code>visible_from &lt;= now()</code> を満たすタスクをポーリングし、<code>QUEUED</code> に遷移させます。</p>
+<p>スケジューラーの呼び出しとワーカーの呼び出しはいずれも <code>dex_activity_task</code> に同時にアクセスする可能性があるため、スケジューラーは <a href="https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE"><code>FOR NO KEY UPDATE SKIP LOCKED</code></a> を使って、キューをまたいだロックの競合とデッドロックを回避します。</p>
+<h4 id="queue">キュー<a class="headerlink" href="#queue" title="Permanent link">¶</a></h4>
+<p>エンジンは、各タスクキューを PostgreSQL の別々のテーブルパーティションに格納します。パーティションは新しいキューが登録されたときに動的に作成されます。これにより、ワークロード間が分離され、データベースは各キューのデータを独立して管理できます。</p>
+<p>キューには、実行時に変更できる 2 つのプロパティがあります。</p>
+<ul>
+<li><strong>容量</strong>: 保留中のタスクの上限です。キューが容量に達するとスケジューラーはタスクの作成を停止し、バックプレッシャーをかけます。</li>
+<li><strong>ステータス</strong>: キューを一時停止して、スケジューラーが新しいタスクを追加しないようにできます。</li>
+</ul>
+<p>スケジューラーは各タスクに、ワークフロー実行から継承した優先度(0-100)を割り当てます。ワーカーは優先度の高いタスクから取得します。優先度が同じ場合は、作成順に取得します。</p>
+<h3 id="task-processing">タスクの処理<a class="headerlink" href="#task-processing" title="Permanent link">¶</a></h3>
+<h4 id="workflow-tasks">ワークフロータスク<a class="headerlink" href="#workflow-tasks" title="Permanent link">¶</a></h4>
+<p>スケジューラーは対象となるワークフロー実行をポーリングし、<code>dex_workflow_task</code> テーブルにタスクを挿入します。ワーカーはこのテーブルからポーリングしてワークフローを実行し、実行の状態と履歴を更新します。</p>
+<pre class="mermaid"><code>---
+title: Workflow task processing
+---
+sequenceDiagram
+    participant S as Scheduler
+    participant R as Runs
+    participant I as Inbox
+    participant T as Workflow tasks
+    participant W as Worker
+    participant H as History
+
+    Note over S: Leader node only
+    activate S
+    S -&gt;&gt; I: Visible messages?
+    I --&gt;&gt; S: Yes
+    S -&gt;&gt; R: Poll eligible runs
+    R --&gt;&gt; S: Run
+    S -&gt;&gt; T: INSERT task
+    deactivate S
+
+    Note over W: All nodes
+    activate W
+    W -&gt;&gt; T: SELECT ... FOR UPDATE SKIP LOCKED
+    T --&gt;&gt; W: Task
+    W -&gt;&gt; H: Load history
+    W -&gt;&gt; I: Drain visible messages
+    W -&gt;&gt; W: Execute workflow (with replay)
+    W -&gt;&gt; H: Append events
+    W -&gt;&gt; R: Update run status
+    W -&gt;&gt; T: DELETE task
+    deactivate W</code></pre>
+<p>各ワークフロータスクには、ワーカーが一定時間保持するロックがあり、その時間はワークフローごとに登録時に設定します。ワーカーはタスクを取得するときに <code>locked_until = now() + lockTimeout</code> を設定します。ワーカーがクラッシュした場合、<code>locked_until</code> を過ぎるとタスクはほかのワーカーから取得できるようになります。ワークフロータスクはハートビートをサポートしないため、ロックのタイムアウトはワークフロー本体の実時間の予算をカバーできる長さにする必要があります。短すぎると不要な再実行が発生します。長すぎると、クラッシュした作業が滞留したままになります。</p>
+<p>クラッシュ後、<code>dex_workflow_task</code> のパーティションのデータは失われます(<code>UNLOGGED</code> であるため)。明示的な復旧処理は実行されません。スケジューラーの次のポーリングサイクルで、可視のインボックスメッセージが残っているすべての実行についてタスクの行が作り直されます。</p>
+<h4 id="activity-tasks">アクティビティタスク<a class="headerlink" href="#activity-tasks" title="Permanent link">¶</a></h4>
+<p>アクティビティタスクを作成するのはスケジューラーではなく、ワークフローの実行です。スケジューラーは、<code>visible_from</code> タイムスタンプを過ぎたタスクを <code>CREATED</code> から <code>QUEUED</code> に遷移させ、ワーカーから見えるようにします。</p>
+<pre class="mermaid"><code>---
+title: Activity task processing
+---
+sequenceDiagram
+    participant S as Scheduler
+    participant T as Activity tasks
+    participant W as Worker
+    participant I as Inbox
+
+    Note over S: Leader node only
+    activate S
+    S -&gt;&gt; T: Poll CREATED tasks where visible_from &lt;= now()
+    S -&gt;&gt; T: UPDATE status → QUEUED
+    deactivate S
+
+    Note over W: All nodes
+    activate W
+    W -&gt;&gt; T: SELECT ... FOR UPDATE SKIP LOCKED
+    T --&gt;&gt; W: Task
+    W -&gt;&gt; W: Execute activity
+    W -&gt;&gt; I: Append completion message
+    W -&gt;&gt; T: DELETE task
+    deactivate W</code></pre>
+<p>長時間実行されるアクティビティは、ハートビートを送ってロックを延長できます。ハートビートは<a href="#buffering">ハートビートバッファー</a>を経由し、<code>locked_until</code> をバッチで更新します。ワーカーがクラッシュするかハートビートを停止すると、ロックが期限切れになり、別のワーカーがタスクを再取得します。これが「少なくとも 1 回」の契約です。1 回のワークフローの呼び出しに対してアクティビティが複数回実行される可能性があるため、アクティビティはべき等でなければなりません。</p>
+<h3 id="concurrency-control">同時実行制御<a class="headerlink" href="#concurrency-control" title="Permanent link">¶</a></h3>
+<p>エンジンは、いくつかのしくみによってタスク実行の並行性を制御します。</p>
+<h4 id="local">ローカル<a class="headerlink" href="#local" title="Permanent link">¶</a></h4>
+<p>各ワーカーは、同時に実行するタスクの数に上限を設けます。ワーカーは空き容量の分だけタスクをポーリングし、処理しきれない量の作業を取得しないようにします。</p>
+<p>これは、単一ノードでのタスク実行の並列度を制御します。値を小さくするとリソースの消費は減りますが、レイテンシーが増える場合があります。値を大きくするとスループットは上がりますが、メモリーと CPU の使用量が増えます。</p>
+<h4 id="global">グローバル<a class="headerlink" href="#global" title="Permanent link">¶</a></h4>
+<p>タスクキューの容量は、クラスター全体で保留できるタスクの数を制限します。キューが容量に達すると、スケジューラーはそのキューに新しいタスクを作成しなくなり、システムにバックプレッシャーがかかります。</p>
+<p>これにより、負荷の急増時にキューが際限なく大きくなることを防ぎます。ワークフロー実行は容量が空くまで現在の状態のまま待機し、容量が空いた時点でスケジューラーがそれらのタスクの作成を再開します。</p>
+<h4 id="per-concurrency-key">同時実行キーごと<a class="headerlink" href="#per-concurrency-key" title="Permanent link">¶</a></h4>
+<p>スケジューラーは、<code>concurrency_key</code> を共有する実行を直列化します。あるキーの実行がすでに処理中の場合、そのキーについて 2 つ目の <code>RUNNING</code>/<code>SUSPENDED</code> の実行を開始しません。一意な部分インデックスが、データベース層でこの不変条件を強制します。</p>
+<p>同じキーを持つ <code>CREATED</code> の実行の間では、スケジューラーは <code>(priority DESC, id ASC)</code> の順にディスパッチします。同じキーで優先度の高い実行が絶え間なく続くと、優先度の低い実行がいつまでも飢餓状態になる可能性があります。同時実行キーは実行を直列化しますが、公平性は提供しません。</p>
+<h4 id="per-workflow-instance">ワークフローインスタンスごと<a class="headerlink" href="#per-workflow-instance" title="Permanent link">¶</a></h4>
+<p>同時実行キーが実行を直列化するのに対し、<a href="#workflow-instance">ワークフローインスタンス ID</a>は実行の<em>重複を排除</em>します。<code>workflow_instance_id</code> の一意な部分インデックスにより、クラスター全体で同じインスタンス ID を共有する非終了状態の実行が 2 つ存在しないことが、データベース層で強制されます。エンジンは、非終了状態の実行がすでにあるインスタンス ID で 2 つ目の実行を開始しようとする試みを、タスクをスケジュールする前に拒否します。</p>
+<p>そのため、実行を作成する側(UI の操作、API クライアント、内部のスケジューラー)は、べき等性のための自然なプリミティブを利用できます。意味のあるインスタンス ID(たとえばプロジェクトの識別子)を選ぶと、繰り返されたトリガーが 1 つの処理中の実行にまとめられます。これにより、ユーザーが同じボタンを繰り返しクリックしたり、HTTP クライアントが応答を受け取れなかったリクエストを再試行したりといった、作業の重複のよくある原因に対してエンジンが強くなります。</p>
+<h4 id="stickiness">スティッキネス<a class="headerlink" href="#stickiness" title="Permanent link">¶</a></h4>
+<p>エンジンは、タスクごとに <code>sticky_to</code> / <code>sticky_until</code> というヒントも追跡します。ワーカーがタスクを完了した後、同じ実行の次のタスクを同じノードで処理することを優先し、<a href="#history-cache">履歴キャッシュ</a>などのプロセス内キャッシュを活かします。スティッキネスはベストエフォートで、期限切れになります(アフィニティの保証ではなく、ヒントです)。</p>
+<h3 id="buffering">バッファリング<a class="headerlink" href="#buffering" title="Permanent link">¶</a></h3>
+<p>ほかの多くの永続実行エンジンやワークフローエンジンとは異なり、このエンジンは特定の書き込み操作をバッファリングし、バッチでデータベースにフラッシュします。これにより、エンジンとデータベースの間のネットワークのラウンドトリップが減り、トランザクションのオーバーヘッドが分散されます。</p>
+<p>すべての永続実行エンジンに共通する性質として、アクションが<em>実行</em>されてから(たとえば HTTP リクエストを発行する)、その結果が<em>記録</em>される(たとえばデータベースに書き込む)までには、必ず時間の隔たりがあります。結果の記録に失敗した場合、エンジンはアクション自体が起こらなかったものとみなすしかありません。これをアトミックにするしくみは存在しません。これが、アクションを複数回実行しても安全なように<a href="https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning">べき等</a>にすべき理由の 1 つです。エンジンはこの本質的なリスクを逆手に取り、まさにその時間の隔たりの中でバッファリングを行います。</p>
+<p>バッファーをフラッシュするとき、エンジンは <a href="https://www.tigerdata.com/blog/boosting-postgres-insert-performance">PostgreSQL 固有の最適化</a>を適用し、<em>データベース内</em>で費やす時間をさらに短縮します。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>これは、レイテンシーよりもスループットを、正確さよりも効率を重視するトレードオフです。</p>
+<ul>
+<li>スループットは向上しますが、エンドツーエンドのレイテンシーは最大でフラッシュ間隔 1 回分だけ増加します。</li>
+<li>書き込みをバッチでフラッシュすると、障害時の影響範囲が大きくなるリスクがあります。</li>
+</ul>
+</div>
+<p>Dependency-Track はレイテンシーに敏感なシステムではありません。ワークフローの完了を数秒待つことは許容できます。それよりも、データベースの CPU と I/O を急上昇させる小さなトランザクションを大量に発生させないことのほうが重要です。</p>
+<p>PostgreSQL は無限にスケールするわけではありませんが、スループットと効率に最適化したシステムを設計することで、スケーリングの上限を高く保てます。</p>
+<p>エンジンは、次の 3 つの操作をそれぞれ独立してバッファリングします。</p>
+<ul>
+<li><strong>アクティビティタスクのハートビート</strong>: 長時間実行されるアクティビティタスクからのハートビートです。</li>
+<li><strong>外部イベント</strong>: エンジンの外部からワークフロー実行に送られるメッセージです。</li>
+<li><strong>タスクイベント</strong>: ワークフロータスクとアクティビティタスクの実行結果です。</li>
+</ul>
+<pre class="mermaid"><code>---
+title: Buffer write paths
+---
+flowchart LR
+    subgraph Producers
+        direction TB
+        EX["External caller"]
+        WW["Workflow worker"]
+        AW["Activity worker"]
+    end
+
+    subgraph Buffers
+        direction TB
+        EEB[["External-event buffer"]]
+        TEB[["Task-event buffer"]]
+        HBB[["Heartbeat buffer"]]
+    end
+
+    subgraph Database
+        direction TB
+        R[("Workflow runs")]
+        H[("Workflow run history")]
+        I[("Workflow inbox")]
+        WT[("Workflow tasks")]
+        AT[("Activity tasks")]
+    end
+
+    EX --&gt; EEB
+    WW --&gt; TEB
+    AW --&gt; TEB
+    AW --&gt; HBB
+
+    EEB --&gt; I
+    TEB --&gt; R
+    TEB --&gt; H
+    TEB --&gt; WT
+    TEB --&gt; AT
+    TEB --&gt; I
+    HBB --&gt; AT</code></pre>
+<p>タスクイベントバッファーは、エンジンの主要なコミット経路です。ワークフロータスクの完了(履歴の追記、実行ステータスの更新、タスクの削除、送信するインボックスメッセージ、アクティビティタスクの作成)と、アクティビティタスクの完了(インボックスメッセージ、タスクの削除または再試行のための更新)を運びます。ハートビートバッファーが運ぶのは、ロックを延長する更新のみです。外部イベントバッファーは、エンジンの外部の呼び出し元からのインボックスへの挿入を運びます。</p>
+<p>各バッファーはサーキットブレーカーで保護されています。バッファーのフラッシュが設定されたしきい値を超えて失敗したり遅くなったりし始めると、ブレーカーが開きます。その結果、次の 2 つのことが起こります。</p>
+<ul>
+<li>新たに送信された項目は、いつまでもキューで待機するのではなく、すぐに失敗します。ブレーカーが開いている間、配信はベストエフォートになります。エンジンは失敗を黙って吸収するのではなく、表面化させます。</li>
+<li>完了やハートビートが影響を受けたバッファーを経由するタスクワーカーは、データベースへの新しい作業のポーリングを停止します。ワークフローワーカーはタスクイベントバッファーの状態に応じて停止します。アクティビティワーカーは、タスクイベントバッファーとハートビートバッファーの両方の状態に応じて停止します。これにより、バックプレッシャーがタスクテーブルまで伝わります。ブレーカーが回復するまで、不健全なデータベースはそれ以上の作業を払い出さなくなります。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>バッファーのフラッシュ間隔とバッチサイズは設定できます。</p>
+<ul>
+<li><a href="../../../../reference/configuration/properties/#dtdex-engineactivity-task-heartbeat-bufferflush-interval-ms"><code>dt.dex-engine.activity-task-heartbeat-buffer.flush-interval-ms</code></a></li>
+<li><a href="../../../../reference/configuration/properties/#dtdex-engineactivity-task-heartbeat-buffermax-batch-size"><code>dt.dex-engine.activity-task-heartbeat-buffer.max-batch-size</code></a></li>
+<li><a href="../../../../reference/configuration/properties/#dtdex-engineexternal-event-bufferflush-interval-ms"><code>dt.dex-engine.external-event-buffer.flush-interval-ms</code></a></li>
+<li><a href="../../../../reference/configuration/properties/#dtdex-engineexternal-event-buffermax-batch-size"><code>dt.dex-engine.external-event-buffer.max-batch-size</code></a></li>
+<li><a href="../../../../reference/configuration/properties/#dtdex-enginetask-event-bufferflush-interval-ms"><code>dt.dex-engine.task-event-buffer.flush-interval-ms</code></a></li>
+<li><a href="../../../../reference/configuration/properties/#dtdex-enginetask-event-buffermax-batch-size"><code>dt.dex-engine.task-event-buffer.max-batch-size</code></a></li>
+</ul>
+<p>間隔を短くすると、データベースの使用率が上がる代わりに、エンドツーエンドのレイテンシーが短くなります。</p>
+</div>
+<h3 id="history-cache">履歴キャッシュ<a class="headerlink" href="#history-cache" title="Permanent link">¶</a></h3>
+<p>ワークフロータスクのたびに履歴を読み直さずに済むよう、各ノードは <code>(workflow_run_id, continued_as_new_generation)</code> をキーとするプロセス内キャッシュを保持します。ノードは、実行を完了したときに自身のローカルキャッシュのエントリーを無効化します。ノード間の一貫性は維持されません。タスクを取得したノードは、必ずタスクの楽観的ロックのもとで履歴を読み込み直します。正しさを保証するのはキャッシュの鮮度ではなく、ロックのバージョンチェックです。キャッシュはレイテンシーの最適化であり、一貫性のためのしくみではありません。</p>
+<h3 id="maintenance">メンテナンス<a class="headerlink" href="#maintenance" title="Permanent link">¶</a></h3>
+<p>リーダーでのみ動作するメンテナンスワーカーが、<a href="../../../../reference/configuration/properties/#dtdex-enginemaintenancerun-retention-ms"><code>dt.dex-engine.maintenance.run-retention-ms</code></a> より古い終了済みのワークフロー実行を定期的に削除します。削除は、アクティブなワークロードと共存できるよう <code>FOR NO KEY UPDATE SKIP LOCKED</code> を使い、<a href="../../../../reference/configuration/properties/#dtdex-enginemaintenancerun-deletion-batch-size"><code>dt.dex-engine.maintenance.run-deletion-batch-size</code></a> 行ずつのバッチで行われます。カスケードする外部キーにより、関連する履歴、インボックス、タスクの行が同じトランザクションで削除されます。</p>
+<p>保持期間を設けないと、履歴は単調に増え続けます。長期間存続するワークフローでは、<a href="#side-effects-and-continueasnew"><code>continueAsNew</code></a> も使って実行内の履歴を切り詰めてください。</p>
+<h2 id="retry-and-failure-handling">再試行と障害の処理<a class="headerlink" href="#retry-and-failure-handling" title="Permanent link">¶</a></h2>
+<p>エンジンは <code>dex</code> の障害を、アクティビティごとの再試行と、実行ごとの終了時の結果という 2 つの層に分けて扱います。</p>
+<h3 id="activity-retries">アクティビティの再試行<a class="headerlink" href="#activity-retries" title="Permanent link">¶</a></h3>
+<p>エンジンは、失敗したアクティビティを自動的に再試行します。再試行の動作は、呼び出しごとの再試行ポリシーによって決まります。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">パラメーター</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Initial delay</td>
+<td style="text-align: left;">最初の再試行までの遅延</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delay multiplier</td>
+<td style="text-align: left;">指数バックオフの係数</td>
+</tr>
+<tr>
+<td style="text-align: left;">Randomization factor</td>
+<td style="text-align: left;">サンダリングハード問題を防ぐためのジッター</td>
+</tr>
+<tr>
+<td style="text-align: left;">Max delay</td>
+<td style="text-align: left;">再試行の遅延の上限</td>
+</tr>
+<tr>
+<td style="text-align: left;">Max attempts</td>
+<td style="text-align: left;">試行回数の上限</td>
+</tr>
+</tbody>
+</table>
+<p>スケジューラーは、タスクの <code>visible_from</code> タイムスタンプを更新することで再試行をキューに入れます。タスクは再試行の遅延が経過するまでワーカーから見えず、経過した時点でアクティビティタスクスケジューラーがタスクを <code>QUEUED</code> に戻します。</p>
+<p>エンジンは障害を次の 2 つのカテゴリに分類します。</p>
+<ul>
+<li><strong>終了障害</strong>は、再試行をただちに停止します。</li>
+<li><strong>再試行可能な障害</strong>は、試行回数が上限に達するまで再試行のしくみを起動します。上限に達した時点で、エンジンは <code>ActivityTaskFailed</code> イベントをワークフローのインボックスに送ります。ワークフローは、アクティビティの結果を待機していた箇所でその失敗を観測します。</li>
+</ul>
+<h3 id="workflow-failures">ワークフローの障害<a class="headerlink" href="#workflow-failures" title="Permanent link">¶</a></h3>
+<p>ワークフローのコードが未処理の例外を発生させると、実行は <code>FAILED</code> に遷移し、<code>RunCompleted</code> イベントがその失敗を記録します。親の実行は、子のハンドルを待機している箇所で子の失敗を観測します。</p>
+<p>ワークフローのコードが決定性に違反した場合(たとえば、リプレイ時に履歴にあるものとは異なるアクティビティ呼び出しを発行した場合)、エンジンは決定性エラーで実行を失敗させます。</p>
+<h3 id="cancellation-suspension-and-resumption">キャンセル、一時停止、再開<a class="headerlink" href="#cancellation-suspension-and-resumption" title="Permanent link">¶</a></h3>
+<p>キャンセル、一時停止、再開の操作は、<code>dex_workflow_inbox</code> に制御メッセージを入れます。実行の次のワークフロータスクが、対応する効果(<code>RunCanceled</code>、<code>RunSuspended</code>、<code>RunResumed</code>)を適用します。これらの操作は<strong>結果整合性</strong>です。処理中のタスクは、キャンセルが有効になる前に完了する場合があります。</p>
+<h2 id="noteworthy-design-decisions">注目すべき設計上の判断<a class="headerlink" href="#noteworthy-design-decisions" title="Permanent link">¶</a></h2>
+<p>このエンジンは、今日の永続実行エンジンに共通する PostgreSQL に適した手法と、Dependency-Track に特有のいくつかの選択を組み合わせています。</p>
+<h3 id="distinguishing-choices">特徴的な選択<a class="headerlink" href="#distinguishing-choices" title="Permanent link">¶</a></h3>
+<p>次の表の各行は、このエンジンを同等の永続実行エンジンと差別化する意図的な設計上の選択と、その選択がもたらす具体的なトレードオフを示しています。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">判断</th>
+<th style="text-align: left;">利点</th>
+<th style="text-align: left;">トレードオフ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">アプリケーションの <abbr title="Java Virtual Machine">JVM</abbr> に組み込む</td>
+<td style="text-align: left;">デプロイ、管理、アップグレードが必要な 2 つ目のサービスがありません。ワーカーはデータベースを直接ポーリングするため、ネットワークやシリアライズを経由する余分なホップがありません。</td>
+<td style="text-align: left;"><abbr title="Java Virtual Machine">JVM</abbr> と PostgreSQL に依存します。言語に依存しない SDK はありません。</td>
+</tr>
+<tr>
+<td style="text-align: left;">決定的なリプレイを伴う、コードとしてのワークフロー</td>
+<td style="text-align: left;">同期的な Java と見分けがつかない、フォールトトレラントな制御フロー。DSL も、メッセージの形の設計も、オーケストレーションサービスも不要です。</td>
+<td style="text-align: left;">ワークフローの作成者は決定性を理解している必要があります。後方互換性を保ったワークフローの進化は容易ではありません。</td>
+</tr>
+<tr>
+<td style="text-align: left;">PostgreSQL 内の単一のトランザクション境界</td>
+<td style="text-align: left;">履歴の追記、実行状態の遷移、インボックスの取り出し、送信メッセージの発行がすべてまとめてコミットされます。アウトボックスは不要です。</td>
+<td style="text-align: left;">PostgreSQL に依存します。データベースをまたぐトランザクションは使えません。</td>
+</tr>
+<tr>
+<td style="text-align: left;">サーキットブレーカーで保護された、バッファリングされる書き込み経路</td>
+<td style="text-align: left;">小さな書き込みをまとめ、コミットのコストを分散し、データベースに負荷がかかったときにバックプレッシャーをかけます。</td>
+<td style="text-align: left;">バッファーのフラッシュに失敗すると、多数の future が一度に失敗します。レイテンシーは最大でフラッシュ間隔 1 回分だけ増加します。</td>
+</tr>
+<tr>
+<td style="text-align: left;">ファーストクラスのプリミティブとしてのクラスター全体のキュー容量</td>
+<td style="text-align: left;">スケジューラーの挿入によって強制される、キューごとの保留中タスクの厳格な上限。ワーカーの数にかかわらず予測可能なバックプレッシャーがかかります。</td>
+<td style="text-align: left;">キューがいっぱいになると、プロデューサーが停滞する可能性があります。<code>CREATED</code> 状態の実行は、進行するまで待たされることがあります。</td>
+</tr>
+<tr>
+<td style="text-align: left;">ファーストクラスのプリミティブとしての同時実行キーによる直列化</td>
+<td style="text-align: left;">キーごとの順序どおりの実行をエンジンのプリミティブとして提供し、一意な部分インデックスによってデータベースで強制します。アプリケーションのコードで作り直す必要はありません。</td>
+<td style="text-align: left;">キー間の公平性はありません。優先度に偏りがあると、キーを共有する優先度の低い実行が飢餓状態になる可能性があります。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation-techniques">実装の手法<a class="headerlink" href="#implementation-techniques" title="Permanent link">¶</a></h3>
+<p>次の手法は、PostgreSQL をバックエンドとする最近の永続実行エンジンに共通するものですが、スケーリングを検討するうえで知っておく価値があります。</p>
+<ul>
+<li><code>dex_workflow_task</code> と <code>dex_lease</code> の <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED"><code>UNLOGGED</code></a> パーティション。最も更新頻度の高いオブジェクトの <a href="https://www.postgresql.org/docs/current/wal-intro.html">WAL</a> コストを削減します。スケジューラーは、クラッシュ後に永続的な状態からワークフロータスクを再構築します。</li>
+<li>ハッシュパーティション分割された <code>dex_workflow_history</code>(8 パーティション)。連続する UUIDv7 の挿入を分散させ、<a href="https://www.postgresql.org/docs/current/btree.html">B-tree</a> の右端のページでの競合を回避します。</li>
+<li>キューごとにリストパーティション分割されたタスクテーブル。ワーカーは小さなパーティションをスキャンします。キューの容量と一時停止は、パーティション単位の関心事になります。</li>
+<li>スケジューラーやワーカーが取得する行を選択するすべての箇所での <code>FOR NO KEY UPDATE SKIP LOCKED</code>。</li>
+<li><code>LISTEN</code>/<code>NOTIFY</code> の代わりの <code>Polling + intra-node nudge</code>。コネクションプーラーと互換性があり、コミットがグローバルに直列化されることもありません。</li>
+<li><a href="https://docs.oracle.com/en/java/javase/25/core/virtual-threads.html">仮想スレッド</a>上でのタスク実行。ワーカーは、リソースのフットプリントを小さく保ちながら、多数の処理中のタスクを同時に保持できます。</li>
+<li>イベント、引数、結果の Protobuf によるシリアライズ。コンパクトで、スキーマを進化させられます。トレードオフとして、テーブルを調べるときにイベントを人間が読める形では確認できません。</li>
+</ul>
+<h3 id="why-not-listennotify"><code>LISTEN</code>/<code>NOTIFY</code> を使わない理由<a class="headerlink" href="#why-not-listennotify" title="Permanent link">¶</a></h3>
+<p>エンジンは次の理由から、<a href="https://www.postgresql.org/docs/current/sql-listen.html"><code>LISTEN</code></a> / <a href="https://www.postgresql.org/docs/current/sql-notify.html"><code>NOTIFY</code></a> を検討したうえで採用しませんでした。</p>
+<ul>
+<li><code>LISTEN</code> にはデータベースへの永続的な直接接続が必要であり、コネクションプーラーとの相性がよくありません。</li>
+</ul>
+<!-- vale write-good.Passive = NO -->
+<ul>
+<li>
+<blockquote>
+<p>トランザクション中に NOTIFY クエリーが発行されると、トランザクションのコミットフェーズ中にデータベース全体に対するグローバルロックを取得し […]、実質的にすべてのコミットを直列化します。(<a href="https://www.recall.ai/blog/postgres-listen-notify-does-not-scale">出典</a>)</p>
+</blockquote>
+</li>
+</ul>
+<!-- vale write-good.Passive = YES -->
+
+<p>代わりに、エンジンはポーリングを行い、スケジューラーとワーカーの間でプロセス内の通知を使ってアイドル時のレイテンシーを低く保ちます。</p>
+<h2 id="references">参考文献<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<ul>
+<li>ADR-002: Workflow Orchestration</li>
+<li><a href="https://temporal.io/">Temporal</a></li>
+<li><a href="https://github.com/Azure/durabletask">Durable Task Framework</a></li>
+</ul>
+<h3 id="further-reading">関連項目<a class="headerlink" href="#further-reading" title="Permanent link">¶</a></h3>
+<p>ベンダーによる永続実行モデルの紹介:</p>
+<ul>
+<li><a href="https://temporal.io/blog/what-is-durable-execution">What is durable execution?</a>(Temporal)</li>
+<li><a href="https://www.restate.dev/what-is-durable-execution">What is durable execution?</a>(Restate)</li>
+</ul>
+<p>Jack Vanlightly の「Theory of Durable Execution」シリーズは、このモデルを第一原理から論じており、このページで説明した設計上の選択を理解するための背景知識として役立ちます。</p>
+<ul>
+<li><a href="https://jack-vanlightly.com/blog/2025/11/24/demystifying-determinism-in-durable-execution">Demystifying determinism in durable execution</a>: リプレイ中に決定的な制御フローが保たれなければならない一方で、副作用はべき等でありさえすればよい理由。</li>
+<li><a href="https://jack-vanlightly.com/blog/2025/12/4/the-durable-function-tree-part-1">The durable function tree, part 1</a> と <a href="https://jack-vanlightly.com/blog/2025/12/4/the-durable-function-tree-part-2">part 2</a>: リモート操作に中断点を持つ永続関数の階層による、関数の合成。</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター">
+        
+          
+          <a href="../../deployment/" class="md-footer__link md-footer__link--prev" aria-label="前: デプロイのトポロジー">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                デプロイのトポロジー
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../extensibility/" class="md-footer__link md-footer__link--next" aria-label="次: 拡張性">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                拡張性
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © OWASP Foundation. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://dependencytrack.org" target="_blank" rel="noopener" title="Website" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/DependencyTrack/community#community-meetings" target="_blank" rel="noopener" title="Monthly community meeting" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h32c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128c0-35.3 28.7-64 64-64h32V32c0-17.7 14.3-32 32-32M64 240v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16m128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM64 368v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://dependencytrack.org/slack" target="_blank" rel="noopener" title="dependencytrack.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DependencyTrack" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/u/dependencytrack" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/owasp-dependency-track" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://infosec.exchange/@DependencyTrack" target="_blank" rel="noopener me" title="infosec.exchange" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54-.6-4.6-.9-9.3-.9-13.9 85.6 20.9 158.7 9.1 178.7 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6V190.1c0-49.7-64-51.6-64 6.9v62.5H201V197c0-58.5-64-56.6-64-6.9v114.2H90.3c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@DependencyTrack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+  
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=4e38a992-0670-4e48-a193-edd89b6482d0" alt="" width="1" height="1" style="display:none;">
+  
+
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

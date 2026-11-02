@@ -1,0 +1,3988 @@
+<!DOCTYPE html><html lang="ja" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/migrating-from-v4/">
+      
+      
+        <link rel="prev" href="../upgrading-instances/">
+      
+      
+        <link rel="next" href="../running-v4-and-v5-in-parallel/">
+      
+      
+        
+          <link rel="alternate" href="../../../../guides/administration/migrating-from-v4/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>v4 から v5 に移行する - Dependency-Track</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="v4 から v5 に移行する - Dependency-Track">
+<meta property="og:image" content="https://dependencytrack.github.io/docs/next/assets/images/social/ja/guides/administration/migrating-from-v4.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://dependencytrack.github.io/docs/next/ja/guides/administration/migrating-from-v4/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="v4 から v5 に移行する - Dependency-Track">
+<meta property="twitter:image" content="https://dependencytrack.github.io/docs/next/assets/images/social/ja/guides/administration/migrating-from-v4.png">
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#v4-v5" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../../" title="Dependency-Track" class="md-header__button md-logo" aria-label="Dependency-Track" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dependency-Track
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              v4 から v5 に移行する
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../guides/administration/migrating-from-v4/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DependencyTrack/dependency-track" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    DependencyTrack/dependency-track
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  チュートリアル
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ガイド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  コンセプト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  リファレンス
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../" title="Dependency-Track" class="md-nav__button md-logo" aria-label="Dependency-Track" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Dependency-Track
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DependencyTrack/dependency-track" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    DependencyTrack/dependency-track
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../tutorials/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    チュートリアル
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ガイド
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../user/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ユーザーガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/uploading-boms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BOM をアップロードする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/organizing-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロジェクトを階層に整理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-project-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロジェクトのバージョンを管理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-component-policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コンポーネントポリシーを管理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/triaging-policy-violations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ポリシー違反をトリアージする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-vulnerability-policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脆弱性ポリシーを管理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/exchanging-vex-documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VEX ドキュメントを交換する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-private-vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非公開の脆弱性を管理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/configuring-notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知アラートを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/managing-secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シークレットを管理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    管理者ガイド
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    管理者ガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploying-to-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    本番環境にデプロイする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploying-to-kubernetes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes にデプロイする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    スケーリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データベースを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-secret-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シークレット管理を設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-internal-ca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    社内 CA の信頼を設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-http-proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP プロキシを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-timezone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    タイムゾーンを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-banner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バナーを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-vulnerability-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脆弱性データソースを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-kev-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KEV データソースを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../running-air-gapped/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エアギャップ環境で運用する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    オブザーバビリティを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-ldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LDAP を設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-oidc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenID Connect を設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-workload-identity-federation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ワークロード ID フェデレーションを設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managing-notification-templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知テンプレートを管理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging-notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    届かない通知をデバッグする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring-project-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロジェクトの保持期間を設定する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backing-up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バックアップと復元
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrading-instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    稼働中のインスタンスをアップグレードする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v4 から v5 に移行する
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v4 から v5 に移行する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-migration-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行のしくみ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        始める前に
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-postgres-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推奨される Postgres のチューニング
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行を実行する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="移行を実行する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-apply-the-v5-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. v5 のスキーマを適用する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verify-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 移行先を検証する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ドライラン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extract-transform-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 抽出、変換、ロード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sample-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. サンプルモード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verify-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 結果を検証する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-drop-staging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ステージングを削除する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossy-and-non-obvious-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        情報が失われる変更とわかりにくい変更
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="情報が失われる変更とわかりにくい変更">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#username-collisions-across-user-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザーの種類をまたいだユーザー名の衝突
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-records-without-a-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザー名のないユーザーレコード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v5-only-permissions-granted-from-v4-counterparts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v4 の対応する権限から付与される v5 専用の権限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedup-of-teams-oidc-groups-and-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        チーム、OIDC グループ、タグの重複排除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-deduplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロジェクトの重複排除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-activity-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロジェクトのアクティブ状態
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulnerability-epss-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脆弱性の EPSS の値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メトリクスの保持期間
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-rule-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通知ルールの設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-analyzer-and-vulnerability-source-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パッケージリポジトリ、アナライザー、脆弱性データソースの認証情報
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypted-property-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        暗号化されたプロパティ値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-values-of-unknown-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        型が不明なプロパティ値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分類子の値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purl-filtering-for-package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パッケージメタデータの PURL によるフィルタリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        削除されたテーブル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#malformed-uuids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不正な形式の UUID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mssql-case-folded-uniqueness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MSSQL の大文字小文字を区別しない一意性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-behavior-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実行時の動作の変更
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実行時の動作の変更">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inactive-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        非アクティブな検出結果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パフォーマンスとオブザーバビリティ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="パフォーマンスとオブザーバビリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-completion-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フェーズの完了を示す行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再開性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovering-from-a-failed-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗したロードから復旧する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-the-migrated-data-to-its-production-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行したデータを本番の移行先に移す
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-do-after-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行後に行うこと
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連項目
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../running-v4-and-v5-in-parallel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v4 と v5 を並行して運用する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../upgrading/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アップグレードガイド
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    アップグレードガイド
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.2.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.2.0 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.1.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.1.1 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.1.0 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.0.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.0.5 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.0.0-rc.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.0.0-rc.2 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v5.0.0-rc.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.0.0-rc.1 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0-alpha.9 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0-alpha.8 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0-alpha.6 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0-alpha.5 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0-alpha.4 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.7.0-alpha.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0-alpha.3 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrading/v0.6.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.6.0 へのアップグレード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../concepts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コンセプト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../reference/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リファレンス
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-migration-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行のしくみ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        始める前に
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-postgres-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推奨される Postgres のチューニング
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行を実行する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="移行を実行する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-apply-the-v5-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. v5 のスキーマを適用する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verify-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 移行先を検証する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ドライラン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extract-transform-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 抽出、変換、ロード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-sample-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. サンプルモード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verify-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 結果を検証する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-drop-staging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ステージングを削除する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossy-and-non-obvious-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        情報が失われる変更とわかりにくい変更
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="情報が失われる変更とわかりにくい変更">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#username-collisions-across-user-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザーの種類をまたいだユーザー名の衝突
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-records-without-a-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザー名のないユーザーレコード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v5-only-permissions-granted-from-v4-counterparts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v4 の対応する権限から付与される v5 専用の権限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedup-of-teams-oidc-groups-and-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        チーム、OIDC グループ、タグの重複排除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-deduplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロジェクトの重複排除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-activity-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロジェクトのアクティブ状態
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulnerability-epss-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脆弱性の EPSS の値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メトリクスの保持期間
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-rule-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通知ルールの設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-analyzer-and-vulnerability-source-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パッケージリポジトリ、アナライザー、脆弱性データソースの認証情報
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encrypted-property-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        暗号化されたプロパティ値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-values-of-unknown-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        型が不明なプロパティ値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分類子の値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purl-filtering-for-package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パッケージメタデータの PURL によるフィルタリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        削除されたテーブル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#malformed-uuids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不正な形式の UUID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mssql-case-folded-uniqueness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MSSQL の大文字小文字を区別しない一意性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-behavior-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実行時の動作の変更
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実行時の動作の変更">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inactive-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        非アクティブな検出結果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パフォーマンスとオブザーバビリティ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="パフォーマンスとオブザーバビリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-completion-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フェーズの完了を示す行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再開性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovering-from-a-failed-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗したロードから復旧する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-the-migrated-data-to-its-production-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行したデータを本番の移行先に移す
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-do-after-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移行後に行うこと
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連項目
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ガイド
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    管理者ガイド
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="v4-v5">v4 から v5 に移行する<a class="headerlink" href="#v4-v5" title="Permanent link">¶</a></h1>
+<p>このガイドでは、Dependency-Track v4(Postgres または Microsoft SQL Server)の本番データを、新しい Dependency-Track v5 インスタンス(Postgres のみ)に移す手順を説明します。</p>
+<p>移行は、<code>v4-migrator</code> コマンドラインツールで実行する、1 回限りのオフライン作業です。このツールは v4 のデータベースから行を抽出し、v5 のデプロイを支える Postgres クラスター内で変換して、v5 のスキーマにロードします。移行中、v4 はオフラインにしておく必要があります。ツールは v4 のソースに書き込みません。</p>
+<p>v5 のデプロイを v5 のリリース間で更新するだけであれば、このガイドは対象外です。代わりに<a href="../../upgrading/">リリースごとのアップグレードガイド</a>を参照してください。</p>
+<p>移行に踏み切る前に実際のワークロードで v5 を試すには、<a href="../running-v4-and-v5-in-parallel/">v4 と v5 を並行して運用する</a>を参照してください。</p>
+<p>本番の切り替えの前に、サンドボックスの v5 スタックに対してこの移行を最初から最後まで通して試すには、<a href="../../../tutorials/rehearsing-the-v4-migration/">v4 から v5 への移行をリハーサルする</a>を参照してください。</p>
+<div class="admonition warning">
+<p class="admonition-title">v5 では設定プロパティと環境変数の名前が変わっています</p>
+<p>v5 では多くの設定プロパティとその環境変数の名前が変更され、v4 の名前は受け付けられなくなりました。移行ツールが移すのはデータであり、デプロイの設定ではないため、v5 の API サーバーの設定は新しい名前で作り直す必要があります。現在のプロパティ名と環境変数名については、<a href="../../../reference/configuration/properties/">設定リファレンス</a>を参照してください。</p>
+</div>
+<p>Kubernetes 環境で Dependency-Track を実行している場合は、<a href="https://github.com/DependencyTrack/helm-charts/blob/main/charts/dependency-track/UPGRADING.md">Helm チャート</a>内の <code>UPGRADING.md</code> ガイドを参照してください。</p>
+<h2 id="how-the-migration-works">移行のしくみ<a class="headerlink" href="#how-the-migration-works" title="Permanent link">¶</a></h2>
+<p><code>v4-migrator</code> コマンドラインツールは、v5 のデプロイの Postgres の移行先に対して、3 つのオフラインフェーズ(<strong>extract</strong>、<strong>transform</strong>、<strong>load</strong>)を実行します。v4 のソースの行は、まず v5 のクラスター内にある専用の<strong>ステージングスキーマ</strong>(<code>dt_v4_migration</code>)に入り、移行ツールがそこで v5 の形に変換します。最終的な v5 のスキーマに書き込むのはロードフェーズだけです。v5 の apiserver は、ロードと検証が終わるまでオフラインのままにします。その後、ステージングスキーマを削除して apiserver を起動します。</p>
+<pre class="mermaid"><code>flowchart LR
+    V4[(v4 database&lt;br/&gt;Postgres or MSSQL)]
+    subgraph V5[Postgres cluster&lt;br/&gt;backing v5]
+        STG[[staging schema&lt;br/&gt;dt_v4_migration]]
+        FIN[(v5 schema)]
+    end
+    APP[v5 apiserver]
+    V4 -- "1. extract" --&gt; STG
+    STG -- "2. transform" --&gt; STG
+    STG -- "3. load" --&gt; FIN
+    FIN -. "4. start after verify" .-&gt; APP</code></pre>
+<h2 id="before-you-start">始める前に<a class="headerlink" href="#before-you-start" title="Permanent link">¶</a></h2>
+<p>次の条件を満たしていることを確認します。</p>
+<ul>
+<li><strong>ソースのバージョン。</strong> v4 インスタンスは <strong>4.14.2 以降</strong>である必要があります。移行ツールは、このリリースのスキーマとデータの形を前提としています。それより前のバージョンはサポートされておらず、失敗したり、壊れた出力を警告なしに生成したりする可能性があります。移行ツールを実行する前に、v4 を 4.14.2 以降にアップグレードします。</li>
+<li><strong>ソース。</strong> v4 のデータベースが Postgres(v4 がサポートする任意のバージョン)または Microsoft SQL Server 2016 以降で動作していること。H2 はサポートされていません。始める前に v4 の API サーバーを停止します。ツールはソースに書き込みませんが、v4 から同時に書き込みが行われると、抽出結果に不整合が生じます。</li>
+<li><strong>移行先。</strong> v5 インスタンス専用の Postgres 14 以降のクラスターが、データを受け入れられる状態であること。v5 のデータベーススキーマは、移行ツールの <code>bootstrap</code> ステップが適用します。移行先のクラスターを用意する方法については、<a href="../configuring-database/">データベースを設定する</a>を参照してください。移行ツールを実行する前に、v5 の apiserver を移行先に対して起動しないでください。起動すると、移行ツールが v4 から投入する必要のあるテーブルに、apiserver の初期データ投入タスクがデータを入れてしまいます。移行ツールは、同梱しているスキーマバージョン以外のスキーマに対しては実行を拒否します。移行先にすでにユーザーデータがある場合も同様です。</li>
+<li><strong>データベースユーザー。</strong> 移行ツールには、移行後に v5 の apiserver が使うものと同じデータベースユーザーを使います。<em>または</em>、移行ツールが作成するすべてのオブジェクトの所有権を apiserver のユーザーに付与します。apiserver はリリースごとに後続のスキーマのマイグレーションを適用するため、v5 のスキーマとそのテーブルに対する DDL 権限が必要です。ここで不一致があると、移行時ではなく、後で v5 をアップグレードしたときに起動時のマイグレーションの失敗として表面化します。</li>
+<li><strong>ディスク。</strong> 移行先のクラスターには、最終的なデータセットのサイズのおよそ 2 倍の空きディスク容量が必要です。ステージングスキーマを削除するまで、ステージングテーブルには、移行するすべての行のソースの型のままのコピーが、最終的な v5 の行と並んで保持されます。</li>
+<li><strong>拡張機能。</strong> 移行先で <code>pg_trgm</code> をインストールできる必要があります。拡張機能は v5 のスキーマの初期化でインストールされます。移行ツールの事前チェックでこれを確認します。</li>
+<li><strong>JDBC での到達性。</strong> 移行ツールを実行するホストから、v4 のソースと v5 の移行先の両方に JDBC 接続できること。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>移行中は v4 のデータベースをオフラインにしておく必要があります。稼働中の v4 インスタンスに移行ツールを向けないでください。ツールはオフラインであることを前提としており、ソースに書き込みロックをかけません。</p>
+</div>
+<h2 id="recommended-postgres-tuning">推奨される Postgres のチューニング<a class="headerlink" href="#recommended-postgres-tuning" title="Permanent link">¶</a></h2>
+<p>移行中は、次の設定を適用します。移行ツールはこれらを設定しません。実行前に移行先で設定し、必要に応じて移行後に元に戻します。</p>
+<table>
+<thead>
+<tr>
+<th>設定</th>
+<th>推奨値</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_wal_size</code></td>
+<td>8 GB 以上</td>
+<td>ロードフェーズはすべての書き込みを WAL に記録します。デフォルトのサイズではチェックポイントが頻繁に発生します。</td>
+</tr>
+<tr>
+<td><code>max_locks_per_transaction</code></td>
+<td>256</td>
+<td>設定しないと、メトリクスのパーティション操作でデフォルトの 64 を使い切る可能性があります。</td>
+</tr>
+<tr>
+<td><code>maintenance_work_mem</code></td>
+<td>1 GB 以上</td>
+<td>ロード中のインデックスの更新が速くなります。</td>
+</tr>
+<tr>
+<td><code>checkpoint_timeout</code></td>
+<td>30 分</td>
+<td>ロード時の WAL の急増を、過剰なチェックポイントを発生させずに吸収します。</td>
+</tr>
+<tr>
+<td><code>checkpoint_completion_target</code></td>
+<td>0.9</td>
+<td>同上。</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>v5 の apiserver のデフォルトのタイムゾーンは、移行期間中だけでなく、デプロイを運用する期間を通じて <code>UTC</code> である必要があります。<a href="https://github.com/DependencyTrack/hyades-apiserver/pkgs/container/hyades-apiserver">公式 Docker イメージ</a>ではすでに <code>TZ=Etc/UTC</code> が設定されているため、このイメージを使う運用者は何もする必要はありません(また、<code>TZ</code> を上書きしてはいけません)。コンテナー以外のデプロイやカスタムイメージでは、<code>TZ</code> 環境変数を <code>Etc/UTC</code> に設定します。</p>
+<p>移行ツールは、UTC の日付の境界で日次のメトリクスパーティションを事前に作成します。apiserver はデフォルトのタイムゾーンを使ってこれらのパーティションを拡張するため、apiserver が UTC 以外だと、移行ツールとずれたパーティションの境界を計算し、範囲の重複によって <code>ATTACH PARTITION</code> が失敗します。</p>
+</div>
+<h2 id="run-the-migration">移行を実行する<a class="headerlink" href="#run-the-migration" title="Permanent link">¶</a></h2>
+<p>移行ツールは、<code>ghcr.io/dependencytrack/v4-migrator:&lt;version&gt;</code> で公開されているコンテナーイメージとして提供されています。レジストリとタグの規則については<a href="../../../reference/container-images/">コンテナーイメージ</a>を参照してください。</p>
+<p>以下の例では、簡潔にするために次のシェルエイリアスを使います。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span><span class="w"> </span>v4-migrator<span class="o">=</span><span class="s1">'docker run --rm -it --network=host ghcr.io/dependencytrack/v4-migrator:&lt;version&gt;'</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>--network=host</code> は Linux でのみ動作します。macOS と Windows の Docker Desktop では、このフラグは警告なしに無視され、コンテナーには独自のネットワーク名前空間が割り当てられます。ホスト上のデータベースに接続するには、JDBC URL の <code>localhost</code> / <code>127.0.0.1</code> を <code>host.docker.internal</code> に置き換えるか、ソースと移行先の両方に到達できるユーザー定義の Docker ネットワーク(<code>--network &lt;name&gt;</code>)にコンテナーを接続します。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">パスワードの入力</p>
+<p>以下の例では、<code>--source-pass</code> と <code>--target-pass</code> を引数なしで渡しています。この場合、移行ツールは対話的にパスワードの入力を求めるため、シークレットがシェルの履歴や <code>ps</code> の出力に残りません。インラインでパスワードを指定する場合は、代わりに <code>--source-pass &lt;value&gt;</code> / <code>--target-pass &lt;value&gt;</code> と記述します。</p>
+</div>
+<h3 id="1-apply-the-v5-schema">1. v5 のスキーマを適用する<a class="headerlink" href="#1-apply-the-v5-schema" title="Permanent link">¶</a></h3>
+<p>移行先のデータベースを初期化します。このステップでは v5 のスキーマのマイグレーションを適用します。何度実行しても安全です。ここで指定したユーザーが v5 のスキーマオブジェクトの所有者になるため、v5 の apiserver が接続に使うものと同じユーザーを使います(前のセクションの<strong>データベースユーザー</strong>の注意事項を参照してください)。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>bootstrap<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-pass
+</code></pre></div>
+<p>これで移行先には、v5 のスキーマと、初期データが投入された <code>PERMISSION</code> カタログ(v5 の既知の権限のセット)が作成されます。bootstrap はそれ以外の行を書き込みません。<code>LICENSE</code>、<code>TEAM</code>、<code>USER</code> などは、移行ツールの後続のフェーズが v4 のソースから投入します。</p>
+<h3 id="2-verify-the-target">2. 移行先を検証する<a class="headerlink" href="#2-verify-the-target" title="Permanent link">¶</a></h3>
+<p>抽出に時間をかける前に、事前チェックを実行して問題を見つけます。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>verify<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-pass
+</code></pre></div>
+<p><code>verify</code> は読み取りのみを行い、書き込みは一切行いません。初期化したばかりでステージングが存在しない移行先では、次の結果になります。</p>
+<ul>
+<li>Flyway head <code>202605111028</code> が <code>OK</code> と報告される。</li>
+<li><strong>v5 の <code>PERMISSION</code> テーブルを除いて</strong>、行数の列がすべて 0 である。</li>
+<li>プローブのエントリーがない。</li>
+<li>終了を示す行 <code>== verify complete ==</code> が表示される。</li>
+</ul>
+<p>この段階ではまだデータを移していないため、<code>verify</code> には初期データの投入直後の状態が表示され、指摘事項はありません。</p>
+<h3 id="3-dry-run">3. ドライラン<a class="headerlink" href="#3-dry-run" title="Permanent link">¶</a></h3>
+<p>実際に実行する前に、何が起きるかを確認します。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span>--target-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--source-url<span class="w"> </span><span class="s1">'jdbc:postgresql://v4-host:5432/dtrack'</span><span class="w"> </span>--source-user<span class="w"> </span>dtrack<span class="w"> </span>--source-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--metrics-retention-days<span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dry-run
+</code></pre></div>
+<p><code>--dry-run</code> を指定すると、事前チェックを実行して実行計画を出力します。どちらのデータベースにも何も書き込みません。</p>
+<h3 id="4-extract-transform-load">4. 抽出、変換、ロード<a class="headerlink" href="#4-extract-transform-load" title="Permanent link">¶</a></h3>
+<p>3 つのフェーズをまとめて実行します。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span><span class="s1">'jdbc:postgresql://target-host:5432/dtrack'</span><span class="w"> </span>--target-user<span class="w"> </span>dtrack<span class="w"> </span>--target-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--source-url<span class="w"> </span><span class="s1">'jdbc:postgresql://v4-host:5432/dtrack'</span><span class="w"> </span>--source-user<span class="w"> </span>dtrack<span class="w"> </span>--source-pass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--metrics-retention-days<span class="w"> </span><span class="m">90</span>
+</code></pre></div>
+<p><code>run</code> と <code>extract</code> には <code>--metrics-retention-days</code> を必ず指定します。v4 には保持期間の概念がなく、v5 で導入されました。<a href="../../../concepts/time-series-metrics/">時系列メトリクスについて</a>を参照してください。移行ツールは、メトリクスの行を黙って削除したり引き継いだりするのではなく、明示的に選択することを求めます。v4 のメトリクスをすべて削除するには <code>0</code> を、直近 <code>N</code> 日分を残すには正の整数を、すべてを移行するには大きな数を指定します。移行ツールは保持する日ごとに日次のパーティションを 1 つずつ事前に作成するため、大きな値を指定するとロードフェーズが目に見えて長くなります。</p>
+<p>ステップの間でステージングを確認したい場合は、フェーズを個別に実行することもできます。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>extract<span class="w">   </span>--target-url<span class="w"> </span>...<span class="w"> </span>--source-url<span class="w"> </span>...<span class="w"> </span>--metrics-retention-days<span class="w"> </span><span class="m">90</span>
+v4-migrator<span class="w"> </span>transform<span class="w"> </span>--target-url<span class="w"> </span>...
+v4-migrator<span class="w"> </span>load<span class="w">      </span>--target-url<span class="w"> </span>...
+</code></pre></div>
+<p>ソースが Microsoft SQL Server の場合は、ソースの URL を差し替えます。</p>
+<div class="highlight"><pre><span></span><code>--source-url<span class="w"> </span><span class="s1">'jdbc:sqlserver://v4-host:1433;databaseName=dtrack'</span>
+</code></pre></div>
+<p>v4 のデプロイで使っているものと同じ接続パラメーター(TLS、認証など)を付け加えます。</p>
+<p>移行ツールは、JDBC URL からソースの種類を自動的に判別します。</p>
+<h3 id="5-sample-mode">5. サンプルモード<a class="headerlink" href="#5-sample-mode" title="Permanent link">¶</a></h3>
+<p>完全な実行に踏み切る前に自分たちのデータでパイプラインを試すには、テーブルごとに少数の行をサンプリングします。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>run<span class="w"> </span>...<span class="w"> </span>--sample<span class="w"> </span><span class="m">100</span>
+</code></pre></div>
+<p><code>--sample</code> は、テーブルごとの抽出件数の上限を設定します。後続のフェーズはサンプリングしたデータに対して実行され、有効な(ただし一部だけの)v5 のデータセットを生成します。</p>
+<p>完全な実行の前に、ロードが失敗した後と同じ方法で移行先をリセットします。v5 のスキーマ(または移行先のデータベース全体)を削除して作り直し、<code>v4-migrator bootstrap</code> を再実行してから、<code>v4-migrator cleanup</code> でステージングスキーマを削除します。理由については<a href="#recovering-from-a-failed-load">失敗したロードから復旧する</a>を参照してください。v5 のテーブルを手動で <code>TRUNCATE</code> しないでください。</p>
+<h3 id="6-verify-the-result">6. 結果を検証する<a class="headerlink" href="#6-verify-the-result" title="Permanent link">¶</a></h3>
+<p>ロードの後、もう一度 <code>verify</code> を実行します。今回はテーブルごとにソース、ステージング、v5 の行数が報告され、すべてのプローブの結果(不正な形式の UUID など)も表示されます。</p>
+<div class="highlight"><pre><span></span><code>[Schema]
+  OK    Flyway head = 202605111028
+
+[Row counts]
+  Table                       Source      Staging           v5    Note
+  LICENSE                       5234         5234         5234
+  TEAM                            47           42           42    expected: dedup by NAME (-5)
+  COMPONENT                  4823714      4823711      4823711    see [Probes] (-3)
+  PROJECTS_TAGS                12480        12462        12462    reduction (-18), see migration guide
+  ...
+
+[Probes]
+  COMPONENT                3 malformed UUID(s) dropped
+
+[Constraints]
+  18 CHECK constraint(s) hold across 6 loaded table(s)
+
+== verify complete ==
+</code></pre></div>
+<p><code>Note</code> 列には、ソースから v5 にかけて行数が減ったテーブルについての注記が表示されます。重複排除、フィルタリング、保持期間によって、移行中に行数が減ることはよくあります。これらの削減は移行ツールが意図的に行うものです。<code>Note</code>(および <code>[Probes]</code> セクション)にはどの理由が当てはまるかが示されるため、減少を説明のつかないまま放置せずに、それぞれの原因を確認できます。各注記は、次の 3 つのいずれかの状態です。</p>
+<ul>
+<li><code>expected: &lt;reason&gt; (-N)</code>。既知の意図的な削減です。理由は、<a href="#lossy-and-non-obvious-changes">情報が失われる変更とわかりにくい変更</a>のセクションにある変換に対応しています。</li>
+<li><code>see [Probes] (-N)</code>。<code>[Probes]</code> セクションに減少の内訳(無効な UUID、スキップされたユーザー、大文字小文字の衝突)が示されます。</li>
+<li><code>reduction (-N), see migration guide</code>。専用の注記がない意図的な削減です。内容を理解するには、<a href="#lossy-and-non-obvious-changes">情報が失われる変更とわかりにくい変更</a>のセクションを参照してください。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">権限の結合テーブルはデータ損失を示すものではない</p>
+<p><code>TEAMS_PERMISSIONS</code> と <code>USERS_PERMISSIONS</code> はどちらも、v4 から v5 への権限の再割り当ての一環として行が減ったり増えたりします(<a href="#v5-only-permissions-granted-from-v4-equivalents">v4 の対応する権限から付与される v5 専用の権限</a>を参照してください)。そのため、これらの行数の差には意味がありません。この 2 つのテーブルの <code>Note</code> は無視してください。</p>
+</div>
+<p>最後の <code>== verify complete ==</code> の行は、正常に終了したことを示します。この行がない場合は、<code>verify</code> が最後まで完了せずに停止したことを意味します。</p>
+<h3 id="7-drop-staging">7. ステージングを削除する<a class="headerlink" href="#7-drop-staging" title="Permanent link">¶</a></h3>
+<p>結果に問題がなければ、ステージングスキーマを削除します。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>cleanup<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+</code></pre></div>
+<p>または、あらかじめ <code>load</code> の実行時に <code>--drop-staging</code> を渡しておくと、成功時に削除されます。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>load<span class="w"> </span>...<span class="w"> </span>--drop-staging
+</code></pre></div>
+<h2 id="lossy-and-non-obvious-changes">情報が失われる変更とわかりにくい変更<a class="headerlink" href="#lossy-and-non-obvious-changes" title="Permanent link">¶</a></h2>
+<p>以下の変換は自動的に適用されます。メトリクスの保持期間を除き、いずれも設定で変更できません。</p>
+<h3 id="username-collisions-across-user-types">ユーザーの種類をまたいだユーザー名の衝突<a class="headerlink" href="#username-collisions-across-user-types" title="Permanent link">¶</a></h3>
+<p>v4 では、管理対象ユーザー、<abbr title="Lightweight Directory Access Protocol">LDAP</abbr> ユーザー、<abbr title="OpenID Connect">OIDC</abbr> ユーザーを 3 つの別々のテーブルに格納していました。v5 では 1 つのテーブルに格納します。同じユーザー名が複数の種類にまたがって存在する場合、移行ツールは管理対象ユーザーを先に挿入し、<abbr title="Lightweight Directory Access Protocol">LDAP</abbr> と <abbr title="OpenID Connect">OIDC</abbr> のユーザーにはサフィックスを付けます。</p>
+<ul>
+<li><code>alice</code>(管理対象)→ <code>alice</code></li>
+<li><code>alice</code>(<abbr title="Lightweight Directory Access Protocol">LDAP</abbr>)→ <code>alice-CONFLICT-LDAP</code></li>
+<li><code>alice</code>(<abbr title="OpenID Connect">OIDC</abbr>)→ <code>alice-CONFLICT-OIDC</code></li>
+</ul>
+<p>サフィックスが付いたアカウントは、外部の ID と一致しなくなります。移行後に、名前が <code>-CONFLICT-LDAP</code> または <code>-CONFLICT-OIDC</code> で終わるすべてのユーザーを一覧表示します。それぞれについて、サフィックスのない管理対象ユーザーの単なる重複であるか(その場合は削除します)、元のユーザー名に戻す必要がある正当な外部 ID であるか(その場合は、サフィックスのない管理対象ユーザーを削除または名前変更してから、サフィックス付きのアカウントを外部 ID に一致する名前に変更します)を判断します。</p>
+<h3 id="user-records-without-a-username">ユーザー名のないユーザーレコード<a class="headerlink" href="#user-records-without-a-username" title="Permanent link">¶</a></h3>
+<p>v4 では、<code>USERNAME IS NULL</code> の管理対象ユーザーと <abbr title="Lightweight Directory Access Protocol">LDAP</abbr> ユーザーの行が許容されていました。v5 では NULL でないユーザー名が必要です。移行ツールはこれらの行を通知なしにスキップします。これらの行は v4 でも使えなかった(ログインする手段がなかった)ため、削除しても問題ありません。</p>
+<h3 id="v5-only-permissions-granted-from-v4-counterparts">v4 の対応する権限から付与される v5 専用の権限<a class="headerlink" href="#v5-only-permissions-granted-from-v4-counterparts" title="Permanent link">¶</a></h3>
+<p>v5 では、v4 で暗黙的に含まれていた 2 つの能力を、それぞれ専用の権限に分離しています。移行ツールは、移行前の認可がこれまでどおり機能するように、それぞれについて v4 時代の対応する権限を持っていたすべての v4 のユーザーとチームに新しい v5 の権限を付与します。v5 の分離されたセマンティクスにしたい場合は、移行後に、該当するプリンシパルから新しい権限を取り消します。</p>
+<ul>
+<li><strong><code>PORTFOLIO_ACCESS_CONTROL_BYPASS</code>。</strong> v4 の <code>ACCESS_MANAGEMENT</code> 権限には、ポートフォリオのアクセス制御をバイパスする能力が暗黙的に含まれていました。移行ツールは、<code>ACCESS_MANAGEMENT</code> を持つすべての v4 のユーザーとチームに <code>PORTFOLIO_ACCESS_CONTROL_BYPASS</code> を付与します。</li>
+<li><strong><code>SECRET_MANAGEMENT</code>。</strong> v4 にはシークレット管理専用の権限がありませんでした。パッケージリポジトリの Basic 認証のパスワードと、アナライザー / 脆弱性データソースの API 認証情報は、<code>SYSTEM_CONFIGURATION</code> を持つすべてのユーザーが設定できました。v5 では、これらを <code>SECRET_MANAGEMENT</code> で保護された専用のシークレットマネージャーで管理します。移行ツールは、<code>SYSTEM_CONFIGURATION</code> を持つすべての v4 のユーザーとチームに <code>SECRET_MANAGEMENT</code> を付与します。</li>
+</ul>
+<p>v5 で廃止された v4 の権限名(<code>VIEW_BADGES</code> など)は、移行時に削除されます。これらの名前を参照するユーザーやチームへの割り当ては、通知なしに削除されます。</p>
+<h3 id="dedup-of-teams-oidc-groups-and-tags">チーム、<abbr title="OpenID Connect">OIDC</abbr> グループ、タグの重複排除<a class="headerlink" href="#dedup-of-teams-oidc-groups-and-tags" title="Permanent link">¶</a></h3>
+<p>v4 では <code>TEAM.NAME</code>、<code>OIDCGROUP.NAME</code>、<code>TAG.NAME</code> の一意性を強制していませんでした。v5 では強制します。移行ツールは重複を <code>ID</code> が最も小さい行に集約し、すべての結合テーブルの参照を正規の ID に書き換えて、正規でない行を削除します。</p>
+<h3 id="project-deduplication">プロジェクトの重複排除<a class="headerlink" href="#project-deduplication" title="Permanent link">¶</a></h3>
+<p>v5 では、プロジェクトごとに <code>(NAME, VERSION)</code> の一意性を強制します(バージョンが NULL の場合には別の部分インデックスを使います)。移行ツールは、<code>LAST_BOM_IMPORTED</code> が最も新しいものを残して重複を集約します。古い重複は削除されます。</p>
+<h3 id="project-activity-state">プロジェクトのアクティブ状態<a class="headerlink" href="#project-activity-state" title="Permanent link">¶</a></h3>
+<p>v4 では <code>ACTIVE</code> という true/false のフラグを持っていました。v5 では <code>INACTIVE_SINCE</code>(任意のタイムスタンプ)を持ちます。v4 でアクティブだったプロジェクトは <code>INACTIVE_SINCE = NULL</code> になります。v4 で非アクティブだったプロジェクトは <code>INACTIVE_SINCE = '1970-01-01 00:00:00+00'</code>(Unix エポック)になります。これは「<em>v4 から非アクティブとして移行され、正確な非アクティブ化の日時は不明</em>」を意味する番兵値です。</p>
+<h3 id="vulnerability-epss-values">脆弱性の <abbr title="Exploit Prediction Scoring System">EPSS</abbr> の値<a class="headerlink" href="#vulnerability-epss-values" title="Permanent link">¶</a></h3>
+<p>v4 では、<abbr title="Exploit Prediction Scoring System">EPSS</abbr> のスコアとパーセンタイルを各脆弱性の行に直接格納していました。v5 では、上流のデータソースから投入される専用のテーブルに <abbr title="Exploit Prediction Scoring System">EPSS</abbr> を格納します。移行ツールは v4 の <abbr title="Exploit Prediction Scoring System">EPSS</abbr> の値をコピーしません。v5 は初回起動から数分以内に、実行時に <abbr title="Exploit Prediction Scoring System">EPSS</abbr> の値を投入し直します。</p>
+<h3 id="metrics-retention">メトリクスの保持期間<a class="headerlink" href="#metrics-retention" title="Permanent link">¶</a></h3>
+<p>v5 では、日次のメトリクスを保持期間内に限って保持します。v4 には対応する設定がなかったため、移行ツールは <code>extract</code> と <code>run</code> に <code>--metrics-retention-days</code> フラグの指定を求めます。<code>DEPENDENCYMETRICS</code> と <code>PROJECTMETRICS</code> のうち、基準日より古い行は削除されます。ポートフォリオのメトリクスは移行されません。v5 では、ポートフォリオのメトリクスを必要に応じて計算されるマテリアライズドビューとして導出します。</p>
+<h3 id="notification-rule-configuration">通知ルールの設定<a class="headerlink" href="#notification-rule-configuration" title="Permanent link">¶</a></h3>
+<p>v5 では、<code>NOTIFICATIONRULE.PUBLISHER_CONFIG</code> の格納形式が自由形式のテキストから JSON に変わります。移行ツールは、各ルールの設定を v4 の <code>destination</code>(Jira の場合は <code>jiraTicketType</code> も)から再構築し、移行するすべてのルールに <code>ENABLED = FALSE</code> を設定します。v4 のテキストのペイロードにエンコードされていた、パブリッシャー固有のその他のフィールドは削除されます。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>移行したすべての通知ルールは、v5 ではオフの状態になります。各ルールの設定を確認してから、もう一度有効にしてください。</p>
+</div>
+<h3 id="repository-analyzer-and-vulnerability-source-credentials">パッケージリポジトリ、アナライザー、脆弱性データソースの認証情報<a class="headerlink" href="#repository-analyzer-and-vulnerability-source-credentials" title="Permanent link">¶</a></h3>
+<p>v4 では、パッケージリポジトリの Basic 認証のパスワードを <code>REPOSITORY.PASSWORD</code> に格納し、アナライザー(OSS Index、Snyk、Trivy、VulnDB)と脆弱性データソース(<abbr title="National Vulnerability Database">NVD</abbr>、GitHub Advisories、<abbr title="Open Source Vulnerabilities">OSV</abbr>)の API 認証情報を暗号化されたプロパティ値として格納していました。v5 では、これらをすべて一元化された<a href="../../user/managing-secrets/">シークレットマネージャー</a>で管理しますが、移行ツールはシークレットマネージャーにデータを投入しません。</p>
+<p>移行ツールは、すべての <code>REPOSITORY.PASSWORD</code> を NULL にし、該当するパッケージリポジトリをオフにします。アナライザーと脆弱性データソースの認証情報は、後述する暗号化されたプロパティの処理の一環として削除されます。</p>
+<p>移行後に、v5 の管理パネルで <strong>Repositories</strong>、<strong>Analyzers</strong>、<strong>Vulnerability Sources</strong> の各ページを開き、シークレットマネージャーを通じて各認証情報を再入力します。該当するパッケージリポジトリをオンに戻します。各ミラーを再び有効にする手順の詳細については、<a href="../configuring-vulnerability-sources/">脆弱性データソースを設定する</a>を参照してください。v5 のデプロイにシークレットの暗号鍵をまだ設定していない場合は、<a href="../configuring-secret-management/">シークレット管理を設定する</a>を参照してください。</p>
+<h3 id="encrypted-property-values">暗号化されたプロパティ値<a class="headerlink" href="#encrypted-property-values" title="Permanent link">¶</a></h3>
+<p>v5 では、<code>ENCRYPTEDSTRING</code> プロパティ型が廃止されました。移行ツールは、暗号化されたすべてのプロパティ値を NULL にし、型を <code>STRING</code> に書き換えます。この方法で格納されていた認証情報(主にアナライザーと脆弱性データソースの API キー)の復旧手順については、前のセクションを参照してください。</p>
+<h3 id="property-values-of-unknown-type">型が不明なプロパティ値<a class="headerlink" href="#property-values-of-unknown-type" title="Permanent link">¶</a></h3>
+<p>v5 では、プロパティ型を <code>BOOLEAN</code>、<code>INTEGER</code>、<code>NUMBER</code>、<code>STRING</code>、<code>TIMESTAMP</code>、<code>URL</code>、<code>UUID</code> の固定のセットに限定しています。移行ツールは、型がこのセットに含まれない v4 のプロパティを削除します(前のセクションで扱った <code>ENCRYPTEDSTRING</code> を除きます)。</p>
+<h3 id="classifier-values">分類子の値<a class="headerlink" href="#classifier-values" title="Permanent link">¶</a></h3>
+<p>v5 では、プロジェクトとコンポーネントの <code>NONE</code> 分類子が廃止されました。移行ツールは、すべての <code>NONE</code> を <code>NULL</code> に書き換えます。v5 のセットに含まれないその他の v4 の分類子の値も、<code>NULL</code> に変換されます(この列は <code>NULL</code> を許容します)。</p>
+<h3 id="purl-filtering-for-package-metadata">パッケージメタデータの <abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr> によるフィルタリング<a class="headerlink" href="#purl-filtering-for-package-metadata" title="Permanent link">¶</a></h3>
+<p>v4 では、パッケージリポジトリのメタデータを名前と名前空間でインデックス化していました。v5 では、パッケージ URL(<abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr>)でインデックス化し、<abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr> に <code>@</code>、<code>?</code>、<code>&amp;</code>、<code>#</code> を含めることを禁止する CHECK 制約を強制します。移行ツールは、導出した <abbr title="Package URL, a standardized format for identifying software packages">PURL</abbr> にこれらの文字のいずれかを含むパッケージリポジトリのメタデータの行をスキップします。v5 は実行時に、同じ上流のソースからパッケージメタデータを投入し直します。</p>
+<h3 id="removed-tables">削除されたテーブル<a class="headerlink" href="#removed-tables" title="Permanent link">¶</a></h3>
+<p>次の v4 のテーブルには v5 に対応するテーブルがなく、移行されません。</p>
+<ul>
+<li><code>EVENTSERVICELOG</code>、<code>INSTALLEDUPGRADES</code>、<code>SCHEMAVERSION</code>。v5 のスキーママイグレーションと永続実行の管理情報が、その役割を引き継ぎます。</li>
+<li><code>COMPONENTANALYSISCACHE</code>。実行時のキャッシュです。v5 が必要に応じて投入し直します。</li>
+</ul>
+<h3 id="malformed-uuids">不正な形式の UUID<a class="headerlink" href="#malformed-uuids" title="Permanent link">¶</a></h3>
+<p>v5 では、UUID を <code>varchar(36)</code> ではなくネイティブの <code>uuid</code> として格納します。移行ツールは、UUID を正規の形式に照らして検証します。移行ツールは、不正な形式の UUID を持つ行を削除し、ステージングスキーマ内の <code>probe_invalid_uuids</code> テーブルに記録します。<code>verify</code> は、ソースのテーブルごとにその件数を報告します。ステージングのプローブはステージングスキーマを削除するまで残るため、影響を受けた行を監査できます。</p>
+<h3 id="mssql-case-folded-uniqueness">MSSQL の大文字小文字を区別しない一意性<a class="headerlink" href="#mssql-case-folded-uniqueness" title="Permanent link">¶</a></h3>
+<p>Microsoft SQL Server のデフォルトの照合順序(<code>SQL_Latin1_General_CP1_CI_AS</code>)では、<code>Alice</code> と <code>alice</code> を同じ値として扱います。Postgres では別の値として扱います。移行ツールは、v5 で両方の行を保持します。大文字小文字を区別せずに一意だった v4 の列に v5 が一意性を強制する場合(たとえば、大文字小文字だけが異なる 2 つの <code>TEAM.NAME</code> の値)、それらの行は 2 つの別々のエントリーとして残ります。この点が気になる場合は、実行前にデータを調べてください。</p>
+<h2 id="runtime-behavior-changes">実行時の動作の変更<a class="headerlink" href="#runtime-behavior-changes" title="Permanent link">¶</a></h2>
+<p>前のセクションでは、移行ツールがデータに適用する変換を扱いました。このセクションでは、移行したデータに対して v5 が<em>動作する</em>方法の違いを扱います。いずれも設定で変更できません。v5 に切り替えた後はこれらの変化を想定し、観察された影響(メトリクスの減少、検出結果の欠落)を以下の項目と照らし合わせてください。</p>
+<h3 id="inactive-findings">非アクティブな検出結果<a class="headerlink" href="#inactive-findings" title="Permanent link">¶</a></h3>
+<p>v4 は検出結果を<em>追加する</em>だけでした。すべてのアナライザーが報告しなくなった後も、検出結果はコンポーネントに残り続けました。v5 では、そのような検出結果を自動的に非アクティブにし、デフォルトのビューでは非アクティブな検出結果を除外します。</p>
+<p>v5 の最初の分析サイクルの後すぐに、アクティブな検出結果の件数が一度だけ減少し、それに応じて時系列メトリクスも段階的に下がることを想定してください。v5 は過去の行を削除せずに非アクティブな状態で保持しますが、それらはアクティブな合計には含まれなくなります。</p>
+<h2 id="performance-and-observability">パフォーマンスとオブザーバビリティ<a class="headerlink" href="#performance-and-observability" title="Permanent link">¶</a></h2>
+<p>スループットは、ハードウェア、ソースの種類、データセットのサイズによって異なります。Postgres から Postgres への抽出(バイナリの <code>COPY</code>)ではおよそ 50 MB/秒、Microsoft SQL Server のソース(JDBC のバッチ挿入)ではおよそ 20 MB/秒を想定してください。</p>
+<p>長時間の実行中に状況を把握できるように、移行ツールはテーブルごとに次のような進捗の行を出力します。</p>
+<div class="highlight"><pre><span></span><code>INFO  Extracting LICENSE
+INFO    -&gt; 5234 rows in 142 ms
+INFO  Transforming LICENSE
+INFO    -&gt; 5231 rows in 38 ms
+INFO  Loading LICENSE into v5
+INFO    -&gt; LICENSE: 5231 rows in 27 ms (193740 rows/s)
+</code></pre></div>
+<p>さらにロードフェーズでは、1 つのテーブルの処理が続いている間、5 秒ごとにハートビートを出力するため、大きなテーブルでも状況を把握できます。</p>
+<div class="highlight"><pre><span></span><code>INFO  Loading COMPONENT into v5
+INFO    .. COMPONENT: still loading after 25s (expected 4823714 rows)
+INFO    .. COMPONENT: still loading after 30s (expected 4823714 rows)
+INFO    -&gt; COMPONENT: 4823714 rows in 32104 ms (150253 rows/s)
+</code></pre></div>
+<p>expected の件数は上限です。重複排除や削除された行があるため、最終的な件数はこれより少なくなることがあります。</p>
+<p>100 GB の v4 のデータセットは、ワークステーションクラスのディスクで数時間、専用のサーバーハードウェアではそれより短い時間で完了するはずです。</p>
+<h3 id="phase-completion-lines">フェーズの完了を示す行<a class="headerlink" href="#phase-completion-lines" title="Permanent link">¶</a></h3>
+<p>各フェーズは成功すると、テーブルごとの行の後に、完了を明示する行を出力します。</p>
+<div class="highlight"><pre><span></span><code>INFO  Extract phase completed: 64 table(s), 5821044 row(s) in 184302 ms
+INFO  Transform phase completed: 64 table(s), 5820102 row(s) in 96118 ms
+INFO  Load phase completed: 64 table(s), 5820097 row(s) in 211740 ms
+</code></pre></div>
+<p>抽出、変換、ロードを連続して実行する <code>run</code> コマンドは、最後に 1 行を出力します。</p>
+<div class="highlight"><pre><span></span><code>INFO  Migration completed: extract + transform + load finished. Run 'verify' to review row counts and probes.
+</code></pre></div>
+<p>完了したフェーズは、完了を示す行を出力します。<code>run</code> の場合は、<code>Migration completed</code> の行が成功を示します。<strong>テーブルごとの出力の後にこの行がない場合は、フェーズが完了していません。</strong> 終了コードとその前のログの行を確認してください。</p>
+<p>最後のテーブルのロードが終わると、移行ツールは最終処理を行いながら進捗の行を出力します。</p>
+<div class="highlight"><pre><span></span><code>INFO  Finalizing load: re-enabling triggers and resetting identity sequences
+INFO  Analyzing 64 loaded table(s)
+INFO  Refreshing PORTFOLIOMETRICS_GLOBAL materialized view
+INFO  Applying v5.7.0 cleanup deletes
+</code></pre></div>
+<p>最終処理が終わると、<code>Load phase completed</code> の行が続きます。</p>
+<h2 id="resumability">再開性<a class="headerlink" href="#resumability" title="Permanent link">¶</a></h2>
+<p>各フェーズは、テーブルごとの状態をステージングスキーマ内の <code>migration_state</code> テーブルに保存します。</p>
+<p><code>extract</code> と <code>transform</code> は安全に再実行できます。<code>extract</code> を再実行すると、完了していないテーブルを空にして抽出し直します。<code>transform</code> を再実行すると、すべての <code>tgt_*</code> テーブルを削除して作り直します(変換はべき等です)。</p>
+<p><code>load</code> は自動的には再開できません。実行するたびに、すべての <code>INSERT INTO ... SELECT</code> を最初から実行し直します。v5 に行が 1 つでも入っていると、続けて <code>load</code> を実行しても制約違反で失敗し、移行先は不整合な状態になります。後述の<strong>失敗したロードから復旧する</strong>を参照してください。</p>
+<p><code>load</code> を開始する前に実行を中止する必要がある場合は、ステージングスキーマを削除(<code>v4-migrator cleanup</code>)して最初からやり直すか、ステージングスキーマを残しておいて、後で <code>extract</code> または <code>transform</code> から再開します。</p>
+<h2 id="recovering-from-a-failed-load">失敗したロードから復旧する<a class="headerlink" href="#recovering-from-a-failed-load" title="Permanent link">¶</a></h2>
+<p><code>load</code> の実行が途中で失敗すると、失敗する前に完了したすべてのテーブルの行が v5 に残ります。移行ツールはそれらをロールバックしないため、そのまま <code>load</code> を再試行しても失敗します。次のいずれかの方法を選びます。</p>
+<p><strong>最初からやり直す。</strong> 失敗の原因が不明な場合や、まっさらな移行先を使いたい場合に推奨します。</p>
+<div class="highlight"><pre><span></span><code>v4-migrator<span class="w"> </span>cleanup<span class="w"> </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+<span class="c1"># Drop and re-create the v5 schema (or the entire target database) yourself, then:</span>
+v4-migrator<span class="w"> </span>bootstrap<span class="w"> </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+v4-migrator<span class="w"> </span>run<span class="w">       </span>--target-url<span class="w"> </span>...<span class="w"> </span>--source-url<span class="w"> </span>...<span class="w"> </span>--metrics-retention-days<span class="w"> </span>N
+</code></pre></div>
+<p><strong>既存のステージングから再ロードする。</strong> <code>extract</code> と <code>transform</code> の出力が信頼でき、ロードのステップだけが失敗した場合は、こちらのほうが速く済みます。ステージングスキーマは <code>bootstrap</code> を実行しても残るため、次のように実行します。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Drop and re-create the v5 schema (or the entire target database) yourself.</span>
+v4-migrator<span class="w"> </span>bootstrap<span class="w"> </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+v4-migrator<span class="w"> </span>load<span class="w">      </span>--target-url<span class="w"> </span>...<span class="w"> </span>--target-user<span class="w"> </span>...<span class="w"> </span>--target-pass
+</code></pre></div>
+<p><code>bootstrap</code> はスキーマを適用した後に v5 の <code>PERMISSION</code> カタログに初期データを投入し直すため、<code>transform</code> を再実行しなくても、<code>load</code> の再実行で権限の外部キーを解決できます。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>v5 の個々のテーブルを手動で <code>TRUNCATE</code> してから <code>load</code> を再実行しないでください。ロードフェーズは、<code>PROJECT</code> と <code>PROJECT_ACCESS_USERS</code> のトリガーの無効化、ID シーケンスのリセット、日次のメトリクスパーティションの事前作成を、一連の流れとして行います。いずれもテーブル単位ではべき等ではありません。再試行する前に、必ず v5 を完全にリセットしてください。</p>
+</div>
+<h2 id="moving-the-migrated-data-to-its-production-target">移行したデータを本番の移行先に移す<a class="headerlink" href="#moving-the-migrated-data-to-its-production-target" title="Permanent link">¶</a></h2>
+<p>移行を専用のホストで実行した場合は、移行ツールの完了後に <code>pg_dump</code>/<code>pg_restore</code> で結果を移せます。</p>
+<div class="highlight"><pre><span></span><code>pg_dump<span class="w"> </span>--format<span class="o">=</span>custom<span class="w"> </span>--no-owner<span class="w"> </span>--no-acl<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude-schema<span class="o">=</span>dt_v4_migration<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-h<span class="w"> </span>migration-host<span class="w"> </span>-U<span class="w"> </span>dtrack<span class="w"> </span>dtrack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&gt;<span class="w"> </span>v5.dump
+
+pg_restore<span class="w"> </span>--no-owner<span class="w"> </span>--no-acl<span class="w"> </span>-d<span class="w"> </span>dtrack<span class="w"> </span>-h<span class="w"> </span>prod-host<span class="w"> </span>-U<span class="w"> </span>dtrack<span class="w"> </span>&lt;<span class="w"> </span>v5.dump
+</code></pre></div>
+<p>ステージングスキーマ(デフォルトでは <code>dt_v4_migration</code>)はダンプから除外します。ステージングスキーマはクラスター間で移植できず、v5 の実行時にも必要ありません。</p>
+<h2 id="what-to-do-after-the-migration">移行後に行うこと<a class="headerlink" href="#what-to-do-after-the-migration" title="Permanent link">¶</a></h2>
+<ul>
+<li>v5 の API サーバーを起動し、ロード後の調整タスク(メトリクス、ポリシー評価)を実行させます。基本となる実行時の構成については、<a href="../deploying-to-production/">本番環境にデプロイする</a>を参照してください。以下の作業はすべて、API サーバーが動作している必要があります。</li>
+<li>移行したすべての通知ルールの設定を確認してから、もう一度有効にします。<a href="../../user/configuring-notifications/">通知アラートを設定する</a>を参照してください。</li>
+<li>パッケージリポジトリ、アナライザー、脆弱性データソースの認証情報を v5 のシークレットマネージャーを通じて再入力し、該当するパッケージリポジトリをオンに戻します。<a href="../../user/managing-secrets/">シークレットを管理する</a>と<a href="../configuring-secret-management/">シークレット管理を設定する</a>を参照してください。シークレットを管理するには、新しい <a href="../../../reference/permissions/#secret-management"><code>SECRET_MANAGEMENT</code></a> 権限が必要です(v4 で <code>SYSTEM_CONFIGURATION</code> を持っていたプリンシパルには、移行時に自動的に付与されます。<a href="#v5-only-permissions-granted-from-v4-counterparts">v4 の対応する権限から付与される v5 専用の権限</a>を参照してください)。</li>
+<li>ユーザー名に <code>-CONFLICT-LDAP</code> または <code>-CONFLICT-OIDC</code> のサフィックスが付いたすべてのユーザーを整理します(単なる重複は削除し、正当な外部 ID は元のユーザー名に戻します)。</li>
+<li>数時間待ってから、v5 が上流のデータソースから <code>EPSS</code> テーブルにデータを投入したことを確認します。</li>
+</ul>
+<h2 id="see-also">関連項目<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../configuring-database/">データベースを設定する</a>: v5 を支える Postgres クラスターの用意とチューニング。</li>
+<li><a href="../deploying-to-production/">本番環境にデプロイする</a>: v5 のサイジング、トポロジー、実行時の構成。</li>
+<li><a href="../scaling/">スケーリング</a>: 負荷のかかった v5 のデプロイのチューニング。</li>
+<li><a href="../upgrading-instances/">稼働中のインスタンスをアップグレードする</a>: 以降の v5 から v5 へのアップグレード。</li>
+<li><a href="../../../concepts/changes-in-v5/">v5 での変更点について</a>: 何がなぜ変わったかの背景。</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター">
+        
+          
+          <a href="../upgrading-instances/" class="md-footer__link md-footer__link--prev" aria-label="前: 稼働中のインスタンスをアップグレードする">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                稼働中のインスタンスをアップグレードする
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../running-v4-and-v5-in-parallel/" class="md-footer__link md-footer__link--next" aria-label="次: v4 と v5 を並行して運用する">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                v4 と v5 を並行して運用する
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © OWASP Foundation. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://dependencytrack.org" target="_blank" rel="noopener" title="Website" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/DependencyTrack/community#community-meetings" target="_blank" rel="noopener" title="Monthly community meeting" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h32c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128c0-35.3 28.7-64 64-64h32V32c0-17.7 14.3-32 32-32M64 240v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16m128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM64 368v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://dependencytrack.org/slack" target="_blank" rel="noopener" title="dependencytrack.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DependencyTrack" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/u/dependencytrack" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/owasp-dependency-track" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://infosec.exchange/@DependencyTrack" target="_blank" rel="noopener me" title="infosec.exchange" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54-.6-4.6-.9-9.3-.9-13.9 85.6 20.9 158.7 9.1 178.7 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6V190.1c0-49.7-64-51.6-64 6.9v62.5H201V197c0-58.5-64-56.6-64-6.9v114.2H90.3c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@DependencyTrack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+  
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=4e38a992-0670-4e48-a193-edd89b6482d0" alt="" width="1" height="1" style="display:none;">
+  
+
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
