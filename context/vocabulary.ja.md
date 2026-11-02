@@ -37,7 +37,7 @@
 | vulnerability | 脆弱性 | |
 | vulnerability analysis | 脆弱性分析 | 自動の照合処理。手動のトリアージとは区別する |
 | analyzer | アナライザー | |
-| data source | データソース | 「フィード」「データベース」は使わない |
+| data source | データソース | 「フィード」「データベース」は使わない。英語が feed と書いている箇所は「フィード」 |
 | mirroring | ミラーリング | |
 | alias | エイリアス | |
 | analysis state | 分析状態 | 値は英語のまま(*Not Affected* など) |
@@ -57,6 +57,8 @@
 | risk score | リスクスコア | |
 | inherited risk | 継承されたリスク | |
 | OWASP risk rating | OWASP リスク評価 | |
+| rating (CVSS, vulnerability) | レーティング | 「評価」は evaluate に使う |
+| rating override | レーティングの上書き |  |
 
 ## 部品表(BOM)
 
@@ -143,6 +145,19 @@
 | durable execution engine | 永続実行エンジン | |
 | workflow | ワークフロー | |
 | activity | アクティビティ | |
+| workflow run / workflow instance | ワークフロー実行 / ワークフローインスタンス |  |
+| replay | リプレイ |  |
+| deterministic | 決定的 |  |
+| side effect | 副作用 |  |
+| idempotent | べき等 | 「冪等」は使わない |
+| transactional outbox | トランザクショナルアウトボックス |  |
+| leader election / lease | リーダー選出 / リース |  |
+| concurrency control / concurrency key | 同時実行制御 / 同時実行キー |  |
+| coordination | 協調 | 「連携」は integrations に使う |
+| extension point / extension | 拡張ポイント / 拡張 |  |
+| plugin | プラグイン |  |
+| retry / retry policy | 再試行 / 再試行ポリシー |  |
+| exponential backoff | 指数バックオフ |  |
 | init tasks | 初期化タスク |  |
 | management server | 管理サーバー |  |
 | health probe / startup probe | ヘルスプローブ / 起動プローブ |  |
@@ -173,6 +188,12 @@
 | staging schema | ステージングスキーマ |  |
 | preflight | 事前チェック |  |
 | deduplication | 重複排除 |  |
+| upstream | 上流 | 「アップストリーム」は使わない |
+| advisory | アドバイザリー |  |
+| registry | レジストリ |  |
+| provenance | 来歴情報 |  |
+| attribution (finding) | 帰属情報 |  |
+| integrity verification | 完全性検証 |  |
 | extract / transform / load | 抽出 / 変換 / ロード | サブコマンド名は英語のまま |
 
 ## 一般的な用語
@@ -201,4 +222,6 @@
 | What we just did | このチュートリアルで行ったこと | |
 | Expected output | 想定される出力 | |
 | Prerequisites | 前提条件 |  |
+| Further reading | 関連項目 | See also と同じ |
+| References | 参考文献 |  |
 | See also | 関連項目 |  |

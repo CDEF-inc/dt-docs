@@ -4,7 +4,7 @@
 
     それより前のバージョンでは、自動化処理の認証にはチーム API キーしか使えません。
 
-ワークロード ID フェデレーションを使うと、CI ジョブ、Kubernetes の Pod、その他のワークロードは、自身のプラットフォームが発行したトークンを Dependency-Track のセッションと交換できます。そのため、ワークロードは API キーを保存する必要がありません。その背後にあるモデルについては、[About workload identity federation](../../concepts/workload-identity-federation.md) を参照してください。
+ワークロード ID フェデレーションを使うと、CI ジョブ、Kubernetes の Pod、その他のワークロードは、自身のプラットフォームが発行したトークンを Dependency-Track のセッションと交換できます。そのため、ワークロードは API キーを保存する必要がありません。その背後にあるモデルについては、[ワークロード ID フェデレーションについて](../../concepts/workload-identity-federation.md)を参照してください。
 
 プロバイダーとバインディングを作成するには、`ACCESS_MANAGEMENT` 権限、またはそのきめ細かいバリアントが必要です。
 
@@ -69,7 +69,7 @@ Dependency-Track は保存時に鍵を取得し、取得に失敗するとプロ
 | **Subject** | 受け付ける `sub` クレームの正確な値、またはそのプレフィックス。[subject matching](../../reference/workload-identity.md#subject-matching) を参照してください。 |
 | **Condition** | トークンのクレームに対する任意の [CEL](../../reference/cel-expressions.md) 式。クレームは `claims` マップとして使えます。 |
 
-共有の issuer では、サブジェクトのプレフィックスに少なくとも自分の組織を含めます。[Subjects and conditions](../../concepts/workload-identity-federation.md#subjects-and-conditions) を参照してください。
+共有の issuer では、サブジェクトのプレフィックスに少なくとも自分の組織を含めます。[サブジェクトと条件](../../concepts/workload-identity-federation.md#subjects-and-conditions)を参照してください。
 
 1 つのサービスアカウントは複数のバインディングを持てます。Dependency-Track は [matching order](../../reference/workload-identity.md#matching-order) に従って、最初に一致したバインディングを使います。
 
@@ -302,7 +302,7 @@ curl -sSf "https://dependency-track.example.com/api/v1/user/self" \
 
 ## 関連項目 {#see-also}
 
-* プロバイダー、バインディング、セッションの背後にあるモデルについては、[About workload identity federation](../../concepts/workload-identity-federation.md)。
+* プロバイダー、バインディング、セッションの背後にあるモデルについては、[ワークロード ID フェデレーションについて](../../concepts/workload-identity-federation.md)。
 * サブジェクトの照合ルール、条件の環境、トークンの要件については、[ワークロード ID のリファレンス](../../reference/workload-identity.md)。
 * リクエストとレスポンスのスキーマについては、[REST API v2 リファレンス](../../reference/api/v2.md)。
 * サービスアカウントに付与する権限については、[Permissions](../../reference/permissions.md)。

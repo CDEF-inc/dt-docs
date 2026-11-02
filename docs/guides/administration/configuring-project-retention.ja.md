@@ -2,7 +2,7 @@
 
 スケジュールされたメンテナンスタスクは、保持ポリシーに従って**非アクティブ**なプロジェクトを削除できます。デフォルトでは、このタスクはオフです。このガイドでは、タスクの動作、ポリシーの選び方、設定方法を説明します。
 
-プロジェクトを非アクティブにすることの意味については、[プロジェクトのバージョンを管理する › 古いバージョンを廃止する](../user/managing-project-versions.md#retire-an-old-version)と [About projects › Retention](../../concepts/projects.md#retention) を参照してください。
+プロジェクトを非アクティブにすることの意味については、[プロジェクトのバージョンを管理する › 古いバージョンを廃止する](../user/managing-project-versions.md#retire-an-old-version)と[プロジェクトについて › 保持](../../concepts/projects.md#retention)を参照してください。
 
 ## タスクの動作 {#what-the-task-does}
 

@@ -1,6 +1,6 @@
 # 本番環境にデプロイする
 
-このガイドでは、実際のワークロードで Dependency-Track を運用するための基本的な構成を説明します。各コンポーネントの組み合わせ方の概要については、[Deployment topology](../../concepts/architecture/deployment.md) を参照してください。負荷に応じたデプロイのチューニングについては、[スケーリング](scaling.md)を参照してください。Kubernetes 固有のガイダンスについては、[Kubernetes にデプロイする](deploying-to-kubernetes.md)を参照してください。
+このガイドでは、実際のワークロードで Dependency-Track を運用するための基本的な構成を説明します。各コンポーネントの組み合わせ方の概要については、[デプロイのトポロジー](../../concepts/architecture/deployment.md)を参照してください。負荷に応じたデプロイのチューニングについては、[スケーリング](scaling.md)を参照してください。Kubernetes 固有のガイダンスについては、[Kubernetes にデプロイする](deploying-to-kubernetes.md)を参照してください。
 
 ## コンテナーイメージのバージョンを固定する {#pin-container-image-versions}
 
@@ -44,7 +44,7 @@ max_connections >= (instance_count × dt.datasource.pool.max-size) + headroom
 
 ## 複数のインスタンスを実行する {#run-more-than-one-instance}
 
-単一障害点を避け、ローリング再起動を可能にするために、同じデータベースに対して少なくとも 2 つのインスタンスを実行してください。インスタンスは PostgreSQL を通じてのみ連携し、デプロイにクラスタリングプロトコルやピアツーピアのネットワークは関与しません。このモデルについては [Coordination](../../concepts/architecture/deployment.md#coordination) を、インスタンスが停止した場合の動作については [Recovery from instance failure](../../concepts/architecture/deployment.md#recovery-from-instance-failure) を参照してください。
+単一障害点を避け、ローリング再起動を可能にするために、同じデータベースに対して少なくとも 2 つのインスタンスを実行してください。インスタンスは PostgreSQL を通じてのみ連携し、デプロイにクラスタリングプロトコルやピアツーピアのネットワークは関与しません。このモデルについては[協調](../../concepts/architecture/deployment.md#coordination)を、インスタンスが停止した場合の動作については[インスタンスの障害からの復旧](../../concepts/architecture/deployment.md#recovery-from-instance-failure)を参照してください。
 
 すべてのインスタンスはファイルストレージを共有する必要があります。デフォルトの `local` プロバイダーは共有の永続ボリューム(NFS など)で動作し、`s3` プロバイダーは共有ボリュームが現実的でない環境で動作します。[File storage](../../reference/configuration/file-storage.md) を参照してください。
 

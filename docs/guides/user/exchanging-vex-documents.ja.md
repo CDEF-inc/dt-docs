@@ -4,7 +4,7 @@ VEX をエクスポートすると、トリアージの判断を Dependency-Trac
 
 エクスポートには、`VIEW_VULNERABILITY`、`VULNERABILITY_ANALYSIS`、`VULNERABILITY_ANALYSIS_READ` のいずれかの[権限](../../reference/permissions.md)が必要です。インポートには、`VULNERABILITY_ANALYSIS` または `VULNERABILITY_ANALYSIS_UPDATE` が必要です。
 
-VEX が何を表明するか、VDR とどう違うかについては、[About VEX](../../concepts/vex.md) を参照してください。
+VEX が何を表明するか、VDR とどう違うかについては、[VEX について](../../concepts/vex.md) を参照してください。
 
 ## 第三者向けに判断をエクスポートする {#export-decisions-for-a-third-party}
 
@@ -27,7 +27,7 @@ VEX が何を表明するか、VDR とどう違うかについては、[About VE
 2. **Apply VEX** を選択します。
 3. CycloneDX VEX ファイルを選び、**Upload** を選択します。
 
-Dependency-Track は、各判断をすでに存在する検出結果に適用します。コンポーネントはドキュメント内の識別子ではなく同一性で照合されるため、別のプロジェクトからエクスポートしたドキュメントもこのプロジェクトに適用できます。インポートで変更できる内容とできない内容については [About VEX](../../concepts/vex.md#what-an-import-changes) で、インポート時に従うルールについては [VEX and VDR documents](../../reference/vex-and-vdr.md#import) で説明しています。
+Dependency-Track は、各判断をすでに存在する検出結果に適用します。コンポーネントはドキュメント内の識別子ではなく同一性で照合されるため、別のプロジェクトからエクスポートしたドキュメントもこのプロジェクトに適用できます。インポートで変更できる内容とできない内容については [VEX について](../../concepts/vex.md#what-an-import-changes) で、インポート時に従うルールについては [VEX and VDR documents](../../reference/vex-and-vdr.md#import) で説明しています。
 
 結果は **Audit Vulnerabilities** タブで確認します。分析状態 *False Positive*、*Not Affected*、*Resolved* をインポートすると、対象の検出結果は抑制されるため、それらを表示するには **Show Suppressed** を切り替えます。判断が反映されなかった場合の理由は、[変更が反映されない場合](#if-nothing-changed)に記載しています。
 
