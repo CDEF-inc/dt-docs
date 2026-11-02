@@ -4,14 +4,14 @@ VEX をエクスポートすると、トリアージの判断を Dependency-Trac
 
 エクスポートには、`VIEW_VULNERABILITY`、`VULNERABILITY_ANALYSIS`、`VULNERABILITY_ANALYSIS_READ` のいずれかの[権限](../../reference/permissions.md)が必要です。インポートには、`VULNERABILITY_ANALYSIS` または `VULNERABILITY_ANALYSIS_UPDATE` が必要です。
 
-VEX が何を表明するか、VDR とどう違うかについては、[VEX について](../../concepts/vex.md) を参照してください。
+VEX が何を表明するか、VDR とどう違うかについては、[VEX について](../../concepts/vex.md)を参照してください。
 
 ## 第三者向けに判断をエクスポートする {#export-decisions-for-a-third-party}
 
 1. プロジェクトを開き、**Audit Vulnerabilities** タブに切り替えます。
 2. 分析だけを含むドキュメントが必要な場合は **Export VEX** を、サービスと依存関係グラフも含むドキュメントが必要な場合は **Export VDR** を選択します。
 
-ファイルは CycloneDX JSON としてダウンロードされます。エクスポートを自動化するには、[VEX と VDR ドキュメント](../../reference/vex-and-vdr.md#export) に記載されているエンドポイントを呼び出します。このページには、各ドキュメントに含まれる内容も記載されています。
+ファイルは CycloneDX JSON としてダウンロードされます。エクスポートを自動化するには、[VEX と VDR ドキュメント](../../reference/vex-and-vdr.md#export)に記載されているエンドポイントを呼び出します。このページには、各ドキュメントに含まれる内容も記載されています。
 
 送付する前に、受け取る側が何を求めているかを確認します。
 
@@ -27,7 +27,7 @@ VEX が何を表明するか、VDR とどう違うかについては、[VEX に�
 2. **Apply VEX** を選択します。
 3. CycloneDX VEX ファイルを選び、**Upload** を選択します。
 
-Dependency-Track は、各判断をすでに存在する検出結果に適用します。コンポーネントはドキュメント内の識別子ではなく同一性で照合されるため、別のプロジェクトからエクスポートしたドキュメントもこのプロジェクトに適用できます。インポートで変更できる内容とできない内容については [VEX について](../../concepts/vex.md#what-an-import-changes) で、インポート時に従うルールについては [VEX と VDR ドキュメント](../../reference/vex-and-vdr.md#import) で説明しています。
+Dependency-Track は、各判断をすでに存在する検出結果に適用します。コンポーネントはドキュメント内の識別子ではなく同一性で照合されるため、別のプロジェクトからエクスポートしたドキュメントもこのプロジェクトに適用できます。インポートで変更できる内容とできない内容については [VEX について](../../concepts/vex.md#what-an-import-changes)で、インポート時に従うルールについては [VEX と VDR ドキュメント](../../reference/vex-and-vdr.md#import)で説明しています。
 
 結果は **Audit Vulnerabilities** タブで確認します。分析状態 *False Positive*、*Not Affected*、*Resolved* をインポートすると、対象の検出結果は抑制されるため、それらを表示するには **Show Suppressed** を切り替えます。判断が反映されなかった場合の理由は、[変更が反映されない場合](#if-nothing-changed)に記載しています。
 
@@ -141,4 +141,4 @@ Dependency-Track は、エントリーをスキップした理由をログに記
 * `affects` がない、空である、またはドキュメント内のどのエントリーも宣言していない `bom-ref` を指定している。
 * コンポーネントのエントリーとプロジェクトのコンポーネントに、共通する識別情報がない。バージョンが異なる PURL や、グループ、名前、バージョンの一部だけでは何とも一致しません。
 
-照合ルールとスキップ条件の全体については、[VEX と VDR ドキュメント](../../reference/vex-and-vdr.md#import) を参照してください。
+照合ルールとスキップ条件の全体については、[VEX と VDR ドキュメント](../../reference/vex-and-vdr.md#import)を参照してください。

@@ -129,7 +129,7 @@ JVM のデフォルト値を置き換えずに上書きするには、`EXTRA_JAV
 EXTRA_JAVA_OPTIONS="-XX:MaxGCPauseMillis=100"
 ```
 
-同梱されている JVM のデフォルト値とその意味については、[JVM オプション](../../reference/configuration/application.md#jvm-options) を参照してください。
+同梱されている JVM のデフォルト値とその意味については、[JVM オプション](../../reference/configuration/application.md#jvm-options)を参照してください。
 
 ## エンジンのデータベースを分離する {#isolate-the-engine-database}
 
