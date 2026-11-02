@@ -114,6 +114,10 @@ check-ja-sources:
 	@python3 scripts/check_ja_sources.py
 .PHONY: check-ja-sources
 
+diff-ja-sources:
+	@python3 scripts/check_ja_sources.py --diff $(FILES)
+.PHONY: diff-ja-sources
+
 update-ja-sources:
 	@python3 scripts/check_ja_sources.py --update $(FILES)
 .PHONY: update-ja-sources

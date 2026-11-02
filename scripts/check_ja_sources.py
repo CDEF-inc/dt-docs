@@ -23,16 +23,19 @@ The manifest records, for each English page with a `*.ja.md` translation, the
 git blob id of the English page the translation is based on. A page is
 outdated when the English page no longer has that blob id. The blob id is
 computed from the file content with LF line endings, so it matches the id git
-stores, and `git diff <old> <new>` shows what changed in English.
+stores.
 
-Run with `--update` after updating a translation to record the current English
+Run with `--diff` to see what changed in an English page since translation,
+and with `--update` after updating a translation to record the current English
 page as its source.
 """
 
 import argparse
+import difflib
 import hashlib
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -47,6 +50,10 @@ def blob_id(path: Path) -> str:
 
 def source_of(ja_file: Path) -> Path:
     return ja_file.with_name(ja_file.name.removesuffix(".ja.md") + ".md")
+
+
+def ja_file_of(path: Path) -> Path:
+    return path if path.name.endswith(".ja.md") else path.with_suffix(".ja.md")
 
 
 def load_manifest() -> dict[str, str]:
@@ -65,7 +72,7 @@ def update(docs_dir: Path, files: list[Path]):
     manifest = load_manifest()
     targets = files or sorted(docs_dir.rglob("*.ja.md"))
     for path in targets:
-        ja_file = path if path.name.endswith(".ja.md") else path.with_suffix(".ja.md")
+        ja_file = ja_file_of(path)
         source = source_of(ja_file)
         if not ja_file.exists() or not source.exists():
             sys.exit(f"{ja_file}: translation or English page not found")
@@ -75,6 +82,32 @@ def update(docs_dir: Path, files: list[Path]):
         manifest = {k: v for k, v in manifest.items() if k in current}
     save_manifest(manifest)
     print(f"Recorded the English source of {len(targets)} Japanese page(s).")
+
+
+def diff(files: list[Path]):
+    manifest = load_manifest()
+    for path in files:
+        source = source_of(ja_file_of(path))
+        recorded = manifest.get(source.as_posix())
+        if recorded is None:
+            sys.exit(f"{source.as_posix()}: no recorded English source")
+        # Read the recorded version from git and compare it with the working
+        # tree, so that uncommitted English changes show up too.
+        result = subprocess.run(
+            ["git", "cat-file", "blob", recorded], capture_output=True, check=False
+        )
+        if result.returncode != 0:
+            sys.exit(f"{source.as_posix()}: recorded version {recorded} not in git")
+        old = result.stdout.decode("utf-8").splitlines(keepends=True)
+        new = source.read_text(encoding="utf-8").splitlines(keepends=True)
+        sys.stdout.writelines(
+            difflib.unified_diff(
+                old,
+                new,
+                f"{source.as_posix()} (translated)",
+                f"{source.as_posix()} (current)",
+            )
+        )
 
 
 def check(docs_dir: Path) -> list[tuple[Path, str]]:
@@ -89,9 +122,10 @@ def check(docs_dir: Path) -> list[tuple[Path, str]]:
         elif recorded is None:
             message = f"No recorded English source. Run {update_hint}."
         elif recorded != blob_id(source):
-            diff = f"`git diff {recorded[:12]} {blob_id(source)[:12]}`"
+            diff_hint = f"`make diff-ja-sources FILES={ja_file.as_posix()}`"
             message = (
-                f"{source.as_posix()} changed since translation. See {diff}, "
+                f"{source.as_posix()} changed since translation. Run {diff_hint} "
+                "to see the changes, "
                 f"update the translation, then run {update_hint}."
             )
         else:
@@ -133,12 +167,22 @@ def main():
         help="record the current English source of these pages (all if none)",
     )
     parser.add_argument(
+        "--diff",
+        nargs="+",
+        type=Path,
+        metavar="FILE",
+        help="show what changed in the English source of these pages",
+    )
+    parser.add_argument(
         "--strict",
         action="store_true",
         help="exit with an error if any page is outdated",
     )
     args = parser.parse_args()
 
+    if args.diff:
+        diff(args.diff)
+        return
     if args.update is not None:
         update(args.docs_dir, args.update)
         return
