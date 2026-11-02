@@ -2,12 +2,12 @@
 
 このチュートリアルでは、Docker Compose を使って Dependency-Track をローカルで起動し、初めてフロントエンドにログインします。
 
-## 必要なもの
+## 必要なもの {#what-we-need}
 
 - [Docker](https://docs.docker.com/get-docker/) または [Podman](https://podman.io/)
 - [Compose v2](https://docs.docker.com/compose/install/)
 
-## Dependency-Track を起動する
+## Dependency-Track を起動する {#starting-dependency-track}
 
 Compose ファイルをダウンロードし、スタックを起動します。
 
@@ -32,7 +32,7 @@ Compose ファイルをダウンロードし、スタックを起動します。
     --8<-- "docs/tutorials/docker-compose.quickstart.yml"
     ```
 
-## ログインする
+## ログインする {#logging-in}
 
 スタックが起動したら、フロントエンド **<http://localhost:8081>** を開き、デフォルトの認証情報でログインします。
 
@@ -43,7 +43,7 @@ Compose ファイルをダウンロードし、スタックを起動します。
 !!! note
     初回ログイン時に、Dependency-Track からパスワードの変更を求められます。
 
-## 次のステップ
+## 次のステップ {#whats-next}
 
 - [コンポーネントポリシーを作成する](creating-a-component-policy.md): 組織の基準に違反するコンポーネントを検出します
 - [通知を設定する](setting-up-notifications.md): イベントを Slack、メール、Webhook に送信します

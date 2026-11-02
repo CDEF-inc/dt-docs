@@ -84,6 +84,7 @@ The site is built in English (default) and Japanese with `mkdocs-static-i18n` us
 - Pages without a `.ja.md` file fall back to the English page in the Japanese build.
 - Keep `.pages` files in English. Translate section titles through `nav_translations` of the `ja` language in `mkdocs.yml`.
 - Keep the English page's front matter keys, headings structure, and link targets. Link to the English file name (`page.md`), not `page.ja.md`; the plugin resolves it to the localized page.
+- Give every h2-h6 heading the same id as the English heading, for example `## BOM をアップロードする {#upload-a-bom}`. The default slugify drops Japanese characters, which would break links to the heading. `make sync-ja-heading-ids` builds the site and writes the ids from the English pages.
 - Write each Japanese paragraph and list item on a single line. A line break inside a paragraph renders as a space between Japanese characters.
 - Links that leave the docs tree (such as `../4.x/`) need one more `../` in Japanese pages, because the Japanese build lives under `ja/`.
 - Use the Japanese terms and notation rules in `context/vocabulary.ja.md`. Add a row there when you translate a new term.

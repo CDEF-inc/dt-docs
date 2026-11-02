@@ -110,6 +110,10 @@ generate-proto-docs:
 	  --doc_opt=/out/schema.md.tmpl,schema.md
 .PHONY: generate-proto-docs
 
+sync-ja-heading-ids: build
+	@uv run scripts/sync_ja_heading_ids.py
+.PHONY: sync-ja-heading-ids
+
 serve:
 	@uv run mkdocs serve --livereload
 .PHONY: serve

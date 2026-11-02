@@ -23,6 +23,12 @@
 | service | サービス | |
 | portfolio | ポートフォリオ | |
 | finding | 検出結果 | 「所見」「発見」は使わない |
+| collection project | コレクションプロジェクト |  |
+| hierarchy / parent / child | 階層 / 親 / 子 |  |
+| tag | タグ |  |
+| latest version | 最新バージョン | 「最新としてマークする」 |
+| retire (a version) | 廃止する |  |
+| component inventory | コンポーネントインベントリー |  |
 
 ## 脆弱性と分析
 
@@ -40,6 +46,8 @@
 | impact analysis | 影響分析 | |
 | triage | トリアージ | |
 | audit trail | 監査証跡 | |
+| decision (triage, VEX) | 判断 |  |
+| statement (VEX) | ステートメント |  |
 
 ## スコアリング
 
@@ -72,6 +80,10 @@
 | license group | ライセンスグループ | |
 | allow-list | 許可リスト | |
 | condition expression | 条件式 | |
+| policy evaluation | ポリシー評価 |  |
+| operator (policy) | 演算子 | UI ラベルとしては英語のまま |
+| subject (condition) | サブジェクト |  |
+| bundle (vulnerability policy) | バンドル |  |
 
 ## 通知
 
@@ -85,6 +97,11 @@
 | publisher | パブリッシャー | |
 | notification template | 通知テンプレート | |
 | fire (an alert) | (アラートが)発火する | |
+| trigger | トリガー | 値は英語のまま(*Event*、*Schedule*) |
+| subscribe | サブスクライブする |  |
+| destination | 送信先 |  |
+| filter expression | フィルター式 |  |
+| digest | ダイジェスト |  |
 
 ## アクセス制御
 
@@ -100,6 +117,9 @@
 | identity provider | ID プロバイダー | |
 | workload identity federation | ワークロード ID フェデレーション | |
 | managed secret | 管理対象シークレット | |
+| secret | シークレット |  |
+| credentials | 認証情報 |  |
+| access token | アクセストークン |  |
 
 ## アーキテクチャ(v5)
 
@@ -120,6 +140,19 @@
 | internal component | 内部コンポーネント | |
 | private vulnerability | 非公開の脆弱性 | |
 
+## 一般的な用語
+
+| 英語 | 訳語 | 備考 |
+|------|------|------|
+| clone | クローン、クローンする | |
+| retention | 保持 | |
+| sync | 同期 | |
+| resolve | 解決する | |
+| suppress (a notification) | 送信しない | 「抑制」は脆弱性の suppression に限る |
+| supplier | サプライヤー | |
+| third party | 第三者 | 製品・システムを指す場合は「サードパーティ」 |
+| toggle on / off | オンにする / オフにする | |
+
 ## ドキュメントの構成
 
 | 英語 | 訳語 | 備考 |
@@ -132,3 +165,5 @@
 | What's next | 次のステップ | |
 | What we just did | このチュートリアルで行ったこと | |
 | Expected output | 想定される出力 | |
+| Prerequisites | 前提条件 |  |
+| See also | 関連項目 |  |

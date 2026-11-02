@@ -2,24 +2,24 @@
 
 このチュートリアルでは、最初の[通知アラート](../concepts/notifications.md#alerts)を設定し、BOM をアップロードしたときにアラートが発火することを確認します。API サーバーの標準出力に通知を書き出す、組み込みの *Console* パブリッシャーを使います。そのため、メールサーバー、チャットのワークスペース、Webhook のエンドポイントがなくても、このチュートリアルだけで完結します。
 
-## 必要なもの
+## 必要なもの {#what-we-need}
 
 - [クイックスタート](quickstart.md)で起動した Dependency-Track スタック。
 - アップロードする BOM ファイル。有効な CycloneDX BOM であれば何でもかまいません。Dependency-Track 自体の [SBOM][dt-sbom] を使うと便利です。
 
-## ログインする
+## ログインする {#logging-in}
 
 フロントエンド **<http://localhost:8081>** を開き、`admin` としてログインします。初回ログイン後に新しいパスワードを設定します。
 
 ![ログイン](../assets/images/tutorials/setting-up-notifications/login.png)
 
-## プロジェクトを作成する
+## プロジェクトを作成する {#creating-a-project}
 
 `BOM_PROCESSED` 通知は特定のプロジェクトに対して発火するため、SBOM のアップロード先となるプロジェクトが必要です。
 
 **Projects > Create Project** を開き、名前を `notifications-demo` にして保存します。
 
-## アラートを作成する
+## アラートを作成する {#creating-the-alert}
 
 **Administration > Notifications > Alerts** を開き、*Create Alert* を選択して次の値を入力します。
 
@@ -39,7 +39,7 @@ Console パブリッシャーには追加の設定は不要です。常に API �
 
 ![アラートの設定](../assets/images/tutorials/setting-up-notifications/alert-config.png)
 
-## API サーバーのログを監視する
+## API サーバーのログを監視する {#watching-the-api-server-logs}
 
 別のターミナルで、API サーバーのコンテナーログを追跡します。
 
@@ -49,7 +49,7 @@ docker compose -f docker-compose.quickstart.yml logs --follow apiserver
 
 このターミナルは表示したままにしておきます。通知はここに表示されます。
 
-## 通知を発生させる
+## 通知を発生させる {#triggering-a-notification}
 
 フロントエンドに戻り、`notifications-demo` プロジェクトを開いて *Components* タブに切り替え、*Upload BOM* から SBOM をアップロードします。Dependency-Track は BOM をインポートして処理し、処理が完了すると `BOM_PROCESSED` 通知を発行します。
 
@@ -68,7 +68,7 @@ Notification
 
 これで、アラートが一連の流れを通して動作したことになります。プラットフォームでイベントが発生し、アラートがそれに一致し、パブリッシャーが内容をレンダリングし、送信先に配信されました。
 
-## 次のステップ
+## 次のステップ {#whats-next}
 
 - [Configuring notification alerts](../guides/user/configuring-notifications.md): プロジェクトやタグによる制限を追加し、実際のパブリッシャーに切り替えます。
 - [Notification publishers](../reference/notifications/publishers.md): メール、Slack、Webhook などの送信先を設定します。
