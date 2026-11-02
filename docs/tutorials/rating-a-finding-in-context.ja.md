@@ -4,20 +4,20 @@
 
 深刻度は脆弱性そのものに由来し、影響を受けるコンポーネントをどこで実行しているかについては何も示しません。VEX には分析の判断の代わりに [OWASP リスク評価](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)を含められるため、同じコンポーネントでも、あるデプロイでは危険で、別のデプロイでは無害であると表現できます。ここでは、インターネットに公開されたサービス用と、夜間バッチジョブ用の 2 つのドキュメントを作成します。
 
-## 必要なもの
+## 必要なもの {#what-we-need}
 
 - [クイックスタート](quickstart.md)で起動した、バージョン 5.1.0 以降の Dependency-Track スタック。
 - `PORTFOLIO_MANAGEMENT`、`BOM_UPLOAD`、`VULNERABILITY_MANAGEMENT`、`VULNERABILITY_ANALYSIS`、`VIEW_PORTFOLIO`、`VIEW_VULNERABILITY` の[権限](../reference/permissions.md)。`admin` アカウントはこの 6 つすべてを持っています。
 
 その他のものはすべて途中で作成するため、脆弱性ミラーの同期を待つ必要はありません。
 
-## 2 つのプロジェクトを作成する
+## 2 つのプロジェクトを作成する {#creating-the-two-projects}
 
 **Projects** を開き、**Create Project** を選択して、バージョン `1.0.0` の `checkout-api` を作成します。同様に、同じくバージョン `1.0.0` の `nightly-report` を作成します。
 
 どちらのプロジェクトにも同じコンポーネントを含め、記録するリスクだけを変えます。
 
-## 両方のプロジェクトに同じ BOM をアップロードする
+## 両方のプロジェクトに同じ BOM をアップロードする {#uploading-the-same-bom-to-both-projects}
 
 ```json title="billing.cdx.json" linenums="1"
 {
@@ -39,7 +39,7 @@
 
 `checkout-api` を開き、**Components** タブに切り替え、**Upload BOM** を選択してファイルを選びます。`nightly-report` でも同じ操作を行います。これで、各プロジェクトにコンポーネントが 1 つあり、検出結果はない状態になります。
 
-## コンポーネントに影響する脆弱性を作成する
+## コンポーネントに影響する脆弱性を作成する {#creating-a-vulnerability-that-affects-the-component}
 
 評価の対象となる検出結果が必要です。このチュートリアルがどのインスタンスでも同じ結果になるように、脆弱性は自分で作成します。
 
@@ -65,7 +65,7 @@
 
 両方のプロジェクトの深刻度は同じです。これから作成する 2 つのドキュメントで、この深刻度に状況に応じた評価を加えます。
 
-## 2 つの VEX ドキュメントを作成する
+## 2 つの VEX ドキュメントを作成する {#writing-the-two-vex-documents}
 
 各ドキュメントは脆弱性を指定し、製品全体を対象とします。そのため、`affects[].ref` には `metadata.component` の `bom-ref` を指定します。インポートで変更できる内容とできない内容については、[About VEX](../concepts/vex.md#what-an-import-changes) を参照してください。
 
@@ -135,11 +135,11 @@
 
 どちらのドキュメントにも `analysis` オブジェクトは含まれていません。`method: OWASP` の評価だけで十分です。
 
-## 各ドキュメントをプロジェクトに適用する
+## 各ドキュメントをプロジェクトに適用する {#applying-each-document-to-its-project}
 
 `checkout-api` を開き、**Apply VEX** を選択し、`vex-checkout-api.json` を選んで **Upload** を選択します。`nightly-report` でも `vex-nightly-report.json` を使って同じ操作を行います。
 
-## 結果を比較する
+## 結果を比較する {#comparing-the-results}
 
 `checkout-api` で `INT-BILLING-0001` の検出結果を開いて展開します。**OWASP RR Vector** というフィールドに、送信したベクトルが表示されています。**Audit Trail** には両方の値が記録されています。
 
@@ -152,7 +152,7 @@ OWASP Score: (None) → 63.0
 
 1 つの脆弱性、1 つのコンポーネント、2 つのデプロイ、2 つの評価です。深刻度はどちらのプロジェクトでも *Medium* のままです。インポートした評価は深刻度を置き換えるのではなく、深刻度と並んで記録されます。
 
-## 次のステップ
+## 次のステップ {#whats-next}
 
 - [Exchanging VEX documents](../guides/user/exchanging-vex-documents.md): 判断をエクスポートし、製品全体ではなく個々のコンポーネントを対象にします。
 - [VEX and VDR documents](../reference/vex-and-vdr.md#import): インポート時に従うルールと、エントリーがスキップされる理由を説明します。

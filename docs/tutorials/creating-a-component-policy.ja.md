@@ -4,16 +4,16 @@
 
 最後には、ポートフォリオ全体に適用されるポリシーと、監査できる `FAIL` のライセンス違反が表示されたプロジェクトができあがります。
 
-## 必要なもの
+## 必要なもの {#what-we-need}
 
 - [クイックスタート](quickstart.md)で起動した Dependency-Track スタック。
 - `POLICY_MANAGEMENT` 権限と `BOM_UPLOAD` 権限を持つアカウント。
 
-## プロジェクトを作成する
+## プロジェクトを作成する {#creating-the-project}
 
 ポリシーは BOM のアップロード時に評価されるため、まずアップロード先のプロジェクトを作成します。**Projects > Create Project** を開き、名前を `policy-demo` にして保存します。
 
-## ポリシーを作成する
+## ポリシーを作成する {#creating-the-policy}
 
 **Policy Management > Policies** を開き、*Create Policy* を選択して次の値を入力します。
 
@@ -29,7 +29,7 @@
 
 保存すると、新しいポリシーが一覧に表示されます。ポリシーを開いて条件を追加します。
 
-## 条件を記述する
+## 条件を記述する {#writing-the-condition}
 
 *Add Condition* を選択し、サブジェクトとして `Expression` を選びます。エディターが入力補完付きの CEL エディターに切り替わります。違反の種類として `License` を選び、次のように入力します。
 
@@ -53,7 +53,7 @@
 
 *Projects* と *Tags* のオプションは空のままにして、ポリシーがポートフォリオ全体に適用されるようにします。
 
-## サンプル BOM をアップロードする
+## サンプル BOM をアップロードする {#uploading-a-sample-bom}
 
 条件の両方の分岐を確認できる BOM が必要です。次の CycloneDX ファイルには、寛容なライセンスのコンポーネント(`mit-lib`、`MIT`)が 1 つと、許可リストにない追加ライセンスのフォントアセットを同梱するコンポーネント(`font-lib`、`MIT AND OFL-1.1`)が 1 つ含まれています。
 
@@ -85,7 +85,7 @@
 
 ![BOM アップロードモーダル](../assets/images/tutorials/creating-a-component-policy/bom-upload.png)
 
-## 違反を確認する
+## 違反を確認する {#seeing-the-violation}
 
 分析が完了したら、プロジェクトの *Policy Violations* タブを開きます。次の 1 行が表示されます。
 
@@ -98,13 +98,13 @@ MIT ライセンスのコンポーネントは表示されません。そのラ�
 
 ![ポリシー違反の一覧](../assets/images/tutorials/creating-a-component-policy/violations.png)
 
-## 違反を監査する
+## 違反を監査する {#auditing-the-violation}
 
 違反のドロワーを開いて分析状態を設定し、判断内容を記録する短いコメントを追加します。メトリクスやゲートの判定でこの検出結果を無視したい場合は、*Suppressed* もオンにします。トリアージのワークフロー全体については [Triaging policy violations](../guides/user/triaging-policy-violations.md) を参照してください。
 
 ![ポリシー違反の監査](../assets/images/tutorials/creating-a-component-policy/violation-audit.png)
 
-## このチュートリアルで行ったこと
+## このチュートリアルで行ったこと {#what-we-just-did}
 
 CEL 式の条件を 1 つ持つ、ポートフォリオ全体に適用されるコンポーネントポリシーを作成しました。その条件が寛容でないライセンスを含む BOM に一致し、`FAIL` の違反を発生させ、その違反を監査できることを確認しました。
 

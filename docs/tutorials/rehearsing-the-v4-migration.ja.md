@@ -12,7 +12,7 @@
     2. **稼働中のインスタンスではなく、v4 データベースのスナップショットまたは復元したコピーに対して移行ツールを実行する**。
     3. **不整合な結果を受け入れる**。接続性や情報が失われる変換の挙動を洗い出すには役立ちますが、行数や参照整合性は信頼できません。
 
-## 必要なもの
+## 必要なもの {#what-we-need}
 
 - [Docker](https://docs.docker.com/get-docker/) と [Compose v2](https://docs.docker.com/compose/install/)。
 - バージョン **4.14.2 以降**の v4 インスタンスのデータベースに接続できること。データベースは次のいずれかです。
@@ -24,7 +24,7 @@
 
     v4 がホスト上で動作している場合は、v4 の JDBC URL で `localhost` の代わりに `host.docker.internal` を使います。移行ツールはコンテナー内で動作するため、ホストの `localhost` には接続できません。
 
-## Compose ファイルをダウンロードする
+## Compose ファイルをダウンロードする {#downloading-the-compose-file}
 
 v5 の移行先には、クイックスタートの Compose ファイルを再利用します。
 
@@ -41,7 +41,7 @@ curl -O https://raw.githubusercontent.com/DependencyTrack/docs/main/docs/tutoria
 
     この Compose ファイルは Compose プロジェクト名 `Dependency-Track` を宣言しており、Docker はこれを `dependency-track` に正規化します。同じホストで v4 スタックも Docker Compose で実行していて、そのプロジェクト名が同じ値に正規化される場合、このチュートリアルのコマンドは v4 プロジェクトを対象にしてしまい、v4 のサービスを停止または削除します。その場合は、先に進む前に、ダウンロードした Compose ファイルの先頭にある `name:` フィールドを `dtrack-v5-sandbox` などの一意な値に変更します。あわせて、移行ツールのエイリアスのネットワーク名も `--network=dtrack-v5-sandbox_default` のように一致させます。
 
-## Postgres だけを起動する
+## Postgres だけを起動する {#starting-only-postgres}
 
 データベースサービスだけを起動します。
 
@@ -64,7 +64,7 @@ NAME                       IMAGE                STATUS                   PORTS
 dependency-track-postgres-1   postgres:18-alpine   Up 12 seconds (healthy)  5432/tcp
 ```
 
-## 移行ツールのエイリアスを定義する
+## 移行ツールのエイリアスを定義する {#aliasing-the-migrator}
 
 移行ツールはコンテナーイメージとして提供されています。コンテナーを Compose のネットワークに接続し、`postgres:5432` で Postgres に接続できるようにするシェルエイリアスを定義します。`<version>` は、移行先の v5 リリースに対応する移行ツールのイメージタグに置き換えます。
 
@@ -100,7 +100,7 @@ NETWORK ID     NAME                         DRIVER    SCOPE
 0f9e8d7c6b5a   none                         null      local
 ```
 
-## v5 のスキーマを初期化する
+## v5 のスキーマを初期化する {#bootstrapping-the-v5-schema}
 
 空の移行先に v5 のスキーマを適用します。
 
@@ -121,7 +121,7 @@ Bootstrap complete. Flyway head = 202605111028. Run 'extract' or 'run' next.
 
 これで移行先には v5 のスキーマが作成されますが、**`PERMISSION` テーブルを除いて**行はありません。
 
-## 空の移行先を検証する
+## 空の移行先を検証する {#verifying-the-empty-target}
 
 初期化したばかりの移行先に対して事前チェックを実行します。
 
@@ -158,7 +158,7 @@ v4-migrator verify \
 
 Flyway head が異なる場合や、**`PERMISSION` テーブル以外で**行数が 0 でない場合は、以降のリハーサルは正しく動作しません。
 
-## 移行をドライランする
+## 移行をドライランする {#dry-running-the-migration}
 
 何かを書き込む前に、移行ツールに実行計画を出力させます。ソースのフラグには v4 の接続情報を指定します。v4 のソースが PostgreSQL か Microsoft SQL Server かの違いは JDBC URL だけです。
 
@@ -190,7 +190,7 @@ Flyway head が異なる場合や、**`PERMISSION` テーブル以外で**行数
 
 `--dry-run` を指定すると、どちらのデータベースにも何も書き込みません。移行ツールは実行計画を出力して終了します。
 
-## 移行を実行する
+## 移行を実行する {#running-the-migration}
 
 `--dry-run` を外し、実際の抽出、変換、ロードを実行します。
 
@@ -241,7 +241,7 @@ LoadPhase - Load phase completed: 64 table(s), 5820097 row(s) in 211740 ms
 RunCommand - Migration completed: extract + transform + load finished. Run 'verify' to review row counts and probes.
 ```
 
-## 結果を検証する
+## 結果を検証する {#verifying-the-result}
 
 もう一度 `verify` を実行します。今回はテーブルごとにソース、ステージング、v5 の行数が表示され、すべてのプローブの結果も表示されます。
 
@@ -280,7 +280,7 @@ v4-migrator verify \
 
 移行ツールが行の重複排除、削除、書き換えを行った箇所では、ソースと v5 の行数が異なります。これらの削減は移行ツールが意図的に行うものです。`Note` 列には、該当する変換や `[Probes]` セクションへの参照とともに各削減の理由が示されるため、すべての減少の原因を確認できます。移行ガイドの[情報が失われる変更とわかりにくい変更](../guides/administration/migrating-from-v4.md#lossy-and-non-obvious-changes)のセクションにすべてのケースがまとめられているので、確認した削減がそこに記載されたケースと一致することを確かめます。
 
-## ステージングスキーマを削除する
+## ステージングスキーマを削除する {#dropping-the-staging-schema}
 
 verify の結果に問題がなければ、ステージングスキーマを削除します。
 
@@ -291,7 +291,7 @@ v4-migrator cleanup \
   --target-pass dtrack
 ```
 
-## v5 スタックを起動する
+## v5 スタックを起動する {#starting-the-v5-stack}
 
 移行したデータベースを使って、apiserver とフロントエンドを起動します。
 
@@ -313,7 +313,7 @@ docker compose -f docker-compose.quickstart.yml logs --follow apiserver
 
 v4 のプロジェクト、コンポーネント、検出結果が表示されます。よく知っているプロジェクトをいくつか確認し、BOM、依存関係、脆弱性が正しく表示されていることを確かめます。
 
-## このチュートリアルで行ったこと
+## このチュートリアルで行ったこと {#what-we-just-did}
 
 v4 に一切手を加えずに、実際の v4 データセットをサンドボックスの v5 インスタンスに移行しました。このリハーサルにより、自分たちのデプロイについて次の 3 点を確認できました。
 
@@ -325,7 +325,7 @@ v4 に一切手を加えずに、実際の v4 データセットをサンドボ�
 
 このリハーサルは何度でも安全に繰り返せます。v4 は一切変更されていないため、いつでもサンドボックスを破棄してやり直せます。
 
-## 後片付け
+## 後片付け {#tearing-down}
 
 リハーサルが終わったら、サンドボックスとそのボリュームを削除します。
 
@@ -335,7 +335,7 @@ docker compose -f docker-compose.quickstart.yml down -v
 
 Compose ファイルは名前付きボリュームを使っているため、`-v` を指定するとサンドボックスがきれいに削除されます。
 
-## 次のステップ
+## 次のステップ {#whats-next}
 
 - [Migrating from v4 to v5](../guides/administration/migrating-from-v4.md): 本番の切り替え手順です。
 - [Lossy and non-obvious changes](../guides/administration/migrating-from-v4.md#lossy-and-non-obvious-changes): 本番の実行前に必ず読んでください。
