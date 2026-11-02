@@ -86,6 +86,7 @@ The site is built in English (default) and Japanese with `mkdocs-static-i18n` us
 - Keep the English page's front matter keys, headings structure, and link targets. Link to the English file name (`page.md`), not `page.ja.md`; the plugin resolves it to the localized page.
 - Write each Japanese paragraph and list item on a single line. A line break inside a paragraph renders as a space between Japanese characters.
 - Links that leave the docs tree (such as `../4.x/`) need one more `../` in Japanese pages, because the Japanese build lives under `ja/`.
+- Use the Japanese terms and notation rules in `context/vocabulary.ja.md`. Add a row there when you translate a new term.
 - Keep UI labels (bold or italic) in English as the English UI shows them. Keep code blocks, commands, and sample output unchanged.
 - Write Japanese in the polite form (です・ます). Leave out the subject instead of translating the tutorial "we".
 - Vale skips `*.ja.md` files. markdownlint still applies.
