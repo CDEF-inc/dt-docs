@@ -25,7 +25,7 @@
 
 - *Subject* を選びます。選択できる演算子と値のエディターは、サブジェクトに応じて切り替わります。組み合わせの一覧は[サブジェクトのリファレンス](../../reference/policies/component-policies.md#condition-subjects)にあります。
 - *Operator* を選び、*Value* を入力します。`COORDINATES` のエディターにはグループ、名前、バージョンの入力欄があり、`VERSION_DISTANCE` にはエポック、メジャー、マイナー、パッチのフィールドがあります。`COMPONENT_HASH` では、演算子のフィールドがハッシュアルゴリズムになります。
-- `EXPRESSION` 条件では、入力補完付きのインライン CEL エディターが表示され、違反の種類を明示的に選ぶ必要があります。[Condition expressions](../../reference/policies/condition-expressions.md) を参照してください。
+- `EXPRESSION` 条件では、入力補完付きのインライン CEL エディターが表示され、違反の種類を明示的に選ぶ必要があります。[条件式](../../reference/policies/condition-expressions.md)を参照してください。
 - 行の *Update* をクリックして保存します。
 
 ![ポリシーの編集](../../assets/images/guides/user/managing-component-policies/edit-policy.png)
@@ -37,7 +37,7 @@
 - *Projects* タブでプロジェクトを追加します。*Include children* をオンにすると、その子孫のプロジェクトも対象になります。
 - *Tags* タブでタグを追加します。ポリシーは、それらのタグを 1 つ以上持つすべてのプロジェクトに適用されます。
 
-適用範囲の厳密なルールについては、[Component policies › Assignment](../../reference/policies/component-policies.md#assignment) を参照してください。
+適用範囲の厳密なルールについては、[コンポーネントポリシー › 割り当て](../../reference/policies/component-policies.md#assignment)を参照してください。
 
 ![プロジェクトに限定したポリシー](../../assets/images/guides/user/managing-component-policies/limit-policy-to-project.png)
 

@@ -18,7 +18,7 @@ API サーバーは、次の 2 つの読み込み元からこの順序でプロ�
 
 ## アプリケーションプロパティで設定する {#configuring-via-app-properties}
 
-次のプロパティを設定します(プロパティ名と環境変数の対応については [Application configuration](../../reference/configuration/application.md#environment-variable-mapping) を参照してください)。
+次のプロパティを設定します(プロパティ名と環境変数の対応については[アプリケーションの設定](../../reference/configuration/application.md#environment-variable-mapping)を参照してください)。
 
 - [`dt.http.proxy.host`](../../reference/configuration/properties.md#dthttpproxyhost): プロキシのホスト名または IP アドレス。
 - [`dt.http.proxy.port`](../../reference/configuration/properties.md#dthttpproxyport): プロキシのポート。`dt.http.proxy.host` に値を設定する場合は必須です。
@@ -76,7 +76,7 @@ API サーバーは、上流への HTTP 呼び出しと HTTPS 呼び出しの両
 
 ## 認証付きプロキシ {#authenticated-proxies}
 
-`dt.http.proxy.auth.username` と `dt.http.proxy.auth.password` を設定します。[Loading values from files](../../reference/configuration/application.md#loading-values-from-files) を使って、パスワードを平文で保持しないようにしてください。
+`dt.http.proxy.auth.username` と `dt.http.proxy.auth.password` を設定します。[ファイルから値を読み込む](../../reference/configuration/application.md#loading-values-from-files)を使って、パスワードを平文で保持しないようにしてください。
 
 一部の古い Microsoft のプロキシは、ドメイン名で修飾された `Basic` 認証情報を受け付けます。ユーザー名を `domain\username` の形式で指定します(`HTTPS_PROXY` では、バックスラッシュを `%5C` にパーセントエンコーディングします)。この場合も通信上は `Basic` 認証であり、NTLM *ではありません*。
 

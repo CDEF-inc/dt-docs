@@ -62,7 +62,7 @@ dt.dex-engine.activity-worker.vuln-analysis.max-concurrency=20
 
 ## ワーカーを水平スケールする {#scale-workers-horizontally}
 
-垂直方向の調整項目をチューニングした後もアクティビティの滞留が増え続ける場合は、永続実行エンジンが提供する需要シグナルに基づいてワーカーインスタンスを水平スケールします。CPU やメモリだけに基づいてスケールしないでください。アクティビティワーカーは I/O バウンド(データベース、レジストリの呼び出し、脆弱性データソース)で、ほとんどの時間を待機に費やすため、タスクがキューに溜まっていても CPU 使用率は低いままです。
+垂直方向の調整項目をチューニングした後もアクティビティの滞留が増え続ける場合は、永続実行エンジンが提供する需要シグナルに基づいてワーカーインスタンスを水平スケールします。CPU やメモリーだけに基づいてスケールしないでください。アクティビティワーカーは I/O バウンド(データベース、レジストリの呼び出し、脆弱性データソース)で、ほとんどの時間を待機に費やすため、タスクがキューに溜まっていても CPU 使用率は低いままです。
 
 エンジンは、このための Prometheus メトリクスを 3 つ公開しています。[Prometheus メトリクスのスクレイプを有効にする](configuring-observability.md#enabling-prometheus-metrics-scraping)と、管理サーバーがこれらのメトリクスを提供します。
 
@@ -78,13 +78,13 @@ dt.dex-engine.activity-worker.vuln-analysis.max-concurrency=20
     すべてのインスタンスが滞留数と経過時間のゲージを公開します。ほとんどのデプロイではすべてのアクティビティワーカーをまとめて実行するため、適切な HPA のシグナルは「いずれかのキューでスケールアップが必要」です。`max(...)`(`by` 句なし)で 1 つの値にまとめます。たとえば `max(dt_dex_engine_activity_task_queue_backlog)` のようにします。`by (queueName)` を追加するのは、ワーカーの種類を別々の Deployment に分割し、キューごとにスケールしたい場合だけです。
 
 !!! note "滞留数はおおよその値"
-    エンジンはクエリのコストを抑えるため、キューごとの数を 10000 で打ち切ります。上限を超えると、値は 10000 で頭打ちになります。スケーリングの判断に使うには十分な精度です。
+    エンジンはクエリーのコストを抑えるため、キューごとの数を 10000 で打ち切ります。上限を超えると、値は 10000 で頭打ちになります。スケーリングの判断に使うには十分な精度です。
 
 <!-- vale Google.Headings = NO -->
 ### KEDA の例 {#keda-example}
 <!-- vale Google.Headings = YES -->
 
-[KEDA](https://keda.sh) を使うと、これらのメトリクスに基づいて Deployment をスケールできます。次の `ScaledObject` はワーカーノード(`web` プロファイルなし)を対象とし、すべてのキューにわたる最悪の滞留数に基づいてスケールし、最悪の最古タスクの経過時間を補助的なトリガーとして使います。各クエリでは、一時的な急増(1 回の大きな BOM のアップロード)で無駄なスケールの増減が起きないように、メトリクスを `avg_over_time(...[5m:30s])` で囲んでいます。
+[KEDA](https://keda.sh) を使うと、これらのメトリクスに基づいて Deployment をスケールできます。次の `ScaledObject` はワーカーノード(`web` プロファイルなし)を対象とし、すべてのキューにわたる最悪の滞留数に基づいてスケールし、最悪の最古タスクの経過時間を補助的なトリガーとして使います。各クエリーでは、一時的な急増(1 回の大きな BOM のアップロード)で無駄なスケールの増減が起きないように、メトリクスを `avg_over_time(...[5m:30s])` で囲んでいます。
 
 ??? example "`ScaledObject` のマニフェスト"
     ```yaml linenums="1"
@@ -117,11 +117,11 @@ dt.dex-engine.activity-worker.vuln-analysis.max-concurrency=20
 
 `max_connections` の計算については、[コンピューティングリソースとデータベースを用意する](deploying-to-production.md#provision-compute-and-database)で説明しています。
 
-プールのプロパティについては、[Data sources](../../reference/configuration/datasources.md#connection-pool-properties) を参照してください。PgBouncer のセットアップについては、[コネクションプーリングの集約](configuring-database.md#centralised-connection-pooling)を参照してください。
+プールのプロパティについては、[データソース](../../reference/configuration/datasources.md#connection-pool-properties)を参照してください。PgBouncer のセットアップについては、[コネクションプーリングの集約](configuring-database.md#centralised-connection-pooling)を参照してください。
 
 ## 垂直スケールする {#scale-vertically}
 
-大きな BOM によって GC の負荷が上がる場合は、インスタンスを追加する前にメモリを追加します。並行性の設定に余裕があるにもかかわらずワーカーのスループットが頭打ちになる場合は、CPU を追加します。
+大きな BOM によって GC の負荷が上がる場合は、インスタンスを追加する前にメモリーを追加します。並行性の設定に余裕があるにもかかわらずワーカーのスループットが頭打ちになる場合は、CPU を追加します。
 
 JVM のデフォルト値を置き換えずに上書きするには、`EXTRA_JAVA_OPTIONS` を拡張します。たとえば、レイテンシーの影響を受けやすいフロントエンドのトラフィック向けに GC の停止時間の目標を厳しくするには、次のようにします。
 
@@ -129,7 +129,7 @@ JVM のデフォルト値を置き換えずに上書きするには、`EXTRA_JAV
 EXTRA_JAVA_OPTIONS="-XX:MaxGCPauseMillis=100"
 ```
 
-同梱されている JVM のデフォルト値とその意味については、[JVM options](../../reference/configuration/application.md#jvm-options) を参照してください。
+同梱されている JVM のデフォルト値とその意味については、[JVM オプション](../../reference/configuration/application.md#jvm-options) を参照してください。
 
 ## エンジンのデータベースを分離する {#isolate-the-engine-database}
 
@@ -147,7 +147,7 @@ dt.datasource.engine.pool.max-size=10
 dt.dex-engine.datasource.name=engine
 ```
 
-エンジンは独自のスキーマを管理しており、メインのデータベースクラスターを共有する必要はありません。データソースの設定の詳細については、[Data sources](../../reference/configuration/datasources.md) を参照してください。
+エンジンは独自のスキーマを管理しており、メインのデータベースクラスターを共有する必要はありません。データソースの設定の詳細については、[データソース](../../reference/configuration/datasources.md)を参照してください。
 
 ## データベースをチューニングする {#tune-the-database}
 

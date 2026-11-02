@@ -26,7 +26,7 @@
 
 ## 関連項目 {#see-also}
 
-- [Notification publishers](../../reference/notifications/publishers.md)
-- [Templating reference](../../reference/notifications/templating.md)
+- [パブリッシャー](../../reference/notifications/publishers.md)
+- [テンプレートのリファレンス](../../reference/notifications/templating.md)
 - [通知アラートを設定する](../user/configuring-notifications.md)
 - [届かない通知をデバッグする](debugging-notifications.md)

@@ -68,5 +68,5 @@ sequenceDiagram
 ## 関連項目 {#further-reading}
 
 * 手順とプラットフォームごとの設定については、[ワークロード ID フェデレーションを設定する](../guides/administration/configuring-workload-identity-federation.md)を参照してください。
-* サブジェクトの照合ルール、条件の環境、トークンの要件については、[Workload identity reference](../reference/workload-identity.md) を参照してください。
+* サブジェクトの照合ルール、条件の環境、トークンの要件については、[ワークロード ID のリファレンス](../reference/workload-identity.md)を参照してください。
 * サービスアカウントとユーザー、チーム、権限との関係については、[アクセス制御について](access-control.md#service-accounts)を参照してください。

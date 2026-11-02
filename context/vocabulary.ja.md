@@ -158,6 +158,22 @@
 | plugin | プラグイン |  |
 | retry / retry policy | 再試行 / 再試行ポリシー |  |
 | exponential backoff | 指数バックオフ |  |
+| breaking change | 破壊的変更 |  |
+| endpoint | エンドポイント |  |
+| request body / response schema | リクエストボディ / レスポンススキーマ |  |
+| pagination | ページネーション |  |
+| enum / enum value | 列挙型 / 列挙値 |  |
+| serialization | シリアライズ形式 | 「シリアル化」は使わない |
+| query / query parameter | クエリー / クエリーパラメーター | 長音を付ける |
+| memory | メモリー | 長音を付ける |
+| task scheduler / scheduled task | タスクスケジューラー / スケジュール済みタスク |  |
+| cron expression | cron 式 |  |
+| telemetry | テレメトリー |  |
+| file storage | ファイルストレージ |  |
+| evaluation context | 評価コンテキスト |  |
+| macro (CEL) | マクロ |  |
+| dependency graph | 依存関係グラフ |  |
+| transitive / direct dependency | 推移的な / 直接の依存関係 |  |
 | init tasks | 初期化タスク |  |
 | management server | 管理サーバー |  |
 | health probe / startup probe | ヘルスプローブ / 起動プローブ |  |
@@ -208,6 +224,8 @@
 | supplier | サプライヤー | |
 | third party | 第三者 | 製品・システムを指す場合は「サードパーティ」 |
 | toggle on / off | オンにする / オフにする | |
+| Yes / No (table cells) | はい / いいえ | 「編集可能」などの列では 可 / 不可、有無を表す列では あり / なし |
+| Returns: (function reference) | 戻り値: |  |
 
 ## ドキュメントの構成
 

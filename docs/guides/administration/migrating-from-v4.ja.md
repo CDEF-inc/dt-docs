@@ -69,7 +69,7 @@ flowchart LR
 
 ## 移行を実行する {#run-the-migration}
 
-移行ツールは、`ghcr.io/dependencytrack/v4-migrator:<version>` で公開されているコンテナーイメージとして提供されています。レジストリとタグの規則については [Container images](../../reference/container-images.md) を参照してください。
+移行ツールは、`ghcr.io/dependencytrack/v4-migrator:<version>` で公開されているコンテナーイメージとして提供されています。レジストリとタグの規則については[コンテナーイメージ](../../reference/container-images.md)を参照してください。
 
 以下の例では、簡潔にするために次のシェルエイリアスを使います。
 

@@ -166,6 +166,44 @@ plugins:
         Package metadata resolution: パッケージメタデータの解決
         Vulnerability analysis: 脆弱性分析
         Reference: リファレンス
+        Projects: プロジェクト
+        Configuration: 設定
+        Container images: コンテナーイメージ
+        Datasources: データソース
+        Vulnerability analyzers: 脆弱性アナライザー
+        VEX and VDR documents: VEX と VDR ドキュメント
+        Policies: ポリシー
+        CEL expressions: CEL 式
+        Access control: アクセス制御
+        Permissions: 権限
+        Workload identity: ワークロード ID
+        Integrations: 連携
+        Badges: バッジ
+        File formats: ファイル形式
+        Community integrations: コミュニティによる連携
+        Breaking changes in v5: v5 の破壊的変更
+        Application: アプリケーション
+        Cache: キャッシュ
+        Data sources: データソース
+        Database: データベース
+        Durable execution engine: 永続実行エンジン
+        File storage: ファイルストレージ
+        Init tasks: 初期化タスク
+        Task scheduler: タスクスケジューラー
+        Telemetry: テレメトリー
+        All properties: すべてのプロパティ
+        Overview: 概要
+        Private vulnerability repository: 非公開の脆弱性リポジトリ
+        Repositories: パッケージリポジトリ
+        Internal components: 内部コンポーネント
+        Groups: 通知グループ
+        Publishers: パブリッシャー
+        Templating: テンプレート
+        Filter expressions: フィルター式
+        Proto schema: Proto スキーマ
+        Component policies: コンポーネントポリシー
+        Vulnerability policies: 脆弱性ポリシー
+        Condition expressions: 条件式
 - glightbox
 - swagger-ui-tag:
     filter: true

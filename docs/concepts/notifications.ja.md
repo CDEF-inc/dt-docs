@@ -8,17 +8,17 @@ Dependency-Track には、プラットフォーム内のイベントをユーザ
 
 アラート(*通知ルール*)は、どの通知をどの送信先に送るかを指定する設定です。アラートは、サブスクライブする通知のスコープ、グループ、レベルを定義し、必要に応じて照合を特定のプロジェクトやタグに限定します。
 
-[CEL] で記述する*フィルター式*を使うと、アラートをさらに絞り込めます。この式は各通知の内容に対して評価されるため、フィルター条件ごとに専用の UI コントロールがなくても、脆弱性の深刻度、CVSS スコア、コンポーネント名などのプロパティで絞り込めます。詳しくは [Filter expressions](../reference/notifications/filter-expressions.md) を参照してください。
+[CEL] で記述する*フィルター式*を使うと、アラートをさらに絞り込めます。この式は各通知の内容に対して評価されるため、フィルター条件ごとに専用の UI コントロールがなくても、脆弱性の深刻度、CVSS スコア、コンポーネント名などのプロパティで絞り込めます。詳しくは[フィルター式](../reference/notifications/filter-expressions.md)を参照してください。
 
 ## パブリッシャー {#publishers}
 
-パブリッシャーは、プラットフォームが発行した通知を送信先のシステムに配信するソフトウェアコンポーネントです。Dependency-Track には、メールから Webhook まで、さまざまなパブリッシャーが付属しています。詳しくは [Publishers](../reference/notifications/publishers.md) を参照してください。
+パブリッシャーは、プラットフォームが発行した通知を送信先のシステムに配信するソフトウェアコンポーネントです。Dependency-Track には、メールから Webhook まで、さまざまなパブリッシャーが付属しています。詳しくは[パブリッシャー](../reference/notifications/publishers.md)を参照してください。
 
 ## テンプレート {#templates}
 
 テンプレートは、プラットフォーム内部での通知の表現([Notification schema](../reference/notifications/schema.md) を参照)を、通知の受信者が想定する形式にどう対応付けるかを定義します。
 
-各[パブリッシャー](#publishers)にはデフォルトのテンプレートが付属しており、管理者はカスタムテンプレートを設定できます。テンプレートで使える変数とフィルターについては、[Templating](../reference/notifications/templating.md) を参照してください。
+各[パブリッシャー](#publishers)にはデフォルトのテンプレートが付属しており、管理者はカスタムテンプレートを設定できます。テンプレートで使える変数とフィルターについては、[テンプレート](../reference/notifications/templating.md)を参照してください。
 
 ## レベル {#levels}
 
@@ -45,7 +45,7 @@ Dependency-Track には、プラットフォーム内のイベントをユーザ
 
 グループは、[スコープ](#scopes)内で通知のサブジェクトを細かく分類したものです。たとえば、`PORTFOLIO` スコープ内の `NEW_VULNERABILITY` グループは、システムが新しい脆弱性を見つけるたびに発行する通知を表します。
 
-グループ、そのスコープ、レベル、トリガーの完全な一覧については、[Notification groups](../reference/notifications/groups.md) を参照してください。
+グループ、そのスコープ、レベル、トリガーの完全な一覧については、[通知グループ](../reference/notifications/groups.md)を参照してください。
 
 ## トリガー {#triggers}
 

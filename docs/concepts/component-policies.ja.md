@@ -2,7 +2,7 @@
 
 コンポーネントポリシーを使うと、サードパーティのコンポーネントが満たすべき基準を組織としてルール化し、コンポーネントが基準を満たさないたびに*違反*として表面化させることができます。典型的な用途には、コピーレフトライセンスの禁止、コンポーネントが数年以内のものであることの要求、特定のパッケージ座標のブロック、上流からメジャーバージョンが 1 つより多く遅れているものがないことの確認などがあります。
 
-[脆弱性ポリシー](vulnerability-policies.md)が個々の脆弱性の検出結果に作用してそれに分析を適用するのに対し、コンポーネントポリシーはコンポーネントそのものに作用します。両者は補完的です。許容できるコンポーネントの条件を表すにはコンポーネントポリシーを使い、個々の検出結果に対するトリアージの判断を一元化するには脆弱性ポリシーを使います。どちらも同じ式言語、評価コンテキスト、カスタム関数ライブラリを共有します。詳しくは [Condition expressions](../reference/policies/condition-expressions.md) を参照してください。
+[脆弱性ポリシー](vulnerability-policies.md)が個々の脆弱性の検出結果に作用してそれに分析を適用するのに対し、コンポーネントポリシーはコンポーネントそのものに作用します。両者は補完的です。許容できるコンポーネントの条件を表すにはコンポーネントポリシーを使い、個々の検出結果に対するトリアージの判断を一元化するには脆弱性ポリシーを使います。どちらも同じ式言語、評価コンテキスト、カスタム関数ライブラリを共有します。詳しくは[条件式](../reference/policies/condition-expressions.md)を参照してください。
 
 ## 違反の意味 {#what-a-violation-means}
 
@@ -22,11 +22,11 @@
 - **運用**系のサブジェクト(座標、パッケージ URL、ハッシュ、経過期間、バージョン、バージョン距離、SWID タグ)は、コンポーネントの識別情報とライフサイクルに基づいて一致します。
 - **セキュリティ**系のサブジェクト(深刻度、CPE、CWE、EPSS スコア、脆弱性 ID)は、コンポーネントの脆弱性に基づいて一致します。
 
-組み込みのサブジェクトでは表現できないものについては、ポリシーで *Expression* サブジェクトを使用できます。これは、コンポーネント、プロジェクト、コンポーネントの脆弱性、現在時刻を対象に評価される [CEL](../reference/cel-expressions.md) 式です。脆弱性ポリシーで使われるのと同じ式言語であり、同じカスタム関数([`spdx_expr_allows`](../reference/policies/condition-expressions.md#spdx_expr_allows)、[`is_dependency_of`](../reference/policies/condition-expressions.md#is_dependency_of)、[`matches_range`](../reference/policies/condition-expressions.md#matches_range)、[`version_distance`](../reference/policies/condition-expressions.md#version_distance) など)を使えます。式による条件を使うと、コンポーネントのフィールドを組み合わせたり、依存関係グラフをたどったり、SPDX ライセンス式を直接操作したりするルールを組織としてルール化できます。式は `true` の代わりにメッセージを返すこともでき、その場合、発生した違反で何が一致したかを説明できます。[Result](../reference/policies/condition-expressions.md#result) を参照してください。
+組み込みのサブジェクトでは表現できないものについては、ポリシーで *Expression* サブジェクトを使用できます。これは、コンポーネント、プロジェクト、コンポーネントの脆弱性、現在時刻を対象に評価される [CEL](../reference/cel-expressions.md) 式です。脆弱性ポリシーで使われるのと同じ式言語であり、同じカスタム関数([`spdx_expr_allows`](../reference/policies/condition-expressions.md#spdx_expr_allows)、[`is_dependency_of`](../reference/policies/condition-expressions.md#is_dependency_of)、[`matches_range`](../reference/policies/condition-expressions.md#matches_range)、[`version_distance`](../reference/policies/condition-expressions.md#version_distance) など)を使えます。式による条件を使うと、コンポーネントのフィールドを組み合わせたり、依存関係グラフをたどったり、SPDX ライセンス式を直接操作したりするルールを組織としてルール化できます。式は `true` の代わりにメッセージを返すこともでき、その場合、発生した違反で何が一致したかを説明できます。[結果](../reference/policies/condition-expressions.md#result)を参照してください。
 
 ## ポリシーの適用範囲 {#where-a-policy-applies}
 
-デフォルトでは、ポリシーはポートフォリオ内のすべてのプロジェクトに適用されます。特定のプロジェクト、それらのプロジェクトの子孫、または特定の[タグ](tags.md)が付いたプロジェクトに絞り込むことができます。スコープはフラットで、ポリシーはプロジェクトに適用されるか、されないかのどちらかです。正確なルールについては、[Component policies › Assignment](../reference/policies/component-policies.md#assignment) を参照してください。
+デフォルトでは、ポリシーはポートフォリオ内のすべてのプロジェクトに適用されます。特定のプロジェクト、それらのプロジェクトの子孫、または特定の[タグ](tags.md)が付いたプロジェクトに絞り込むことができます。スコープはフラットで、ポリシーはプロジェクトに適用されるか、されないかのどちらかです。正確なルールについては、[コンポーネントポリシー › 割り当て](../reference/policies/component-policies.md#assignment)を参照してください。
 
 ## ライフサイクル {#lifecycle}
 
@@ -46,6 +46,6 @@
 
 - 手順については、[コンポーネントポリシーを管理する](../guides/user/managing-component-policies.md)を参照してください。
 - フィールドの定義と、サブジェクトと演算子の組み合わせの一覧については、[コンポーネントポリシーのリファレンス](../reference/policies/component-policies.md)を参照してください。
-- CEL の変数、カスタム関数、実例については、[Condition expressions](../reference/policies/condition-expressions.md) を参照してください。
+- CEL の変数、カスタム関数、実例については、[条件式](../reference/policies/condition-expressions.md)を参照してください。
 - 手順を追った説明については、[コンポーネントポリシーを作成する](../tutorials/creating-a-component-policy.md)を参照してください。
 - 補完的なポリシーの種類については、[脆弱性ポリシーについて](vulnerability-policies.md)を参照してください。
