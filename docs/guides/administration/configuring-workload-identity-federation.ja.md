@@ -55,7 +55,7 @@ Dependency-Track は保存時に鍵を取得し、取得に失敗するとプロ
 
 **Provide a JWK Set** は鍵を Dependency-Track に保存し、何も取得しません。主にセルフマネージドの Kubernetes クラスターなど、Dependency-Track からまったくアクセスできない issuer に使います。インラインの鍵は更新されないため、issuer が鍵をローテーションするたびにプロバイダーを更新します。
 
-取得する URL には `https` を使う必要があります。[outbound fetch constraints](../../reference/workload-identity.md#outbound-fetch-constraints) の範囲内であれば、社内ネットワーク内の issuer も使えます。
+取得する URL には `https` を使う必要があります。[外部への取得の制約](../../reference/workload-identity.md#outbound-fetch-constraints)の範囲内であれば、社内ネットワーク内の issuer も使えます。
 
 ## サブジェクトをサービスアカウントにバインドする {#bind-a-subject-to-the-service-account}
 
@@ -66,12 +66,12 @@ Dependency-Track は保存時に鍵を取得し、取得に失敗するとプロ
 | フィールド | 入力する内容 |
 |:---|:---|
 | **Provider** | 登録したプロバイダー。 |
-| **Subject** | 受け付ける `sub` クレームの正確な値、またはそのプレフィックス。[subject matching](../../reference/workload-identity.md#subject-matching) を参照してください。 |
+| **Subject** | 受け付ける `sub` クレームの正確な値、またはそのプレフィックス。[サブジェクトの照合](../../reference/workload-identity.md#subject-matching)を参照してください。 |
 | **Condition** | トークンのクレームに対する任意の [CEL](../../reference/cel-expressions.md) 式。クレームは `claims` マップとして使えます。 |
 
 共有の issuer では、サブジェクトのプレフィックスに少なくとも自分の組織を含めます。[サブジェクトと条件](../../concepts/workload-identity-federation.md#subjects-and-conditions)を参照してください。
 
-1 つのサービスアカウントは複数のバインディングを持てます。Dependency-Track は [matching order](../../reference/workload-identity.md#matching-order) に従って、最初に一致したバインディングを使います。
+1 つのサービスアカウントは複数のバインディングを持てます。Dependency-Track は[照合の順序](../../reference/workload-identity.md#matching-order)に従って、最初に一致したバインディングを使います。
 
 アクセスを取り消すには、バインディングを削除します。すでに発行されたセッションは、有効期限が切れるまで有効なままです。それらのセッションも遮断するには、サービスアカウントを停止します。
 
@@ -305,7 +305,7 @@ curl -sSf "https://dependency-track.example.com/api/v1/user/self" \
 * プロバイダー、バインディング、セッションの背後にあるモデルについては、[ワークロード ID フェデレーションについて](../../concepts/workload-identity-federation.md)。
 * サブジェクトの照合ルール、条件の環境、トークンの要件については、[ワークロード ID のリファレンス](../../reference/workload-identity.md)。
 * リクエストとレスポンスのスキーマについては、[REST API v2 リファレンス](../../reference/api/v2.md)。
-* サービスアカウントに付与する権限については、[Permissions](../../reference/permissions.md)。
+* サービスアカウントに付与する権限については、[権限](../../reference/permissions.md)。
 
 [k8s-sa]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 [spiffe-federation]: https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Federation.md

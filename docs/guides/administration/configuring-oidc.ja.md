@@ -17,7 +17,7 @@ Dependency-Track は、[OpenID Connect](https://openid.net/specs/openid-connect-
 
 ## API サーバーの設定 {#api-server-configuration}
 
-OIDC の設定はすべて[アプリのプロパティ](../../reference/configuration/properties.md)で行います。以下の例ではプロパティ名を使用しています。プロパティ名と環境変数の対応については、[Application configuration](../../reference/configuration/application.md#environment-variable-mapping) を参照してください。
+OIDC の設定はすべて[アプリのプロパティ](../../reference/configuration/properties.md)で行います。以下の例ではプロパティ名を使用しています。プロパティ名と環境変数の対応については、[アプリケーションの設定](../../reference/configuration/application.md#environment-variable-mapping)を参照してください。
 
 ```properties linenums="1"
 dt.oidc.enabled=true
@@ -173,6 +173,6 @@ OIDC に関連する設定プロパティの一覧については、[設定リ�
 
 ## 関連項目 {#see-also}
 
-- [Permissions](../../reference/permissions.md): IdP のグループを Dependency-Track のチームに対応付ける
+- [権限](../../reference/permissions.md): IdP のグループを Dependency-Track のチームに対応付ける
 - [LDAP を設定する](configuring-ldap.md): LDAP を使用する OIDC の代替手段
 - [社内 CA の信頼を設定する](configuring-internal-ca.md): IdP の社内 TLS 証明書を信頼する

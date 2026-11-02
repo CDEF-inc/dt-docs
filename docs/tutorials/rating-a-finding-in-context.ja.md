@@ -155,5 +155,5 @@ OWASP Score: (None) → 63.0
 ## 次のステップ {#whats-next}
 
 - [Exchanging VEX documents](../guides/user/exchanging-vex-documents.md): 判断をエクスポートし、製品全体ではなく個々のコンポーネントを対象にします。
-- [VEX and VDR documents](../reference/vex-and-vdr.md#import): インポート時に従うルールと、エントリーがスキップされる理由を説明します。
-- [Community integrations](../reference/community-integrations.md): これらのドキュメントを生成するツールを紹介します。
+- [VEX と VDR ドキュメント](../reference/vex-and-vdr.md#import): インポート時に従うルールと、エントリーがスキップされる理由を説明します。
+- [コミュニティによる連携](../reference/community-integrations.md): これらのドキュメントを生成するツールを紹介します。

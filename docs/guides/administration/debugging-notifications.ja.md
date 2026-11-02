@@ -5,7 +5,7 @@
 ## よくある原因 {#common-causes}
 
 - **アラートの設定の誤り。** アラートのスコープ、レベル、グループの選択、プロジェクトによる制限、タグによる制限のいずれかによって、通知が除外されています。[通知アラートを設定する](../user/configuring-notifications.md)と照らし合わせて確認してください。
-- **フィルター式が通知を拒否している。** アラートの CEL フィルターが false と評価されています。[Filter expressions](../../reference/notifications/filter-expressions.md) の説明に従って式をテストしてください。
+- **フィルター式が通知を拒否している。** アラートの CEL フィルターが false と評価されています。[フィルター式](../../reference/notifications/filter-expressions.md)の説明に従って式をテストしてください。
 - **パブリッシャーの送信先に到達できない。** ネットワークの障害、ファイアウォール、プロキシの設定の誤り、Webhook URL の期限切れなどが原因です。
 - **送信先が拒否されている。** [`dt.outbound.allowed-destinations`](../../reference/configuration/properties.md#dtoutboundallowed-destinations) が送信先を許可していません。5.2.0 より前のバージョンでは、メールと Kafka のパブリッシャーは代わりにそれぞれ独自の `allow-local-connections` プロパティを使っていました。
 - **カスタムテンプレートの描画に失敗している。** 構文エラーや変数の欠落により、パブリッシャーが送信前に停止します。
@@ -57,6 +57,6 @@ Console パブリッシャーは通知を出力するのに、別のパブリッ
 
 ## 関連項目 {#see-also}
 
-- [Notification publishers](../../reference/notifications/publishers.md)
-- [Filter expressions](../../reference/notifications/filter-expressions.md)
+- [パブリッシャー](../../reference/notifications/publishers.md)
+- [フィルター式](../../reference/notifications/filter-expressions.md)
 - [通知アラートを設定する](../user/configuring-notifications.md)

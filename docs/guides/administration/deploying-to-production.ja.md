@@ -4,7 +4,7 @@
 
 ## コンテナーイメージのバージョンを固定する {#pin-container-image-versions}
 
-すべての Dependency-Track コンテナーを、完全な `X.Y.Z` 形式のリリースタグ(またはイメージダイジェスト)に固定します。本番環境にスナップショットタグや `latest` タグをデプロイしないでください。利用できるレジストリ、イメージの座標、タグの規則については、[Container images](../../reference/container-images.md) を参照してください。
+すべての Dependency-Track コンテナーを、完全な `X.Y.Z` 形式のリリースタグ(またはイメージダイジェスト)に固定します。本番環境にスナップショットタグや `latest` タグをデプロイしないでください。利用できるレジストリ、イメージの座標、タグの規則については、[コンテナーイメージ](../../reference/container-images.md)を参照してください。
 
 ## コンピューティングリソースとデータベースを用意する {#provision-compute-and-database}
 
@@ -20,7 +20,7 @@
 正確なサイジングはワークロードの形態によって決まります。同時に利用するフロントエンドのユーザー数、ポートフォリオ内のプロジェクト数、BOM のアップロード頻度などです。利用パターンは、調達のみのデプロイ、CI/CD 主導のデプロイ、混在したデプロイで大きく異なるため、スケーリングする前に観測してください。実際の負荷を示すメトリクスについては、[オブザーバビリティを設定する](configuring-observability.md)を参照してください。
 
 !!! warning "JVM ヒープはコンテナーのメモリーに応じて拡大する"
-    メモリーを追加すると、JVM ヒープの上限(デフォルトはコンテナーのメモリーの 80%)が上がります。過剰にリソースを割り当てる前に、大きなヒープが効果を上げていることを `top` や `docker stats` ではなく Prometheus のヒープメトリクスで確認してください。背後の動作については [JVM options](../../reference/configuration/application.md#jvm-options) を参照してください。
+    メモリーを追加すると、JVM ヒープの上限(デフォルトはコンテナーのメモリーの 80%)が上がります。過剰にリソースを割り当てる前に、大きなヒープが効果を上げていることを `top` や `docker stats` ではなく Prometheus のヒープメトリクスで確認してください。背後の動作については [JVM オプション](../../reference/configuration/application.md#jvm-options) を参照してください。
 
 ### データベース {#database}
 
@@ -46,13 +46,13 @@ max_connections >= (instance_count × dt.datasource.pool.max-size) + headroom
 
 単一障害点を避け、ローリング再起動を可能にするために、同じデータベースに対して少なくとも 2 つのインスタンスを実行してください。インスタンスは PostgreSQL を通じてのみ連携し、デプロイにクラスタリングプロトコルやピアツーピアのネットワークは関与しません。このモデルについては[協調](../../concepts/architecture/deployment.md#coordination)を、インスタンスが停止した場合の動作については[インスタンスの障害からの復旧](../../concepts/architecture/deployment.md#recovery-from-instance-failure)を参照してください。
 
-すべてのインスタンスはファイルストレージを共有する必要があります。デフォルトの `local` プロバイダーは共有の永続ボリューム(NFS など)で動作し、`s3` プロバイダーは共有ボリュームが現実的でない環境で動作します。[File storage](../../reference/configuration/file-storage.md) を参照してください。
+すべてのインスタンスはファイルストレージを共有する必要があります。デフォルトの `local` プロバイダーは共有の永続ボリューム(NFS など)で動作し、`s3` プロバイダーは共有ボリュームが現実的でない環境で動作します。[ファイルストレージ](../../reference/configuration/file-storage.md)を参照してください。
 
 ## シークレットをコンテナーの外で管理する {#manage-secrets-outside-the-container}
 
 2 種類のシークレットを別々に管理します。
 
-- **インフラストラクチャのシークレット**(データベースのパスワード、LDAP のバインドパスワード)は起動時に読み込まれます。平文の環境変数として渡すのではなく、ファイルとしてマウントし、`${file::/path/to/file}` で参照してください。[Loading values from files](../../reference/configuration/application.md#loading-values-from-files) を参照してください。
+- **インフラストラクチャのシークレット**(データベースのパスワード、LDAP のバインドパスワード)は起動時に読み込まれます。平文の環境変数として渡すのではなく、ファイルとしてマウントし、`${file::/path/to/file}` で参照してください。[ファイルから値を読み込む](../../reference/configuration/application.md#loading-values-from-files)を参照してください。
 - **連携用のシークレット**(Jira、Snyk、Trivy、OSS Index などの API トークン)は、Dependency-Track の実行時のシークレットストアに保存されます。サポートされているバックエンドについては、[シークレット管理を設定する](configuring-secret-management.md)を参照してください。
 
 データベースのシークレットプロバイダーはエンベロープ暗号化を使います。各シークレットは固有のデータ暗号化鍵(DEK)を持ち、鍵暗号化鍵(KEK)が DEK を保護します。デフォルトでは、各インスタンスは初回起動時に KEK のキーセットファイルをディスク上に生成します。クラスター内のすべてのインスタンスは同じ KEK を共有する必要があり、不一致を検出すると起動を拒否します。キーセットファイルを一度だけ用意してすべてのインスタンスにマウントするか、環境変数で KEK を直接指定してください。両方の方法については、[シークレット管理を設定する](configuring-secret-management.md#key-management)を参照してください。

@@ -16,7 +16,7 @@ Dependency-Track は LDAP ユーザーを認証する際、まずサービスア
 
 ## 設定 {#configuration}
 
-LDAP の設定はすべて[アプリケーションのプロパティ](../../reference/configuration/properties.md)で行います。以下の例ではプロパティ名を使います。プロパティ名と環境変数の対応については、[Application configuration](../../reference/configuration/application.md#environment-variable-mapping) を参照してください。
+LDAP の設定はすべて[アプリケーションのプロパティ](../../reference/configuration/properties.md)で行います。以下の例ではプロパティ名を使います。プロパティ名と環境変数の対応については、[アプリケーションの設定](../../reference/configuration/application.md#environment-variable-mapping)を参照してください。
 
 ### 最小限の設定 {#minimal-configuration}
 
@@ -149,6 +149,6 @@ LDAP 関連の設定プロパティの完全な一覧と、それぞれの型、
 
 ## 関連項目 {#see-also}
 
-- [Permissions](../../reference/permissions.md): LDAP グループを Dependency-Track のチームに対応付ける
+- [権限](../../reference/permissions.md): LDAP グループを Dependency-Track のチームに対応付ける
 - [OpenID Connect を設定する](configuring-oidc.md): OpenID Connect を使った LDAP の代替手段
 - [社内 CA の信頼を設定する](configuring-internal-ca.md): LDAPS 用に社内の TLS 証明書を信頼する

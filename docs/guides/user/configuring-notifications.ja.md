@@ -27,7 +27,7 @@
 
 ## グループを選択する {#selecting-groups}
 
-各アラートは、そのスコープ内の 1 つ以上の通知グループをサブスクライブします。選択できるグループの一覧には、アラートのスコープとトリガーの種類に対応するグループだけが表示されます。すべてのグループの一覧と、各グループが表す内容については、[Notification groups](../../reference/notifications/groups.md) を参照してください。
+各アラートは、そのスコープ内の 1 つ以上の通知グループをサブスクライブします。選択できるグループの一覧には、アラートのスコープとトリガーの種類に対応するグループだけが表示されます。すべてのグループの一覧と、各グループが表す内容については、[通知グループ](../../reference/notifications/groups.md)を参照してください。
 
 ## 送信先を設定する {#setting-the-destination}
 
@@ -39,7 +39,7 @@
 | Slack、Microsoft Teams、Mattermost、Webex | 送信先のプラットフォームが発行する Incoming Webhook の URL。 |
 | Jira | プロジェクトキーと課題タイプ。[Jira アラートの設定][jira-alert]を参照してください。 |
 | Webhook | 通知のペイロードを受け付ける HTTP(S) エンドポイント。 |
-| Kafka | トピック名とシリアル化形式。[Kafka アラートの設定][kafka-alert]を参照してください。 |
+| Kafka | トピック名とシリアライズ形式。[Kafka アラートの設定][kafka-alert]を参照してください。 |
 
 各パブリッシャーが公開するすべてのフィールドについては、[パブリッシャーのリファレンス](../../reference/notifications/publishers.md)を参照してください。
 
@@ -89,13 +89,13 @@ minute of the hour (0-59)
 
 ## フィルター式 {#filter-expressions}
 
-一致する通知をより細かく制御するには(たとえば、CVSS のしきい値を超える脆弱性だけに絞り込むなど)、アラートにフィルター式を付与します。[Filter expressions](../../reference/notifications/filter-expressions.md) を参照してください。
+一致する通知をより細かく制御するには(たとえば、CVSS のしきい値を超える脆弱性だけに絞り込むなど)、アラートにフィルター式を付与します。[フィルター式](../../reference/notifications/filter-expressions.md)を参照してください。
 
 ## 関連項目 {#see-also}
 
-- [Notification groups](../../reference/notifications/groups.md)
+- [通知グループ](../../reference/notifications/groups.md)
 - [届かない通知をデバッグする](../administration/debugging-notifications.md)
-- [Notification publishers](../../reference/notifications/publishers.md)
+- [パブリッシャー](../../reference/notifications/publishers.md)
 
 [cron]: https://en.wikipedia.org/wiki/Cron
 [crontab guru]: https://crontab.guru/

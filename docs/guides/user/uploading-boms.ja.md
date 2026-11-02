@@ -4,7 +4,7 @@ Dependency-Track は、アップロードされた BOM からプロジェクト�
 
 アップロードには `BOM_UPLOAD` [権限](../../reference/permissions.md)が必要です。最初のアップロードでプロジェクトを作成する場合は、`PROJECT_CREATION_UPLOAD`、`PORTFOLIO_MANAGEMENT`、`PORTFOLIO_MANAGEMENT_CREATE` のいずれかも必要です。パイプラインでは、これらの権限を個人ではなく[サービスアカウント](../../concepts/access-control.md#service-accounts)に付与します。
 
-Dependency-Track が受け付ける BOM の形式については、[File formats](../../reference/file-formats.md) を参照してください。
+Dependency-Track が受け付ける BOM の形式については、[ファイル形式](../../reference/file-formats.md)を参照してください。
 
 ## フロントエンドからアップロードする {#upload-from-the-ui}
 

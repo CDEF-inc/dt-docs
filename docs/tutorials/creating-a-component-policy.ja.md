@@ -23,7 +23,7 @@
 | Operator        | `Any`                       |
 | Violation state | `FAIL`                      |
 
-状態は重要です。`FAIL` にすると、違反によって後続の CI/CD チェックが失敗します。その他の状態については [Violation states](../reference/policies/component-policies.md#violation-states) を参照してください。
+状態は重要です。`FAIL` にすると、違反によって後続の CI/CD チェックが失敗します。その他の状態については[違反の状態](../reference/policies/component-policies.md#violation-states)を参照してください。
 
 ![ポリシー作成モーダル](../assets/images/tutorials/creating-a-component-policy/create-policy-modal.png)
 
@@ -112,4 +112,4 @@ CEL 式の条件を 1 つ持つ、ポートフォリオ全体に適用される�
 
 - [Managing component policies](../guides/user/managing-component-policies.md): プロジェクトの割り当て、タグによる適用範囲の指定、ライセンスグループなど、エディターのその他の機能を説明します。
 - [コンポーネントポリシーについて](../concepts/component-policies.md): モデルの詳細と、コンポーネントポリシーと脆弱性ポリシーの関係を説明します。
-- [Condition expressions](../reference/policies/condition-expressions.md): 式による条件で使える CEL 変数、カスタム関数、実例をすべて掲載しています。
+- [条件式](../reference/policies/condition-expressions.md): 式による条件で使える CEL 変数、カスタム関数、実例をすべて掲載しています。

@@ -72,7 +72,7 @@ Passed と Failed のアイコンはクリックできます。選択すると�
 
 ## ポリシーで検証を使用する {#using-verification-in-policies}
 
-コンポーネントポリシーでは、`component.has_package_artifact_hash_mismatch()` という条件式を使って、ハッシュが一致しないコンポーネントにフラグを付けることができます。この関数は、UI の表の Failed の状態に一致します。その意味と、ポリシーの実例については、[Condition expressions](../reference/policies/condition-expressions.md#has_package_artifact_hash_mismatch) を参照してください。
+コンポーネントポリシーでは、`component.has_package_artifact_hash_mismatch()` という条件式を使って、ハッシュが一致しないコンポーネントにフラグを付けることができます。この関数は、UI の表の Failed の状態に一致します。その意味と、ポリシーの実例については、[条件式](../reference/policies/condition-expressions.md#has_package_artifact_hash_mismatch)を参照してください。
 
 Failed は、完全性チェックが返しうる状態の 1 つにすぎません。この関数は不一致が確認された場合にのみ発火するため、この関数に基づくポリシーは、まだリポジトリのハッシュがないコンポーネントや、ハッシュのアルゴリズムが上流のリポジトリと共通しないコンポーネントにはフラグを付けません。ポリシーでそれらのケースにも対応する必要がある場合は、他の条件と組み合わせてください。
 
