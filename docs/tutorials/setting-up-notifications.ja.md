@@ -73,6 +73,6 @@ Notification
 - [Configuring notification alerts](../guides/user/configuring-notifications.md): プロジェクトやタグによる制限を追加し、実際のパブリッシャーに切り替えます。
 - [Notification publishers](../reference/notifications/publishers.md): メール、Slack、Webhook などの送信先を設定します。
 - [Templating reference](../reference/notifications/templating.md): 通知の表示内容をカスタマイズします。
-- [Debugging missing notifications](../guides/administration/debugging-notifications.md): 配信されないアラートの原因を調べます。
+- [届かない通知をデバッグする](../guides/administration/debugging-notifications.md): 配信されないアラートの原因を調べます。
 
 [dt-sbom]: https://github.com/DependencyTrack/dependency-track/releases

@@ -337,6 +337,6 @@ Compose ファイルは名前付きボリュームを使っているため、`-v
 
 ## 次のステップ {#whats-next}
 
-- [Migrating from v4 to v5](../guides/administration/migrating-from-v4.md): 本番の切り替え手順です。
-- [Lossy and non-obvious changes](../guides/administration/migrating-from-v4.md#lossy-and-non-obvious-changes): 本番の実行前に必ず読んでください。
-- [Running v4 and v5 in parallel](../guides/administration/running-v4-and-v5-in-parallel.md): 本番に切り替えずに、実際のトラフィックで v5 を試します。
+- [v4 から v5 に移行する](../guides/administration/migrating-from-v4.md): 本番の切り替え手順です。
+- [情報が失われる変更とわかりにくい変更](../guides/administration/migrating-from-v4.md#lossy-and-non-obvious-changes): 本番の実行前に必ず読んでください。
+- [v4 と v5 を並行して運用する](../guides/administration/running-v4-and-v5-in-parallel.md): 本番に切り替えずに、実際のトラフィックで v5 を試します。

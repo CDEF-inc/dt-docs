@@ -93,7 +93,7 @@
 | notification scope | 通知スコープ | 値は英語のまま(*System*、*Portfolio*) |
 | notification group | 通知グループ | 値は英語のまま(`BOM_PROCESSED` など) |
 | notification level | 通知レベル | 値は英語のまま |
-| alert | アラート | 「通知ルール」は使わない |
+| alert | アラート | 「通知ルール」は使わない。英語が DB や API の notification rule を指す場合のみ「通知ルール」 |
 | publisher | パブリッシャー | |
 | notification template | 通知テンプレート | |
 | fire (an alert) | (アラートが)発火する | |
@@ -120,6 +120,19 @@
 | secret | シークレット |  |
 | credentials | 認証情報 |  |
 | access token | アクセストークン |  |
+| identity provider (IdP) | ID プロバイダー(IdP) |  |
+| issuer / audience / trust domain | 英語のまま | OIDC・ワークロード ID のプロトコル用語 |
+| claim | クレーム |  |
+| redirect URI | リダイレクト URI |  |
+| user provisioning | ユーザーのプロビジョニング |  |
+| team synchronization | チームの同期 |  |
+| distinguished name (DN) | 識別名(DN) |  |
+| certificate authority (CA) | 認証局(CA) | internal CA は「社内 CA」 |
+| truststore | トラストストア |  |
+| envelope encryption | エンベロープ暗号化 |  |
+| data encryption key (DEK) / key encryption key (KEK) | データ暗号化鍵(DEK) / 鍵暗号化鍵(KEK) | 「キー」ではなく「鍵」 |
+| keyset | キーセット |  |
+| key rotation | 鍵のローテーション |  |
 
 ## アーキテクチャ(v5)
 
@@ -130,6 +143,20 @@
 | durable execution engine | 永続実行エンジン | |
 | workflow | ワークフロー | |
 | activity | アクティビティ | |
+| init tasks | 初期化タスク |  |
+| management server | 管理サーバー |  |
+| health probe / startup probe | ヘルスプローブ / 起動プローブ |  |
+| scrape (metrics) | スクレイプ |  |
+| observability | オブザーバビリティ |  |
+| connection pool / pooling | コネクションプール / コネクションプーリング | 「接続プール」は使わない |
+| task queue | タスクキュー |  |
+| throughput / latency | スループット / レイテンシー |  |
+| backpressure | バックプレッシャー |  |
+| rolling upgrade | ローリングアップグレード |  |
+| schema migration | スキーマのマイグレーション |  |
+| materialized view | マテリアライズドビュー |  |
+| air-gapped | エアギャップ環境 |  |
+| soft-delete | 論理削除 |  |
 
 ## 連携
 
@@ -139,6 +166,14 @@
 | component currency | コンポーネントの鮮度 | |
 | internal component | 内部コンポーネント | |
 | private vulnerability | 非公開の脆弱性 | |
+| GitHub Advisories | GitHub アドバイザリー | 製品名として並べる場合は GitHub Advisories |
+| KEV catalog | KEV カタログ |  |
+| migrator (v4-migrator) | 移行ツール |  |
+| cutover | 切り替え |  |
+| staging schema | ステージングスキーマ |  |
+| preflight | 事前チェック |  |
+| deduplication | 重複排除 |  |
+| extract / transform / load | 抽出 / 変換 / ロード | サブコマンド名は英語のまま |
 
 ## 一般的な用語
 
