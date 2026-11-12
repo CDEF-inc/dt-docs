@@ -2,1652 +2,1652 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://dependencytrack.github.io/docs/next/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/about-kev-data-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/about-kev-data-sources/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/about-kev-data-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/about-vulnerability-data-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/about-vulnerability-data-sources/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/about-vulnerability-data-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/access-control/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/access-control/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/access-control/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/changes-in-v5/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/changes-in-v5/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/changes-in-v5/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/component-integrity-verification/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/component-integrity-verification/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/component-integrity-verification/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/component-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/component-policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/component-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/notifications/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/projects/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/projects/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/projects/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/tags/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/tags/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/tags/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/time-series-metrics/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/time-series-metrics/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/time-series-metrics/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/vex/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/vex/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/vex/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/vulnerability-findings/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/vulnerability-findings/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/vulnerability-findings/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/vulnerability-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/vulnerability-policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/vulnerability-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/workload-identity-federation/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/workload-identity-federation/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/workload-identity-federation/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/deployment/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/deployment/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/deployment/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/design/durable-execution/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/design/durable-execution/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/design/durable-execution/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/design/extensibility/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/design/extensibility/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/design/extensibility/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/design/notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/design/notifications/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/design/notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/design/package-metadata-resolution/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/design/package-metadata-resolution/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/design/package-metadata-resolution/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/concepts/architecture/design/vulnerability-analysis/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/concepts/architecture/design/vulnerability-analysis/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/concepts/architecture/design/vulnerability-analysis/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/backing-up/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/backing-up/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/backing-up/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-banner/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-banner/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-banner/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-database/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-database/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-database/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-http-proxy/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-http-proxy/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-http-proxy/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-internal-ca/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-internal-ca/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-internal-ca/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-kev-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-kev-sources/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-kev-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-ldap/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-ldap/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-ldap/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-observability/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-observability/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-observability/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-oidc/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-oidc/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-oidc/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-project-retention/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-project-retention/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-project-retention/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-secret-management/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-secret-management/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-secret-management/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-timezone/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-timezone/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-timezone/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-vulnerability-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-vulnerability-sources/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-vulnerability-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/configuring-workload-identity-federation/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/configuring-workload-identity-federation/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/configuring-workload-identity-federation/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/debugging-notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/debugging-notifications/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/debugging-notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/deploying-to-kubernetes/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/deploying-to-kubernetes/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/deploying-to-kubernetes/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/deploying-to-production/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/deploying-to-production/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/deploying-to-production/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/managing-notification-templates/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/managing-notification-templates/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/managing-notification-templates/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/migrating-from-v4/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/migrating-from-v4/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/migrating-from-v4/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/running-air-gapped/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/running-air-gapped/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/running-air-gapped/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/running-v4-and-v5-in-parallel/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/running-v4-and-v5-in-parallel/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/running-v4-and-v5-in-parallel/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/scaling/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/scaling/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/scaling/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/administration/upgrading-instances/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/administration/upgrading-instances/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/administration/upgrading-instances/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.6.0/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.6.0/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.6.0/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.3/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.3/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.7.0-alpha.3/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.4/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.4/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.7.0-alpha.4/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.5/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.5/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.7.0-alpha.5/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.6/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.6/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.7.0-alpha.6/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.8/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.8/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.7.0-alpha.8/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.9/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v0.7.0-alpha.9/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v0.7.0-alpha.9/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v5.0.0-rc.1/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v5.0.0-rc.1/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v5.0.0-rc.1/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v5.0.0-rc.2/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v5.0.0-rc.2/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v5.0.0-rc.2/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v5.0.5/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v5.0.5/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v5.0.5/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v5.1.0/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v5.1.0/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v5.1.0/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v5.1.1/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v5.1.1/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v5.1.1/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/upgrading/v5.2.0/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/upgrading/v5.2.0/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/upgrading/v5.2.0/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/configuring-notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/configuring-notifications/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/configuring-notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/exchanging-vex-documents/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/exchanging-vex-documents/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/exchanging-vex-documents/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/managing-component-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/managing-component-policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/managing-component-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/managing-private-vulnerabilities/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/managing-private-vulnerabilities/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/managing-private-vulnerabilities/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/managing-project-versions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/managing-project-versions/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/managing-project-versions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/managing-secrets/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/managing-secrets/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/managing-secrets/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/managing-vulnerability-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/managing-vulnerability-policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/managing-vulnerability-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/organizing-projects/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/organizing-projects/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/organizing-projects/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/triaging-policy-violations/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/triaging-policy-violations/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/triaging-policy-violations/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/guides/user/uploading-boms/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/guides/user/uploading-boms/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/guides/user/uploading-boms/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/includes/abbreviations/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/includes/abbreviations/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/includes/abbreviations/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/analyzers/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/analyzers/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/analyzers/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/badges/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/badges/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/badges/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/cel-expressions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/cel-expressions/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/cel-expressions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/community-integrations/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/community-integrations/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/community-integrations/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/container-images/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/container-images/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/container-images/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/file-formats/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/file-formats/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/file-formats/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/permissions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/permissions/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/permissions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/projects/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/projects/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/projects/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/vex-and-vdr/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/vex-and-vdr/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/vex-and-vdr/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/workload-identity/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/workload-identity/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/workload-identity/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/api/v1/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/api/v1/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/api/v1/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/api/v2/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/api/v2/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/api/v2/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/api/v5-breaking-changes/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/api/v5-breaking-changes/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/api/v5-breaking-changes/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/application/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/application/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/application/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/cache/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/cache/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/cache/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/database/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/database/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/database/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/datasources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/datasources/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/datasources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/dex-engine/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/dex-engine/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/dex-engine/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/file-storage/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/file-storage/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/file-storage/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/init-tasks/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/init-tasks/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/init-tasks/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/properties/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/properties/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/properties/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/task-scheduler/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/task-scheduler/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/task-scheduler/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/configuration/telemetry/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/configuration/telemetry/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/configuration/telemetry/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/datasources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/datasources/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/datasources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/datasources/internal-components/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/datasources/internal-components/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/datasources/internal-components/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/datasources/private-vulnerability-repository/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/datasources/private-vulnerability-repository/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/datasources/private-vulnerability-repository/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/datasources/repositories/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/datasources/repositories/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/datasources/repositories/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/notifications/filter-expressions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/notifications/filter-expressions/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/notifications/filter-expressions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/notifications/groups/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/notifications/groups/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/notifications/groups/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/notifications/publishers/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/notifications/publishers/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/notifications/publishers/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/notifications/schema/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/notifications/schema/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/notifications/schema/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/notifications/templating/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/notifications/templating/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/notifications/templating/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/policies/component-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/policies/component-policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/policies/component-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/policies/condition-expressions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/policies/condition-expressions/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/policies/condition-expressions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/policies/schema/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/policies/schema/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/policies/schema/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/reference/policies/vulnerability-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/reference/policies/vulnerability-policies/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/reference/policies/vulnerability-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/tutorials/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/tutorials/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/tutorials/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/tutorials/creating-a-component-policy/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/tutorials/creating-a-component-policy/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/tutorials/creating-a-component-policy/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/tutorials/quickstart/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/tutorials/quickstart/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/tutorials/quickstart/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/tutorials/rating-a-finding-in-context/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/tutorials/rating-a-finding-in-context/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/tutorials/rating-a-finding-in-context/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/tutorials/rehearsing-the-v4-migration/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/tutorials/rehearsing-the-v4-migration/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/tutorials/rehearsing-the-v4-migration/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/tutorials/setting-up-notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next/tutorials/setting-up-notifications/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/nextja/tutorials/setting-up-notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/next"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/about-kev-data-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/about-kev-data-sources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/about-kev-data-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/about-vulnerability-data-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/about-vulnerability-data-sources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/about-vulnerability-data-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/access-control/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/access-control/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/access-control/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/changes-in-v5/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/changes-in-v5/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/changes-in-v5/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/component-integrity-verification/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/component-integrity-verification/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/component-integrity-verification/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/component-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/component-policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/component-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/notifications/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/projects/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/projects/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/projects/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/tags/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/tags/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/tags/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/time-series-metrics/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/time-series-metrics/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/time-series-metrics/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/vex/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/vex/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/vex/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/vulnerability-findings/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/vulnerability-findings/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/vulnerability-findings/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/vulnerability-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/vulnerability-policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/vulnerability-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/workload-identity-federation/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/workload-identity-federation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/workload-identity-federation/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/deployment/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/deployment/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/deployment/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/durable-execution/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/durable-execution/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/design/durable-execution/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/extensibility/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/extensibility/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/design/extensibility/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/notifications/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/design/notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/package-metadata-resolution/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/package-metadata-resolution/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/design/package-metadata-resolution/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/vulnerability-analysis/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/concepts/architecture/design/vulnerability-analysis/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextconcepts/architecture/design/vulnerability-analysis/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/backing-up/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/backing-up/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/backing-up/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-banner/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-banner/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-banner/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-database/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-database/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-http-proxy/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-http-proxy/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-http-proxy/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-internal-ca/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-internal-ca/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-internal-ca/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-kev-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-kev-sources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-kev-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-ldap/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-ldap/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-ldap/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-observability/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-observability/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-observability/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-oidc/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-oidc/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-oidc/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-project-retention/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-project-retention/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-project-retention/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-secret-management/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-secret-management/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-secret-management/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-timezone/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-timezone/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-timezone/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-vulnerability-sources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-vulnerability-sources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-vulnerability-sources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-workload-identity-federation/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/configuring-workload-identity-federation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/configuring-workload-identity-federation/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/debugging-notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/debugging-notifications/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/debugging-notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/deploying-to-kubernetes/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/deploying-to-kubernetes/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/deploying-to-kubernetes/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/deploying-to-production/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/deploying-to-production/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/deploying-to-production/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/managing-notification-templates/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/managing-notification-templates/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/managing-notification-templates/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/migrating-from-v4/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/migrating-from-v4/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/migrating-from-v4/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/running-air-gapped/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/running-air-gapped/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/running-air-gapped/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/running-v4-and-v5-in-parallel/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/running-v4-and-v5-in-parallel/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/running-v4-and-v5-in-parallel/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/scaling/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/scaling/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/scaling/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/administration/upgrading-instances/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/administration/upgrading-instances/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/administration/upgrading-instances/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.6.0/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.6.0/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.6.0/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.3/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.3/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.7.0-alpha.3/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.4/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.4/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.7.0-alpha.4/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.5/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.5/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.7.0-alpha.5/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.6/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.6/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.7.0-alpha.6/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.8/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.8/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.7.0-alpha.8/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.9/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v0.7.0-alpha.9/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v0.7.0-alpha.9/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.0.0-rc.1/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.0.0-rc.1/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v5.0.0-rc.1/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.0.0-rc.2/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.0.0-rc.2/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v5.0.0-rc.2/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.0.5/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.0.5/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v5.0.5/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.1.0/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.1.0/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v5.1.0/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.1.1/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.1.1/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v5.1.1/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.2.0/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/upgrading/v5.2.0/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/upgrading/v5.2.0/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/configuring-notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/configuring-notifications/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/configuring-notifications/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/exchanging-vex-documents/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/exchanging-vex-documents/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/exchanging-vex-documents/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/managing-component-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/managing-component-policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/managing-component-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/managing-private-vulnerabilities/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/managing-private-vulnerabilities/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/managing-private-vulnerabilities/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/managing-project-versions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/managing-project-versions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/managing-project-versions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/managing-secrets/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/managing-secrets/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/managing-secrets/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/managing-vulnerability-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/managing-vulnerability-policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/managing-vulnerability-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/organizing-projects/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/organizing-projects/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/organizing-projects/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/triaging-policy-violations/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/triaging-policy-violations/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/triaging-policy-violations/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/guides/user/uploading-boms/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/guides/user/uploading-boms/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextguides/user/uploading-boms/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/includes/abbreviations/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/includes/abbreviations/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextincludes/abbreviations/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/analyzers/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/analyzers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/analyzers/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/badges/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/badges/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/badges/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/cel-expressions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/cel-expressions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/cel-expressions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/community-integrations/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/community-integrations/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/community-integrations/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/container-images/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/container-images/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/container-images/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/file-formats/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/file-formats/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/file-formats/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/permissions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/permissions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/permissions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/projects/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/projects/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/projects/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/vex-and-vdr/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/vex-and-vdr/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/vex-and-vdr/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/workload-identity/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/workload-identity/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/workload-identity/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/api/v1/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/api/v1/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/api/v1/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/api/v2/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/api/v2/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/api/v2/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/api/v5-breaking-changes/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/api/v5-breaking-changes/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/api/v5-breaking-changes/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/application/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/application/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/application/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/cache/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/cache/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/cache/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/database/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/database/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/datasources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/datasources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/datasources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/dex-engine/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/dex-engine/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/dex-engine/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/file-storage/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/file-storage/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/file-storage/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/init-tasks/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/init-tasks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/init-tasks/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/properties/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/properties/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/properties/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/task-scheduler/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/task-scheduler/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/task-scheduler/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/configuration/telemetry/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/configuration/telemetry/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/configuration/telemetry/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/datasources/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/datasources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/datasources/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/datasources/internal-components/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/datasources/internal-components/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/datasources/internal-components/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/datasources/private-vulnerability-repository/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/datasources/private-vulnerability-repository/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/datasources/private-vulnerability-repository/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/datasources/repositories/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/datasources/repositories/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/datasources/repositories/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/notifications/filter-expressions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/notifications/filter-expressions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/notifications/filter-expressions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/notifications/groups/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/notifications/groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/notifications/groups/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/notifications/publishers/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/notifications/publishers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/notifications/publishers/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/notifications/schema/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/notifications/schema/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/notifications/schema/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/notifications/templating/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/notifications/templating/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/notifications/templating/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/policies/component-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/policies/component-policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/policies/component-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/policies/condition-expressions/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/policies/condition-expressions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/policies/condition-expressions/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/policies/schema/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/policies/schema/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/policies/schema/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/reference/policies/vulnerability-policies/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/reference/policies/vulnerability-policies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nextreference/policies/vulnerability-policies/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/tutorials/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/tutorials/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nexttutorials/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/tutorials/creating-a-component-policy/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/tutorials/creating-a-component-policy/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nexttutorials/creating-a-component-policy/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/tutorials/quickstart/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/tutorials/quickstart/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nexttutorials/quickstart/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/tutorials/rating-a-finding-in-context/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/tutorials/rating-a-finding-in-context/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nexttutorials/rating-a-finding-in-context/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/tutorials/rehearsing-the-v4-migration/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/tutorials/rehearsing-the-v4-migration/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nexttutorials/rehearsing-the-v4-migration/"/>
     </url>
     <url>
         <loc>https://dependencytrack.github.io/docs/next/ja/tutorials/setting-up-notifications/</loc>
-        <lastmod>2026-11-02</lastmod>
+        <lastmod>2026-11-12</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://dependencytrack.github.io/docs/next/ja/tutorials/setting-up-notifications/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://dependencytrack.github.io/docs/nexttutorials/setting-up-notifications/"/>
